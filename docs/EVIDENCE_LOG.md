@@ -47,3 +47,22 @@ This log contains a dated record of commands executed during development and ver
   - **Result**: Passed 2 tests, verifying that credentials modified on disk after service start are picked up immediately.
 - **Command**: `.venv\Scripts\python -m pytest`
   - **Result**: 29 passed in 2.79s.
+
+### 3. Gap F & Gap J: Standardized Error Envelopes, Exact OpenAPI 3.1 Verification, and Asynchronous Jobs
+
+- **Action**: Standardized all application error responses to the canonical Integration Standard 5 format `{"error": {"code", "message", "retryable", "details"}}`.
+  - Added `UNAUTHORIZED` and `RATE_LIMITED` to `ErrorCode` taxonomy in `app/rules/errors.py`.
+  - Enhanced `ConnectorException.to_dict()` to produce `{ "error": { ... }, "code": ..., "message": ..., "retryable": ..., "details": ... }` providing nested envelope structure while maintaining top-level backward compatibility.
+  - Added global `RequestValidationError` and `StarletteHTTPException` handlers in `app/main.py`.
+  - Standardized `IdempotencyMiddleware` error responses (missing key, conflict, in-flight rate limit).
+- **Action**: Removed all exemptions from `IdempotencyMiddleware` so that CSV import and every route under `/api/v1/` strictly require and enforce `Idempotency-Key`.
+- **Action**: Enhanced `app/jobs/manager.py` with:
+  - Removal of `destination_model.last_certified_at` modification on normal publications (Gap E).
+  - Background certification job runner: `run_certification_job()`.
+  - Background CSV catalogue import job runner: `run_csv_import_job()`.
+- **Action**: Added endpoints `POST /api/v1/certification/jobs` and `POST /api/v1/destinations/import-csv-job` returning HTTP 202 Accepted and `job_id` for asynchronous execution.
+- **Action**: Updated `scripts/export_openapi.py` and exported updated specification to `openapi.yaml`.
+- **Action**: Created `tests/unit/test_error_envelope.py` verifying that all error paths return the standard envelope.
+- **Action**: Created `tests/integration/test_openapi.py` verifying that `openapi.yaml` exactly matches the running application schema and that all routes conform to the `/api/v1/` prefix rules.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 35 passed in 2.59s (all 35 tests green).

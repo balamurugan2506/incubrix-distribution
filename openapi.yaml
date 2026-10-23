@@ -489,6 +489,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/import-csv-job:
+    post:
+      tags:
+      - Destination Catalogue
+      summary: Submit Csv Import Job
+      description: Submits CSV catalogue import as an asynchronous background job
+        returning 202 Accepted and job_id.
+      operationId: submit_csv_import_job_api_v1_destinations_import_csv_job_post
+      parameters:
+      - name: check_reachability
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+          title: Check Reachability
+      - name: callback_url
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Callback Url
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_submit_csv_import_job_api_v1_destinations_import_csv_job_post'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobSubmitResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/v1/jobs:
     post:
       tags:
@@ -547,6 +590,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobStatusResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/certification/jobs:
+    post:
+      tags:
+      - Certification Harness
+      summary: Submit Certification Job
+      description: Submits a long-running certification run as an asynchronous background
+        job returning 202 Accepted and job_id.
+      operationId: submit_certification_job_api_v1_certification_jobs_post
+      parameters:
+      - name: callback_url
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Callback Url
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationRunRequest'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobSubmitResponse'
         '422':
           description: Validation Error
           content:
@@ -667,6 +746,16 @@ components:
       required:
       - file
       title: Body_import_csv_api_v1_destinations_import_csv_post
+    Body_submit_csv_import_job_api_v1_destinations_import_csv_job_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+      - file
+      title: Body_submit_csv_import_job_api_v1_destinations_import_csv_job_post
     BuildAssistPackRequest:
       properties:
         rendition:

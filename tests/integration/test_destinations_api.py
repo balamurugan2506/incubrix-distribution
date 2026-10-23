@@ -91,7 +91,11 @@ async def test_csv_import_endpoint():
             "Ghost Tech Blog,https://blog.example.com,ghost,ghost,blog,engineering,\"software\",25000,5\n"
         )
         files = {"file": ("destinations.csv", csv_data.encode("utf-8"), "text/csv")}
-        res = await client.post("/api/v1/destinations/import-csv?check_reachability=false", files=files)
+        res = await client.post(
+            "/api/v1/destinations/import-csv?check_reachability=false",
+            files=files,
+            headers={"Idempotency-Key": "test_import_csv_1"}
+        )
         assert res.status_code == 200
         summary = res.json()
         print("CSV SUMMARY:", summary)

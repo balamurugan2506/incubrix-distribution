@@ -31,12 +31,65 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
+from fastapi import Request
+from fastapi.responses import JSONResponse
+from app.rules.errors import ErrorCode
+
 # Middleware
 app.add_middleware(CorrelationIdMiddleware)
 app.add_middleware(IdempotencyMiddleware)
 
 # Exception handlers
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    return JSONResponse(
+        status_code=422,
+        content={
+            "error": {
+                "code": ErrorCode.DEST_SPEC_VIOLATION.value,
+                "message": "Request validation failed",
+                "retryable": False,
+                "details": {"errors": exc.errors()}
+            },
+            "code": ErrorCode.DEST_SPEC_VIOLATION.value,
+            "message": "Request validation failed",
+            "retryable": False,
+            "details": {"errors": exc.errors()}
+        }
+    )
+
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    code = ErrorCode.DEST_SPEC_VIOLATION.value
+    if exc.status_code == 401:
+        code = ErrorCode.UNAUTHORIZED.value
+    elif exc.status_code == 429:
+        code = ErrorCode.RATE_LIMITED.value
+    elif exc.status_code == 404:
+        code = "NOT_FOUND"
+    elif exc.status_code >= 500:
+        code = ErrorCode.PLATFORM_UNAVAILABLE.value
+
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "error": {
+                "code": code,
+                "message": str(exc.detail),
+                "retryable": exc.status_code in (429, 503),
+                "details": {}
+            },
+            "code": code,
+            "message": str(exc.detail),
+            "detail": str(exc.detail),
+            "retryable": exc.status_code in (429, 503),
+            "details": {}
+        }
+    )
+
 app.add_exception_handler(ConnectorException, connector_exception_handler)
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
+app.add_exception_handler(StarletteHTTPException, http_exception_handler)
 
 # Routers
 app.include_router(health_router)

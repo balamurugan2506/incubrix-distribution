@@ -14,6 +14,8 @@ class ErrorCode(str, Enum):
     PLATFORM_CONTENT_REJECTED = "PLATFORM_CONTENT_REJECTED"
     PLATFORM_UNAVAILABLE = "PLATFORM_UNAVAILABLE"
     CONNECTOR_DISABLED = "CONNECTOR_DISABLED"
+    UNAUTHORIZED = "UNAUTHORIZED"
+    RATE_LIMITED = "RATE_LIMITED"
 
 
 class StructuredError(BaseModel):
@@ -42,7 +44,14 @@ class ConnectorException(Exception):
         self.status_code = status_code
 
     def to_dict(self) -> Dict[str, Any]:
+        err_envelope = {
+            "code": self.code.value,
+            "message": self.message,
+            "retryable": self.retryable,
+            "details": self.details
+        }
         return {
+            "error": err_envelope,
             "code": self.code.value,
             "message": self.message,
             "retryable": self.retryable,

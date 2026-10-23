@@ -70,6 +70,9 @@ class IdempotencyStore:
             if record.status == "completed":
                 return "CACHED", record.response_code, record.response_body
 
+            if record.status == "outcome_unknown":
+                return "OUTCOME_UNKNOWN", record.response_code, record.response_body
+
             # In flight
             return "PENDING", None, None
 
@@ -89,6 +92,17 @@ class IdempotencyStore:
                 record.response_code = response_code
                 record.response_body = response_body
                 record.completed_at = datetime.now(timezone.utc)
+                await session.commit()
+
+    @staticmethod
+    async def record_outcome_unknown(key: str) -> None:
+        """Mark idempotency record as outcome_unknown so retries trigger platform reconciliation."""
+        async with AsyncSessionLocal() as session:
+            stmt = select(IdempotencyRecordModel).where(IdempotencyRecordModel.idempotency_key == key)
+            res = await session.execute(stmt)
+            record = res.scalar_one_or_none()
+            if record:
+                record.status = "outcome_unknown"
                 await session.commit()
 
     @staticmethod

@@ -18,11 +18,14 @@ class RetryPolicy:
 async def execute_with_retry(
     func: Callable[[], Any],
     operation_name: str = "platform_operation",
-    max_retries: int = RetryPolicy.MAX_ATTEMPTS
+    max_retries: int = RetryPolicy.MAX_ATTEMPTS,
+    is_idempotent_operation: bool = True,
+    reconcile_func: Optional[Callable[[], Any]] = None
 ) -> Any:
     """
     Executes an async operation with exponential backoff.
     Aborts immediately if error is non-retryable (content rejection, bad auth, policy violations).
+    Never retries a non-idempotent create blindly without reconciliation.
     Stops after 5 consecutive failures.
     """
     attempt = 0
@@ -36,6 +39,21 @@ async def execute_with_retry(
             if not exc.retryable:
                 logger.info(f"Operation '{operation_name}' failed with non-retryable error [{exc.code.value}]. Aborting retries.")
                 raise exc
+
+            # Never retry non-idempotent create blindly inside backoff
+            if not is_idempotent_operation:
+                if reconcile_func:
+                    logger.info(f"Reconciling unknown outcome for non-idempotent '{operation_name}' before retry...")
+                    try:
+                        reconciled = await reconcile_func()
+                        if reconciled:
+                            logger.info(f"Reconciliation succeeded for '{operation_name}', found existing post.")
+                            return reconciled
+                    except Exception as r_exc:
+                        logger.warning(f"Reconciliation probe failed: {r_exc}")
+                else:
+                    logger.warning(f"Refusing to blindly retry non-idempotent create operation '{operation_name}'.")
+                    raise exc
 
             if attempt >= max_retries:
                 logger.error(f"Operation '{operation_name}' exhausted all {max_retries} attempts.")

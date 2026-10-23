@@ -31,16 +31,19 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
         path = request.url.path
         method = request.method.upper()
 
-        # Only apply to POST under /api/v1/ (excluding multipart CSV upload)
+        # Apply to all POST requests under /api/v1/ (exempting nothing)
         if method == "POST" and path.startswith("/api/v1/"):
-            if "import-csv" in path:
-                return await call_next(request)
-
             idempotency_key = request.headers.get("Idempotency-Key")
             if not idempotency_key or not idempotency_key.strip():
                 return JSONResponse(
                     status_code=400,
                     content={
+                        "error": {
+                            "code": ErrorCode.DEST_SPEC_VIOLATION.value,
+                            "message": "Idempotency-Key header is required for all POST requests under /api/v1/",
+                            "retryable": False,
+                            "details": {"path": path}
+                        },
                         "code": ErrorCode.DEST_SPEC_VIOLATION.value,
                         "message": "Idempotency-Key header is required for all POST requests under /api/v1/",
                         "retryable": False,
@@ -50,6 +53,11 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
 
             # Read request body
             body_bytes = await request.body()
+
+            # Reconstruct request receive stream so downstream route handlers (JSON or multipart form) can read body
+            async def receive():
+                return {"type": "http.request", "body": body_bytes, "more_body": False}
+            request = Request(request.scope, receive)
 
             status_type, cached_code, cached_body = await IdempotencyStore.get_or_create_record(
                 idempotency_key, path, body_bytes
@@ -71,11 +79,22 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
                 return JSONResponse(
                     status_code=409,
                     content={
+                        "error": {
+                            "code": ErrorCode.DEST_SPEC_VIOLATION.value,
+                            "message": f"Idempotency key '{idempotency_key}' was reused with materially different request payload.",
+                            "retryable": False,
+                            "details": {}
+                        },
                         "code": ErrorCode.DEST_SPEC_VIOLATION.value,
                         "message": f"Idempotency key '{idempotency_key}' was reused with materially different request payload.",
                         "retryable": False
                     }
                 )
+
+            elif status_type == "OUTCOME_UNKNOWN":
+                logger.info(f"Retrying idempotency key '{idempotency_key}' whose previous outcome was unknown. Flagging for platform reconcile.")
+                request.state.is_retry_after_unknown = True
+                request.state.idempotency_key = idempotency_key
 
             elif status_type == "PENDING":
                 # In-flight concurrent request with the same key
@@ -95,13 +114,19 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
                 return JSONResponse(
                     status_code=409,
                     content={
-                        "code": ErrorCode.PLATFORM_RATE_LIMIT.value,
+                        "error": {
+                            "code": ErrorCode.RATE_LIMITED.value,
+                            "message": f"Concurrent in-flight request for idempotency key '{idempotency_key}'. Please retry shortly.",
+                            "retryable": True,
+                            "details": {}
+                        },
+                        "code": ErrorCode.RATE_LIMITED.value,
                         "message": f"Concurrent in-flight request for idempotency key '{idempotency_key}'. Please retry shortly.",
                         "retryable": True
                     }
                 )
 
-            # status_type == "NEW": execute route
+            # status_type in ("NEW", "OUTCOME_UNKNOWN"): execute route
             try:
                 response: Response = await call_next(request)
 
@@ -123,13 +148,21 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
                         response.status_code,
                         full_body.decode("utf-8", errors="replace")
                     )
+                elif response.status_code in (408, 504) or "timeout" in full_body.decode("utf-8", errors="replace").lower():
+                    await IdempotencyStore.record_outcome_unknown(idempotency_key)
                 else:
                     await IdempotencyStore.record_failed(idempotency_key)
 
                 return new_response
 
-            except Exception:
-                await IdempotencyStore.record_failed(idempotency_key)
+            except asyncio.TimeoutError:
+                await IdempotencyStore.record_outcome_unknown(idempotency_key)
+                raise
+            except Exception as exc:
+                if "timeout" in str(exc).lower():
+                    await IdempotencyStore.record_outcome_unknown(idempotency_key)
+                else:
+                    await IdempotencyStore.record_failed(idempotency_key)
                 raise
 
         return await call_next(request)

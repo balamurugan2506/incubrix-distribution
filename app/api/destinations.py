@@ -1,6 +1,7 @@
 """Destination Catalogue API endpoints under /api/v1/destinations."""
 
 import uuid
+import asyncio
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, Query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -15,6 +16,8 @@ from app.schemas.destination import (
     CSVImportSummary
 )
 from app.catalogue.csv_importer import normalise_url, import_destinations_from_csv
+from app.api.jobs import JobSubmitResponse
+from app.jobs.manager import job_manager
 
 router = APIRouter(prefix="/api/v1/destinations", tags=["Destination Catalogue"])
 
@@ -140,3 +143,36 @@ async def import_csv(
     csv_text = content_bytes.decode("utf-8-sig", errors="replace")
     summary = await import_destinations_from_csv(csv_text, db, perform_reachability=check_reachability)
     return summary
+
+
+@router.post("/import-csv-job", response_model=JobSubmitResponse, status_code=status.HTTP_202_ACCEPTED)
+async def submit_csv_import_job(
+    file: UploadFile = File(...),
+    check_reachability: bool = Query(True),
+    callback_url: Optional[str] = Query(None),
+    db: AsyncSession = Depends(get_db)
+):
+    """Submits CSV catalogue import as an asynchronous background job returning 202 Accepted and job_id."""
+    content_bytes = await file.read()
+    csv_text = content_bytes.decode("utf-8-sig", errors="replace")
+
+    job = await job_manager.create_job(
+        destination_id=None,
+        callback_url=callback_url
+    )
+
+    asyncio.create_task(
+        job_manager.run_csv_import_job(
+            job_id=job.job_id,
+            csv_text=csv_text,
+            check_reachability=check_reachability,
+            callback_url=callback_url
+        )
+    )
+
+    return JobSubmitResponse(
+        job_id=job.job_id,
+        status="queued",
+        progress=0,
+        status_url=f"/api/v1/jobs/{job.job_id}"
+    )

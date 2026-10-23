@@ -168,7 +168,6 @@ class JobManager:
                 rendition_title=rendition.title
             )
             session.add(pub_record)
-            destination_model.last_certified_at = datetime.now(timezone.utc)
             await session.commit()
 
             result_dict = {
@@ -184,6 +183,95 @@ class JobManager:
 
             if callback_url:
                 await dispatch_job_callback(callback_url, job_id, "succeeded", result=result_dict)
+
+    @classmethod
+    async def run_certification_job(
+        cls,
+        job_id: str,
+        destination_id: str,
+        connection: Optional[ConnectionSchema] = None,
+        environment: str = "mock",
+        callback_url: Optional[str] = None
+    ) -> None:
+        """Asynchronously executes certification harness and reports progress."""
+        from app.certification.harness import harness
+
+        logger.info(f"Starting certification job {job_id} for destination {destination_id}")
+        await cls.update_job(job_id, status="running", progress=15)
+
+        async with AsyncSessionLocal() as session:
+            stmt = select(DestinationModel).where(DestinationModel.id == destination_id)
+            res = await session.execute(stmt)
+            dest = res.scalar_one_or_none()
+            if not dest:
+                err_msg = f"Destination '{destination_id}' not found for certification"
+                await cls.update_job(job_id, status="failed", progress=100, error_code=ErrorCode.DEST_SPEC_VIOLATION.value, error_message=err_msg)
+                if callback_url:
+                    await dispatch_job_callback(callback_url, job_id, "failed", error_code=ErrorCode.DEST_SPEC_VIOLATION.value, error_message=err_msg)
+                return
+
+            await cls.update_job(job_id, progress=35)
+            try:
+                report = await harness.run_certification(
+                    destination=dest,
+                    connection=connection,
+                    environment=environment
+                )
+                await cls.update_job(job_id, progress=85)
+                status_str = "succeeded" if report.passed else "failed"
+                report_dict = report.model_dump()
+                await cls.update_job(
+                    job_id,
+                    status=status_str,
+                    progress=100,
+                    result=report_dict,
+                    error_message=report.error_message
+                )
+                if callback_url:
+                    await dispatch_job_callback(callback_url, job_id, status_str, result=report_dict, error_message=report.error_message)
+            except Exception as exc:
+                logger.error(f"Certification job {job_id} failed: {exc}")
+                await cls.update_job(job_id, status="failed", progress=100, error_code=ErrorCode.PLATFORM_UNAVAILABLE.value, error_message=str(exc))
+                if callback_url:
+                    await dispatch_job_callback(callback_url, job_id, "failed", error_code=ErrorCode.PLATFORM_UNAVAILABLE.value, error_message=str(exc))
+
+    @classmethod
+    async def run_csv_import_job(
+        cls,
+        job_id: str,
+        csv_text: str,
+        check_reachability: bool = True,
+        callback_url: Optional[str] = None
+    ) -> None:
+        """Asynchronously parses, validates, and imports a catalogue CSV."""
+        from app.catalogue.csv_importer import import_destinations_from_csv
+
+        logger.info(f"Starting CSV import job {job_id}")
+        await cls.update_job(job_id, status="running", progress=20)
+
+        async with AsyncSessionLocal() as session:
+            try:
+                await cls.update_job(job_id, progress=50)
+                summary = await import_destinations_from_csv(
+                    csv_text=csv_text,
+                    db=session,
+                    perform_reachability=check_reachability
+                )
+                await cls.update_job(job_id, progress=90)
+                summary_dict = summary.model_dump() if hasattr(summary, "model_dump") else summary
+                await cls.update_job(
+                    job_id,
+                    status="succeeded",
+                    progress=100,
+                    result=summary_dict
+                )
+                if callback_url:
+                    await dispatch_job_callback(callback_url, job_id, "succeeded", result=summary_dict)
+            except Exception as exc:
+                logger.error(f"CSV import job {job_id} failed: {exc}")
+                await cls.update_job(job_id, status="failed", progress=100, error_code=ErrorCode.DEST_SPEC_VIOLATION.value, error_message=str(exc))
+                if callback_url:
+                    await dispatch_job_callback(callback_url, job_id, "failed", error_code=ErrorCode.DEST_SPEC_VIOLATION.value, error_message=str(exc))
 
 
 job_manager = JobManager()
