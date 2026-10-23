@@ -1,0 +1,69 @@
+{
+  "evidence_id": "cert_24a26a6a6513",
+  "created_at": "2026-10-23T17:19:25.824464+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_24a26a6a6513",
+  "payload": {
+    "certification_id": "cert_24a26a6a6513",
+    "destination_id": "dest_406611d58e9b",
+    "destination_name": "Dev.to Certification Candidate",
+    "connector_key": "devto",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "109239",
+    "live_url": "https://dev.to/mock_user/109239",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-23T17:19:25.812606+00:00",
+    "completed_at": "2026-10-23T17:19:25.824464+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:19:25.812606+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:19:25.812606+00:00",
+        "details": {
+          "platform_post_id": "109239",
+          "live_url": "https://dev.to/mock_user/109239",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:19:25.812606+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://dev.to/mock_user/109239"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:19:25.812606+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:19:25.812606+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

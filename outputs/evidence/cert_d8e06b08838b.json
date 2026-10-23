@@ -1,0 +1,69 @@
+{
+  "evidence_id": "cert_d8e06b08838b",
+  "created_at": "2026-10-23T17:21:38.786050+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_d8e06b08838b",
+  "payload": {
+    "certification_id": "cert_d8e06b08838b",
+    "destination_id": "core_cert_discourse",
+    "destination_name": "Discourse Engineering Forum",
+    "connector_key": "discourse",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "41409",
+    "live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/3847/1",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-23T17:21:38.114237+00:00",
+    "completed_at": "2026-10-23T17:21:38.786050+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:21:38.114237+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:21:38.114237+00:00",
+        "details": {
+          "platform_post_id": "41409",
+          "live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/3847/1",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:21:38.289254+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/3847/1"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:21:38.460637+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:21:38.623400+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

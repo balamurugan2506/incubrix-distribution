@@ -1,0 +1,22 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_bc9048f2f3e1
+Timestamp: 2026-10-23T17:19:25.963379+00:00
+Backend: local
+============================================================
+certification_id: cert_bc9048f2f3e1
+destination_id: dest_efeb850900a1
+destination_name: Manual Reddit Sub
+connector_key: assisted
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: None
+live_url: None
+deletion_confirmed: False
+evidence_file: None
+started_at: 2026-10-23T17:19:25.963379+00:00
+completed_at: 2026-10-23T17:19:25.963379+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] assisted_mode_verification: {"message": "Destination correctly configured for assisted manual workflow.", "media_count": 2, "caption_length": 132, "deep_link": "https://reddit.com/r/example", "checklist_items": 6}

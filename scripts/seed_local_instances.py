@@ -40,8 +40,8 @@ def seed_lemmy(base_url: str) -> Dict[str, Any]:
     print(f"[Seed] Seeding Lemmy instance at {base_url}...")
     client = httpx.Client(base_url=base_url, timeout=10.0)
 
-    admin_username = "incubrix_admin"
-    admin_password = "IncubrixAdminPassword123!"
+    admin_username = os.getenv("LEMMY_ADMIN_USERNAME", "incubrix_admin")
+    admin_password = os.getenv("LEMMY_ADMIN_PASSWORD", "dev_seed_password_123")
 
     # 1. Attempt login first (if already seeded)
     try:
@@ -138,9 +138,9 @@ def seed_ghost(base_url: str) -> Dict[str, Any]:
             # Ghost requires initial owner setup
             setup_payload = {
                 "setup": [{
-                    "name": "IncuBrix Admin",
-                    "email": "admin@incubrix.local",
-                    "password": "IncubrixGhostPassword123!",
+                    "name": os.getenv("GHOST_OWNER_NAME", "IncuBrix Admin"),
+                    "email": os.getenv("GHOST_OWNER_EMAIL", "admin@incubrix.local"),
+                    "password": os.getenv("GHOST_OWNER_PASSWORD", "dev_ghost_password_123"),
                     "blogTitle": "IncuBrix Local Ghost Blog"
                 }]
             }

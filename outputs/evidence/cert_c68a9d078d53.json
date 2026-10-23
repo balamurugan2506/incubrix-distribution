@@ -1,0 +1,37 @@
+{
+  "evidence_id": "cert_c68a9d078d53",
+  "created_at": "2026-10-23T17:23:33.839142+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_c68a9d078d53",
+  "payload": {
+    "certification_id": "cert_c68a9d078d53",
+    "destination_id": "dest_2dc02854171b",
+    "destination_name": "Manual Reddit Sub",
+    "connector_key": "assisted",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-23T17:23:33.839142+00:00",
+    "completed_at": "2026-10-23T17:23:33.839142+00:00",
+    "steps": [
+      {
+        "step": "assisted_mode_verification",
+        "status": "passed",
+        "timestamp": "2026-10-23T17:23:33.839142+00:00",
+        "details": {
+          "message": "Destination correctly configured for assisted manual workflow.",
+          "media_count": 2,
+          "caption_length": 132,
+          "deep_link": "https://reddit.com/r/example",
+          "checklist_items": 6
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

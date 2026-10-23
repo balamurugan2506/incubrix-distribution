@@ -711,6 +711,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/evidence/{evidence_id}:
+    get:
+      tags:
+      - Evidence & Artifacts
+      summary: Get Evidence Document
+      description: 'Retrieve stored evidence documents (certification reports, assist
+        packs, import audits)
+
+        as downloadable artifacts.'
+      operationId: get_evidence_document_api_v1_evidence__evidence_id__get
+      parameters:
+      - name: evidence_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Evidence Id
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+          pattern: ^(json|txt)$
+          default: json
+          title: Format
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     AssistPackResult:
@@ -839,9 +876,14 @@ components:
         environment:
           type: string
           title: Environment
+        verdict:
+          type: string
+          title: Verdict
+          default: inconclusive
         passed:
           type: boolean
           title: Passed
+          default: false
         platform_post_id:
           anyOf:
           - type: string
@@ -867,6 +909,7 @@ components:
         completed_at:
           type: string
           title: Completed At
+          default: ''
         steps:
           items:
             $ref: '#/components/schemas/CertificationStepReceipt'
@@ -885,9 +928,7 @@ components:
       - connector_key
       - connector_version
       - environment
-      - passed
       - started_at
-      - completed_at
       title: CertificationReport
     CertificationRunRequest:
       properties:

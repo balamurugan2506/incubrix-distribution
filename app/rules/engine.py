@@ -174,7 +174,17 @@ class PostingRulesEngine:
         link_policy = get_rule("link_policy")
         disclosure_required = get_rule("disclosure_required")
 
-        # 1. Destination Enabled Check
+        # 1. Destination Status Check (demoted destinations refused)
+        dest_status = getattr(destination, "status", "active") or "active"
+        if dest_status == "demoted":
+            raise ConnectorException(
+                code=ErrorCode.CONNECTOR_DISABLED,
+                message=f"Destination '{dest_name}' has been demoted due to platform failure or schema mismatch. Refusing publish.",
+                retryable=False,
+                status_code=400
+            )
+
+        # 2. Destination Enabled Check
         if enabled is False:
             raise ConnectorException(
                 code=ErrorCode.CONNECTOR_DISABLED,
@@ -183,7 +193,7 @@ class PostingRulesEngine:
                 status_code=400
             )
 
-        # 2. Automation Allowance Check
+        # 3. Automation Allowance Check
         if is_automated_request and automation_allowed is False:
             raise ConnectorException(
                 code=ErrorCode.CONNECTOR_DISABLED,

@@ -1,0 +1,67 @@
+{
+  "evidence_id": "cert_bdacb0f2874c",
+  "created_at": "2026-10-23T09:41:45.355847+00:00",
+  "storage_backend": "local",
+  "payload": {
+    "certification_id": "cert_bdacb0f2874c",
+    "destination_id": "dest_c22cd21dbaf8",
+    "destination_name": "Dev.to Certification Candidate",
+    "connector_key": "devto",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "passed": true,
+    "platform_post_id": "640317",
+    "live_url": "https://dev.to/mock_user/640317",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-23T09:41:45.352893+00:00",
+    "completed_at": "2026-10-23T09:41:45.355847+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-23T09:41:45.352893+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T09:41:45.352893+00:00",
+        "details": {
+          "platform_post_id": "640317",
+          "live_url": "https://dev.to/mock_user/640317",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-23T09:41:45.353873+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://dev.to/mock_user/640317"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T09:41:45.355847+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-23T09:41:45.355847+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

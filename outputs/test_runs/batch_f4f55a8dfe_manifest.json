@@ -1,0 +1,78 @@
+{
+  "run_id": "batch_f4f55a8dfe",
+  "app_name": "IncuBrix Distribution Network",
+  "app_version": "1.0.0",
+  "openapi_version": "3.1.0",
+  "started_at": "2026-10-23T13:00:09.033437+00:00",
+  "completed_at": "2026-10-23T13:00:09.052456+00:00",
+  "total_duration_seconds": 0.019,
+  "configuration": {
+    "simulation_mode": true,
+    "database_url": "sqlite+aiosqlite:///./incubrix.db",
+    "storage_backend": "local"
+  },
+  "licence_information": "Commercial Use Permitted - PSF/MIT/BSD/Apache-2.0 (see SOURCES.md)",
+  "estimated_cost_usd": 0.0,
+  "summary": {
+    "total_test_cases": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "results": [
+    {
+      "connector_key": "devto",
+      "name": "Dev.to Technical Article",
+      "status": "passed",
+      "platform_post_id": "152635",
+      "live_url": "https://dev.to/mock_user/152635",
+      "deletion_confirmed": true,
+      "duration_seconds": 0.0088
+    },
+    {
+      "connector_key": "discourse",
+      "name": "Discourse Community Discussion",
+      "status": "passed",
+      "platform_post_id": "34700",
+      "live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/5344/1",
+      "deletion_confirmed": true,
+      "duration_seconds": 0.0
+    },
+    {
+      "connector_key": "lemmy",
+      "name": "Lemmy Fediverse Post",
+      "status": "passed",
+      "platform_post_id": "20410",
+      "live_url": "http://localhost:8001/lemmy/post/20410",
+      "deletion_confirmed": true,
+      "duration_seconds": 0.0
+    },
+    {
+      "connector_key": "ghost",
+      "name": "Ghost Editorial Publication",
+      "status": "passed",
+      "platform_post_id": "ghost_51fe006217ad4082",
+      "live_url": "https://mock-ghost.incubrix.test/ghost_51fe006217ad4082/",
+      "deletion_confirmed": true,
+      "duration_seconds": 0.0075
+    },
+    {
+      "connector_key": "signed_webhook",
+      "name": "Partner Signed Webhook",
+      "status": "passed",
+      "platform_post_id": "wh_773a7710",
+      "live_url": "https://partner.incubrix.test/posts/wh_773a7710",
+      "deletion_confirmed": true,
+      "duration_seconds": 0.0027
+    },
+    {
+      "connector_key": "assisted",
+      "name": "Moderated Manual Community",
+      "status": "passed",
+      "platform_post_id": "assisted_pack",
+      "live_url": "https://moderated.example.com/submit",
+      "deletion_confirmed": true,
+      "duration_seconds": 0.0
+    }
+  ],
+  "warnings": []
+}

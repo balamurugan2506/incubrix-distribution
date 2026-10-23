@@ -7,17 +7,21 @@ from fastapi import Request, Response
 from fastapi.responses import JSONResponse
 from app.rules.errors import ConnectorException, ErrorCode
 from app.storage.idempotency_store import IdempotencyStore
-from app.logging_conf import logger
+from app.logging_conf import logger, current_correlation_id
 
 
 class CorrelationIdMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         correlation_id = request.headers.get("X-Correlation-Id") or str(uuid.uuid4())
         request.state.correlation_id = correlation_id
+        token = current_correlation_id.set(correlation_id)
 
-        response: Response = await call_next(request)
-        response.headers["X-Correlation-Id"] = correlation_id
-        return response
+        try:
+            response: Response = await call_next(request)
+            response.headers["X-Correlation-Id"] = correlation_id
+            return response
+        finally:
+            current_correlation_id.reset(token)
 
 
 class IdempotencyMiddleware(BaseHTTPMiddleware):

@@ -6,15 +6,23 @@ import sys
 from datetime import datetime, timezone
 
 
+import contextvars
+
+current_correlation_id: contextvars.ContextVar[str | None] = contextvars.ContextVar("current_correlation_id", default=None)
+current_job_id: contextvars.ContextVar[str | None] = contextvars.ContextVar("current_job_id", default=None)
+
+
 class JSONFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
+        cid = getattr(record, "correlation_id", None) or current_correlation_id.get()
+        jid = getattr(record, "job_id", None) or current_job_id.get()
         log_obj = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "level": record.levelname,
             "message": record.getMessage(),
             "logger": record.name,
-            "job_id": getattr(record, "job_id", None),
-            "correlation_id": getattr(record, "correlation_id", None)
+            "job_id": jid,
+            "correlation_id": cid
         }
         if record.exc_info:
             log_obj["exception"] = self.formatException(record.exc_info)

@@ -43,9 +43,13 @@ async def init_db():
     """Create all tables on application startup and ensure schema completeness."""
     async with async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-        # Lightweight migration for newly added columns if table pre-existed
         try:
             from sqlalchemy import text
             await conn.execute(text("ALTER TABLE destinations ADD COLUMN frequency_period_hours INTEGER DEFAULT 24"))
+        except Exception:
+            pass
+        try:
+            from sqlalchemy import text
+            await conn.execute(text("ALTER TABLE destinations ADD COLUMN status VARCHAR(32) DEFAULT 'active'"))
         except Exception:
             pass

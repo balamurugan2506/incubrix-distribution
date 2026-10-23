@@ -37,6 +37,7 @@ class DestinationModel(Base):
 
     # Operational status
     enabled = Column(Boolean, default=True)
+    status = Column(String(32), default="active")  # active, demoted, inactive
     last_certified_at = Column(DateTime(timezone=True), nullable=True)
     instance_config = Column(JSON, default=dict)
 
@@ -51,4 +52,5 @@ class DestinationModel(Base):
         kwargs.setdefault("disclosure_required", False)
         kwargs.setdefault("automation_allowed", True)
         kwargs.setdefault("enabled", True)
+        kwargs.setdefault("status", "active")
         super().__init__(**kwargs)

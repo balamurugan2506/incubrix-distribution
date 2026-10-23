@@ -11,6 +11,7 @@ from app.api.connector_routes import router as connector_router
 from app.api.destinations import router as destinations_router
 from app.api.jobs import router as jobs_router
 from app.api.certification import router as certification_router
+from app.api.evidence import router as evidence_router
 from app.database import init_db
 import app.connectors  # Register connectors and load manifests
 
@@ -97,6 +98,7 @@ app.include_router(connector_router)
 app.include_router(destinations_router)
 app.include_router(jobs_router)
 app.include_router(certification_router)
+app.include_router(evidence_router)
 
 
 if __name__ == "__main__":

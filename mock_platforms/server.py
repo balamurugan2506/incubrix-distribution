@@ -33,6 +33,17 @@ async def mock_reset():
     return {"status": "reset"}
 
 
+@mock_app.get("/robots.txt")
+async def mock_robots():
+    return Response(content="User-agent: *\nAllow: /\n", media_type="text/plain")
+
+
+@mock_app.get("/discourse/c/{path:path}")
+@mock_app.get("/mock/community/{path:path}")
+async def mock_community_endpoint(path: str):
+    return JSONResponse(status_code=200, content={"status": "active", "path": path, "platform": "discourse"})
+
+
 def check_simulation_triggers(request: Request):
     """Check for simulation trigger headers or query params."""
     sim = request.headers.get("x-simulate") or request.query_params.get("simulate")

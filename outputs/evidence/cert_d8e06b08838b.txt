@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_d8e06b08838b
+Timestamp: 2026-10-23T17:21:38.786050+00:00
+Backend: local
+============================================================
+certification_id: cert_d8e06b08838b
+destination_id: core_cert_discourse
+destination_name: Discourse Engineering Forum
+connector_key: discourse
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: 41409
+live_url: http://localhost:8001/discourse/t/incubrix-test-topic/3847/1
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T17:21:38.114237+00:00
+completed_at: 2026-10-23T17:21:38.786050+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "41409", "live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/3847/1", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/3847/1"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

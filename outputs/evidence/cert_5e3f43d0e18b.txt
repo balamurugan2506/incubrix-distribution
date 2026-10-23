@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_5e3f43d0e18b
+Timestamp: 2026-10-23T17:21:41.057643+00:00
+Backend: local
+============================================================
+certification_id: cert_5e3f43d0e18b
+destination_id: core_cert_lemmy
+destination_name: Lemmy Technology Community
+connector_key: lemmy
+connector_version: 1.0.0
+environment: real local instance
+verdict: passed
+passed: True
+platform_post_id: 33925
+live_url: http://localhost:8001/lemmy/post/33925
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T17:21:40.292228+00:00
+completed_at: 2026-10-23T17:21:41.057643+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "33925", "live_url": "http://localhost:8001/lemmy/post/33925", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "http://localhost:8001/lemmy/post/33925"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

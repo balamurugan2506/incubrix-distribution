@@ -1,0 +1,56 @@
+[
+  {
+    "connector_key": "discourse",
+    "destination": "Discourse Engineering Forum",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "deletion_confirmed": true,
+    "evidence_file": "outputs\\evidence\\cert_d8e06b08838b.json"
+  },
+  {
+    "connector_key": "devto",
+    "destination": "Dev.to Technical Blog Hub",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "deletion_confirmed": true,
+    "evidence_file": "outputs\\evidence\\cert_76b12a42505b.json"
+  },
+  {
+    "connector_key": "signed_webhook",
+    "destination": "Distribution Webhook Partner",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "deletion_confirmed": true,
+    "evidence_file": "outputs\\evidence\\cert_801aa250b173.json"
+  },
+  {
+    "connector_key": "assisted",
+    "destination": "Substack Manual Publication",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "deletion_confirmed": false,
+    "evidence_file": "outputs\\evidence\\cert_d763d65e769f.json"
+  },
+  {
+    "connector_key": "lemmy",
+    "destination": "Lemmy Technology Community",
+    "environment": "real local instance",
+    "verdict": "passed",
+    "passed": true,
+    "deletion_confirmed": true,
+    "evidence_file": "outputs\\evidence\\cert_5e3f43d0e18b.json"
+  },
+  {
+    "connector_key": "ghost",
+    "destination": "Ghost Publication Node",
+    "environment": "real local instance",
+    "verdict": "passed",
+    "passed": true,
+    "deletion_confirmed": true,
+    "evidence_file": "outputs\\evidence\\cert_7d1cf0b89173.json"
+  }
+]

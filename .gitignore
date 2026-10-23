@@ -9,3 +9,4 @@ htmlcov/
 *.sqlite3
 *.db
 .env
+outputs/shared_credentials.json
