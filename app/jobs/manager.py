@@ -139,11 +139,21 @@ class JobManager:
                     idempotency_key=idem_key
                 )
 
+            async def reconcile_call():
+                return await connector.reconcile(
+                    rendition=rendition,
+                    destination=dest_schema,
+                    connection=conn_schema,
+                    idempotency_key=idem_key
+                )
+
             try:
                 await cls.update_job(job_id, progress=60)
                 pub_result = await execute_with_retry(
                     publish_call,
-                    operation_name=f"publish_{destination_model.connector_key}"
+                    operation_name=f"publish_{destination_model.connector_key}",
+                    is_idempotent_operation=False,
+                    reconcile_func=reconcile_call
                 )
             except ConnectorException as exc:
                 logger.error(f"Connector failure for job {job_id}: [{exc.code.value}] {exc.message}")

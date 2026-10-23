@@ -53,11 +53,14 @@ class GhostConnector(BaseConnector):
 
     def _get_headers(self, connection: ConnectionSchema) -> dict:
         token = self._generate_ghost_token(connection)
-        return {
+        headers = {
             "Authorization": f"Ghost {token}",
             "Content-Type": "application/json",
             "Accept": "application/json"
         }
+        if connection.metadata.get("simulate"):
+            headers["x-simulate"] = str(connection.metadata["simulate"])
+        return headers
 
     async def validate(
         self,
@@ -146,6 +149,36 @@ class GhostConnector(BaseConnector):
             )
 
         self._handle_http_error(resp)
+
+    async def reconcile(
+        self,
+        rendition: RenditionSchema,
+        destination: DestinationSchema,
+        connection: ConnectionSchema,
+        idempotency_key: str
+    ) -> Optional[PublishResult]:
+        """Look up existing Ghost post by title after timeout/unknown outcome."""
+        base_url = self._get_base_url(connection)
+        headers = self._get_headers(connection)
+        endpoint = self._admin_endpoint(base_url, f"posts/?filter=title:'{rendition.title}'")
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                resp = await client.get(endpoint, headers=headers)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    posts = data.get("posts", [])
+                    for p in posts:
+                        if p.get("title") == rendition.title:
+                            post_id = str(p.get("id"))
+                            live_url = p.get("url") or f"{base_url}/{p.get('slug', post_id)}"
+                            return PublishResult(
+                                platform_post_id=post_id,
+                                live_url=live_url,
+                                status="published"
+                            )
+            except Exception:
+                return None
+        return None
 
     async def get_status(
         self,

@@ -82,6 +82,8 @@ class LemmyConnector(BaseConnector):
             "Content-Type": "application/json",
             "Idempotency-Key": idempotency_key
         }
+        if connection.metadata.get("simulate"):
+            headers["x-simulate"] = str(connection.metadata["simulate"])
 
         payload = {
             "name": rendition.title,
@@ -114,6 +116,37 @@ class LemmyConnector(BaseConnector):
             )
 
         self._handle_http_error(resp)
+
+    async def reconcile(
+        self,
+        rendition: RenditionSchema,
+        destination: DestinationSchema,
+        connection: ConnectionSchema,
+        idempotency_key: str
+    ) -> Optional[PublishResult]:
+        """Look up existing Lemmy post by title after timeout/unknown outcome."""
+        base_url = self._get_base_url(connection)
+        token = self._get_token(connection)
+        headers = {"Authorization": f"Bearer {token}"}
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                resp = await client.get(f"{base_url}/api/v3/search?q={rendition.title}&type_=Posts", headers=headers)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    posts = data.get("posts", [])
+                    for p in posts:
+                        post_data = p.get("post", {}) if "post" in p else p
+                        if post_data.get("name") == rendition.title:
+                            post_id = str(post_data.get("id"))
+                            live_url = f"{base_url}/post/{post_id}"
+                            return PublishResult(
+                                platform_post_id=post_id,
+                                live_url=live_url,
+                                status="published"
+                            )
+            except Exception:
+                return None
+        return None
 
     async def get_status(
         self,

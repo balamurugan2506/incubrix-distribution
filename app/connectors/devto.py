@@ -125,6 +125,35 @@ class DevtoConnector(BaseConnector):
 
         self._handle_http_error(resp)
 
+    async def reconcile(
+        self,
+        rendition: RenditionSchema,
+        destination: DestinationSchema,
+        connection: ConnectionSchema,
+        idempotency_key: str
+    ) -> Optional[PublishResult]:
+        """Look up existing Dev.to article by title after a timeout/unknown outcome."""
+        base_url = self._get_base_url(connection)
+        headers = self._get_headers(connection)
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                resp = await client.get(f"{base_url}/api/articles?title={rendition.title}", headers=headers)
+                if resp.status_code == 200:
+                    articles = resp.json()
+                    if isinstance(articles, list):
+                        for art in articles:
+                            if art.get("title") == rendition.title:
+                                post_id = str(art.get("id"))
+                                live_url = art.get("url") or f"{base_url}/{art.get('path', post_id)}"
+                                return PublishResult(
+                                    platform_post_id=post_id,
+                                    live_url=live_url,
+                                    status="published"
+                                )
+            except Exception:
+                return None
+        return None
+
     async def get_status(
         self,
         platform_post_id: str,

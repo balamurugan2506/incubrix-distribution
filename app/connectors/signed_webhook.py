@@ -114,6 +114,8 @@ class SignedWebhookConnector(BaseConnector):
             "X-IncuBrix-Timestamp": timestamp,
             "Idempotency-Key": idempotency_key
         }
+        if connection.metadata.get("simulate"):
+            headers["x-simulate"] = str(connection.metadata["simulate"])
 
         async with httpx.AsyncClient(timeout=10.0) as client:
             try:
@@ -142,6 +144,34 @@ class SignedWebhookConnector(BaseConnector):
             )
 
         self._handle_http_error(resp)
+
+    async def reconcile(
+        self,
+        rendition: RenditionSchema,
+        destination: DestinationSchema,
+        connection: ConnectionSchema,
+        idempotency_key: str
+    ) -> Optional[PublishResult]:
+        """Look up existing webhook delivery by idempotency key after timeout/unknown outcome."""
+        endpoint = self._get_endpoint(destination, connection)
+        parsed = endpoint.rstrip("/")
+        status_url = f"{parsed}/status" if not parsed.endswith("/status") else parsed
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                resp = await client.get(
+                    f"{status_url}?idempotency_key={idempotency_key}",
+                    headers={"Idempotency-Key": idempotency_key}
+                )
+                if resp.status_code == 200:
+                    data = resp.json()
+                    return PublishResult(
+                        platform_post_id=str(data.get("id", idempotency_key)),
+                        live_url=data.get("live_url") or f"{endpoint}/{data.get('id', idempotency_key)}",
+                        status="published"
+                    )
+            except Exception:
+                return None
+        return None
 
     async def get_status(
         self,

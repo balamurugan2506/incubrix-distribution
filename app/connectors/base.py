@@ -65,6 +65,19 @@ class BaseConnector(ABC):
         """Delete previously published post from destination."""
         pass
 
+    async def reconcile(
+        self,
+        rendition: RenditionSchema,
+        destination: DestinationSchema,
+        connection: ConnectionSchema,
+        idempotency_key: str
+    ) -> Optional[PublishResult]:
+        """
+        Reconcile unknown outcome by querying the platform (by title, token, or idempotency key).
+        Returns PublishResult if post already exists on the destination, or None if not found.
+        """
+        return None
+
     async def fetch_metrics(
         self,
         platform_post_id: str,

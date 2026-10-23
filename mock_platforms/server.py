@@ -16,6 +16,23 @@ _ghost_posts: Dict[str, Any] = {}
 _webhook_records: Dict[str, Any] = {}
 
 
+@mock_app.get("/health")
+async def health_check():
+    """Health check endpoint for mock platform service."""
+    return {"status": "healthy", "service": "incubrix-mock"}
+
+
+@mock_app.post("/mock/reset")
+async def mock_reset():
+    """Reset all in-memory mock databases."""
+    _discourse_posts.clear()
+    _lemmy_posts.clear()
+    _devto_articles.clear()
+    _ghost_posts.clear()
+    _webhook_records.clear()
+    return {"status": "reset"}
+
+
 def check_simulation_triggers(request: Request):
     """Check for simulation trigger headers or query params."""
     sim = request.headers.get("x-simulate") or request.query_params.get("simulate")
@@ -31,6 +48,8 @@ def check_simulation_triggers(request: Request):
         return JSONResponse(status_code=422, content={"error": "Content violates platform community policy."})
     elif sim == "503":
         return JSONResponse(status_code=503, content={"error": "Platform temporarily unavailable."})
+    elif sim == "timeout":
+        return JSONResponse(status_code=504, content={"error": "Gateway Timeout"})
     return None
 
 
@@ -62,7 +81,21 @@ async def devto_publish(request: Request):
         "reading_list_count": 2
     }
     _devto_articles[art_id] = record
+
+    sim = request.headers.get("x-simulate") or request.query_params.get("simulate")
+    if sim == "timeout-after-create":
+        return JSONResponse(status_code=504, content={"error": "Gateway Timeout after creation"})
+
     return JSONResponse(status_code=201, content=record)
+
+
+@mock_app.get("/devto/api/articles")
+async def devto_list_or_search(request: Request):
+    title = request.query_params.get("title")
+    articles = list(_devto_articles.values())
+    if title:
+        articles = [a for a in articles if a.get("title") == title]
+    return JSONResponse(status_code=200, content=articles)
 
 
 @mock_app.get("/devto/api/articles/{article_id}")
@@ -109,6 +142,8 @@ async def discourse_publish(request: Request):
         "id": int(post_id),
         "topic_id": int(topic_id),
         "topic_slug": "incubrix-test-topic",
+        "title": body.get("title", ""),
+        "raw": body.get("raw", ""),
         "post_number": 1,
         "reads": 25,
         "score": 10,
@@ -116,7 +151,22 @@ async def discourse_publish(request: Request):
         "reply_count": 2
     }
     _discourse_posts[post_id] = record
+
+    sim = request.headers.get("x-simulate") or request.query_params.get("simulate")
+    if sim == "timeout-after-create":
+        return JSONResponse(status_code=504, content={"error": "Gateway Timeout after creation"})
+
     return JSONResponse(status_code=200, content=record)
+
+
+@mock_app.get("/discourse/search.json")
+async def discourse_search(request: Request):
+    q = request.query_params.get("q", "")
+    posts = [
+        p for p in _discourse_posts.values()
+        if q in str(p.get("raw", "")) or q in str(p.get("title", "")) or q in str(p.get("topic_slug", ""))
+    ]
+    return JSONResponse(status_code=200, content={"posts": posts})
 
 
 @mock_app.get("/discourse/posts/{post_id}.json")
@@ -174,7 +224,22 @@ async def lemmy_publish(request: Request):
         }
     }
     _lemmy_posts[str(post_id)] = record
+
+    sim = request.headers.get("x-simulate") or request.query_params.get("simulate")
+    if sim == "timeout-after-create":
+        return JSONResponse(status_code=504, content={"error": "Gateway Timeout after creation"})
+
     return JSONResponse(status_code=200, content=record)
+
+
+@mock_app.get("/lemmy/api/v3/search")
+async def lemmy_search(request: Request):
+    q = request.query_params.get("q", "")
+    matching = [
+        p["post_view"] for p in _lemmy_posts.values()
+        if "post_view" in p and q in p["post_view"].get("post", {}).get("name", "")
+    ]
+    return JSONResponse(status_code=200, content={"posts": matching})
 
 
 @mock_app.get("/lemmy/api/v3/post")
@@ -224,7 +289,22 @@ async def ghost_publish(request: Request):
         "custom_excerpt": post_in.get("custom_excerpt")
     }
     _ghost_posts[post_id] = record
+
+    sim = request.headers.get("x-simulate") or request.query_params.get("simulate")
+    if sim == "timeout-after-create":
+        return JSONResponse(status_code=504, content={"error": "Gateway Timeout after creation"})
+
     return JSONResponse(status_code=201, content={"posts": [record]})
+
+
+@mock_app.get("/ghost/api/admin/posts/")
+async def ghost_list_posts(request: Request):
+    filter_val = request.query_params.get("filter", "")
+    posts = list(_ghost_posts.values())
+    if "title:" in filter_val:
+        title_target = filter_val.split("title:", 1)[1].strip("'\"")
+        posts = [p for p in posts if p.get("title") == title_target]
+    return JSONResponse(status_code=200, content={"posts": posts})
 
 
 @mock_app.get("/ghost/api/admin/posts/{post_id}/")
@@ -261,17 +341,37 @@ async def webhook_receiver(request: Request):
         return JSONResponse(status_code=401, content={"error": "Missing signature"})
 
     body = await request.json()
+    idempotency_key = request.headers.get("Idempotency-Key") or body.get("idempotency_key")
     wh_id = f"wh_{str(uuid.uuid4().hex)[:8]}"
     _webhook_records[wh_id] = {
         "id": wh_id,
+        "idempotency_key": idempotency_key,
         "payload": body,
         "status": "delivered"
     }
+
+    sim = request.headers.get("x-simulate") or request.query_params.get("simulate")
+    if sim == "timeout-after-create":
+        return JSONResponse(status_code=504, content={"error": "Gateway Timeout after creation"})
+
     return JSONResponse(status_code=200, content={
         "status": "delivered",
         "id": wh_id,
         "url": f"https://partner.incubrix.test/posts/{wh_id}"
     })
+
+
+@mock_app.get("/webhook/status")
+async def webhook_status_by_key(request: Request):
+    key = request.query_params.get("idempotency_key") or request.headers.get("Idempotency-Key")
+    for r in _webhook_records.values():
+        if r.get("idempotency_key") == key:
+            return JSONResponse(status_code=200, content={
+                "status": "published",
+                "id": r["id"],
+                "live_url": f"https://partner.incubrix.test/posts/{r['id']}"
+            })
+    return JSONResponse(status_code=404, content={"error": "Not found"})
 
 
 @mock_app.get("/webhook/{wh_id}")

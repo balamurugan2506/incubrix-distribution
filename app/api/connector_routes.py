@@ -33,8 +33,20 @@ async def validate_post(connector_key: str, payload: ValidateRequest):
 
 
 @router.post("/{connector_key}/publish", response_model=PublishResult)
-async def publish_post(connector_key: str, payload: PublishRequest):
+async def publish_post(connector_key: str, payload: PublishRequest, request: Request):
     connector = registry.get_connector(connector_key)
+
+    # If retry after timeout or unknown outcome, query platform first to prevent duplication
+    if getattr(request.state, "is_retry_after_unknown", False):
+        reconciled = await connector.reconcile(
+            payload.rendition,
+            payload.destination,
+            payload.connection,
+            payload.idempotency_key
+        )
+        if reconciled:
+            return reconciled
+
     return await connector.publish(
         payload.rendition,
         payload.destination,

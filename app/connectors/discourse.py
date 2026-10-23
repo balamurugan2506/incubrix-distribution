@@ -33,12 +33,15 @@ class DiscourseConnector(BaseConnector):
                 retryable=False,
                 status_code=401
             )
-        return {
+        headers = {
             "Api-Key": api_key,
             "Api-Username": api_username,
             "Content-Type": "application/json",
             "Accept": "application/json"
         }
+        if connection.metadata.get("simulate"):
+            headers["x-simulate"] = str(connection.metadata["simulate"])
+        return headers
 
     async def validate(
         self,
@@ -122,6 +125,38 @@ class DiscourseConnector(BaseConnector):
             )
 
         self._handle_http_error(resp)
+
+    async def reconcile(
+        self,
+        rendition: RenditionSchema,
+        destination: DestinationSchema,
+        connection: ConnectionSchema,
+        idempotency_key: str
+    ) -> Optional[PublishResult]:
+        """Look up existing Discourse post by title/raw after timeout/unknown outcome."""
+        base_url = self._get_base_url(connection)
+        headers = self._get_headers(connection)
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                resp = await client.get(f"{base_url}/search.json?q={rendition.title}", headers=headers)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    posts = data.get("posts", [])
+                    for p in posts:
+                        if rendition.title in str(p.get("title", "")) or rendition.title in str(p.get("raw", "")):
+                            post_id = str(p.get("id"))
+                            topic_id = p.get("topic_id")
+                            topic_slug = p.get("topic_slug", "topic")
+                            post_number = p.get("post_number", 1)
+                            live_url = f"{base_url}/t/{topic_slug}/{topic_id}/{post_number}"
+                            return PublishResult(
+                                platform_post_id=post_id,
+                                live_url=live_url,
+                                status="published"
+                            )
+            except Exception:
+                return None
+        return None
 
     async def get_status(
         self,

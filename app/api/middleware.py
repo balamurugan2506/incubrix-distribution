@@ -31,10 +31,23 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
         path = request.url.path
         method = request.method.upper()
 
-        # Apply to all POST requests under /api/v1/ (exempting nothing)
-        if method == "POST" and path.startswith("/api/v1/"):
+        # Apply to all POST requests under /api/v1/ (exempting nothing) and /connector/v1/.../publish
+        is_api_v1 = method == "POST" and path.startswith("/api/v1/")
+        is_connector_publish = method == "POST" and path.startswith("/connector/v1/") and path.endswith("/publish")
+
+        if is_api_v1 or is_connector_publish:
             idempotency_key = request.headers.get("Idempotency-Key")
-            if not idempotency_key or not idempotency_key.strip():
+            body_bytes = await request.body()
+
+            if not idempotency_key and is_connector_publish:
+                try:
+                    import json
+                    body_json = json.loads(body_bytes.decode("utf-8"))
+                    idempotency_key = body_json.get("idempotency_key")
+                except Exception:
+                    pass
+
+            if is_api_v1 and (not idempotency_key or not idempotency_key.strip()):
                 return JSONResponse(
                     status_code=400,
                     content={
@@ -51,8 +64,12 @@ class IdempotencyMiddleware(BaseHTTPMiddleware):
                     }
                 )
 
-            # Read request body
-            body_bytes = await request.body()
+            if not idempotency_key:
+                # Other non-publish connector routes (e.g. validate, get_status) don't strictly require idempotency
+                async def receive():
+                    return {"type": "http.request", "body": body_bytes, "more_body": False}
+                request = Request(request.scope, receive)
+                return await call_next(request)
 
             # Reconstruct request receive stream so downstream route handlers (JSON or multipart form) can read body
             async def receive():

@@ -66,3 +66,24 @@ This log contains a dated record of commands executed during development and ver
 - **Action**: Created `tests/integration/test_openapi.py` verifying that `openapi.yaml` exactly matches the running application schema and that all routes conform to the `/api/v1/` prefix rules.
 - **Command**: `.venv\Scripts\python -m pytest`
   - **Result**: 35 passed in 2.59s (all 35 tests green).
+
+### 4. Gap C: Safe Retries After Platform Timeout & Zero Duplicate Guarantee (Must-Have 6 & Hard Case 1)
+
+- **Action**: Implemented the `reconcile` contract across all connectors (`DevtoConnector`, `DiscourseConnector`, `LemmyConnector`, `GhostConnector`, `SignedWebhookConnector`).
+  - Connector queries platform by title, post query, or idempotency key.
+  - If post is found, returns existing `PublishResult` without duplicating.
+- **Action**: Enhanced `app/storage/idempotency_store.py` with `outcome_unknown` state and `record_outcome_unknown()` method.
+- **Action**: Updated `app/api/middleware.py`:
+  - Enforced idempotency check across both `/api/v1/` POST routes and `/connector/v1/.../publish`.
+  - When status is 408/504 or timeout occurs, record status `outcome_unknown`.
+  - On retry with identical key in `outcome_unknown` state, sets `request.state.is_retry_after_unknown = True`.
+- **Action**: Updated `app/api/connector_routes.py` and `app/jobs/manager.py`:
+  - Inspect `is_retry_after_unknown` and invoke `connector.reconcile(...)` before executing publish.
+  - Configured `execute_with_retry` with `is_idempotent_operation=False` and `reconcile_func` to prevent blind retries during backoff.
+- **Action**: Enhanced `mock_platforms/server.py` to support `x-simulate: timeout-after-create` and added search/reconciliation endpoints for all platforms.
+- **Action**: Created `tests/integration/test_safe_retries_after_timeout.py` testing late timeout responses across Dev.to, Discourse, and Signed Webhook, proving the retry returns the SAME post and platform holds exactly 1 post (0 duplicates). Also verified strict enforcement of `Idempotency-Key` on CSV import with 0 exemptions.
+- **Command**: `.venv\Scripts\python -m pytest tests/integration/test_safe_retries_after_timeout.py -v`
+  - **Result**: 4 passed in 0.90s.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 39 passed in 2.74s (all 39 tests green).
+
