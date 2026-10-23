@@ -1,6 +1,6 @@
 {
   "evaluation_name": "IncuBrix Destination Recommender Precision@10 Evaluation",
-  "eval_timestamp": "2026-10-23T18:56:36.744454+00:00",
+  "eval_timestamp": "2026-10-23T19:10:29.909481+00:00",
   "total_test_queries": 5,
   "catalogue_size": 30,
   "metrics": {

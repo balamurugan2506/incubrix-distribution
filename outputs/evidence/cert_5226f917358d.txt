@@ -1,0 +1,22 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_5226f917358d
+Timestamp: 2026-10-23T19:10:30.423943+00:00
+Backend: local
+============================================================
+certification_id: cert_5226f917358d
+destination_id: demote_729f1143
+destination_name: Flaky Forum
+connector_key: discourse
+connector_version: 1.0.0
+environment: mock
+verdict: failed
+passed: False
+platform_post_id: None
+live_url: None
+deletion_confirmed: False
+evidence_file: None
+started_at: 2026-10-23T19:10:30.421620+00:00
+completed_at: 2026-10-23T19:10:30.423235+00:00
+error_message: Discourse unavailable (503): {"error":"Platform temporarily unavailable."}
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}

@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_8e4846b3c8cb
+Timestamp: 2026-10-23T19:10:30.498773+00:00
+Backend: local
+============================================================
+certification_id: cert_8e4846b3c8cb
+destination_id: cert_wh_769c8133
+destination_name: Signed Webhook Partner
+connector_key: signed_webhook
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: wh_03f64693
+live_url: https://partner.incubrix.test/posts/wh_03f64693
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T19:10:30.487158+00:00
+completed_at: 2026-10-23T19:10:30.498773+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "wh_03f64693", "live_url": "https://partner.incubrix.test/posts/wh_03f64693", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://partner.incubrix.test/posts/wh_03f64693"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}
