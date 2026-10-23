@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: incubrix-distribution-network
+    runtime: docker
+    dockerfilePath: ./Dockerfile.demo
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: SIMULATION_MODE
+        value: "true"
+      - key: APP_ENV
+        value: production
+      - key: STORAGE_BACKEND
+        value: local
+      - key: DEMO_API_TOKEN
+        generateValue: true
+      - key: DEMO_RATE_LIMIT_PER_MINUTE
+        value: "120"

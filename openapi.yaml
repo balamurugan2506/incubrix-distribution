@@ -852,6 +852,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/demo/failure-switch:
+    get:
+      tags:
+      - Live Demo Simulation
+      summary: Get Failure Switches
+      description: Retrieve current state of all simulation failure switches.
+      operationId: get_failure_switches_api_v1_demo_failure_switch_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureSwitchResponse'
+    post:
+      tags:
+      - Live Demo Simulation
+      summary: Set Failure Switch
+      description: 'Toggle failure switches to demonstrate resilience during live
+        evaluator tests:
+
+        - timeout: causes external platform calls to simulate timeout-after-create
+
+        - rate_limit: simulates HTTP 429 Rate Limiting
+
+        - auth_error: simulates HTTP 401 expired authentication
+
+        - reset: turns off all failure switches'
+      operationId: set_failure_switch_api_v1_demo_failure_switch_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FailureSwitchRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureSwitchResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     AlertResponse:
@@ -1617,6 +1665,37 @@ components:
           title: Instance Config
       type: object
       title: DestinationUpdate
+    FailureSwitchRequest:
+      properties:
+        switch:
+          type: string
+          title: Switch
+          description: Failure switch name (timeout, rate_limit, auth_error, schema_mismatch,
+            reset)
+        enabled:
+          type: boolean
+          title: Enabled
+          description: Enable or disable the failure switch
+          default: true
+      type: object
+      required:
+      - switch
+      title: FailureSwitchRequest
+    FailureSwitchResponse:
+      properties:
+        active_switches:
+          additionalProperties:
+            type: boolean
+          type: object
+          title: Active Switches
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - active_switches
+      - message
+      title: FailureSwitchResponse
     FetchMetricsRequest:
       properties:
         platform_post_id:

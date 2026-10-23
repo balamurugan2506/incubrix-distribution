@@ -1,0 +1,69 @@
+{
+  "evidence_id": "cert_289cb7143686",
+  "created_at": "2026-10-23T18:52:37.901034+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_289cb7143686",
+  "payload": {
+    "certification_id": "cert_289cb7143686",
+    "destination_id": "dest_8bd85d1e",
+    "destination_name": "Hashnode Dev Engineering Blog",
+    "connector_key": "hashnode",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "hn_47533231",
+    "live_url": "https://hashnode.com/post/hn_47533231",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-23T18:52:37.897171+00:00",
+    "completed_at": "2026-10-23T18:52:37.901034+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:52:37.897171+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:52:37.897171+00:00",
+        "details": {
+          "platform_post_id": "hn_47533231",
+          "live_url": "https://hashnode.com/post/hn_47533231",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:52:37.898801+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://hashnode.com/post/hn_47533231"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:52:37.899866+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:52:37.900478+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

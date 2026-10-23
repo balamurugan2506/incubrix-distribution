@@ -1,0 +1,22 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_7b6b2f9ce49d
+Timestamp: 2026-10-23T18:56:37.281956+00:00
+Backend: local
+============================================================
+certification_id: cert_7b6b2f9ce49d
+destination_id: inconcl_796a8edc
+destination_name: Expired Auth Blog
+connector_key: devto
+connector_version: 1.0.0
+environment: mock
+verdict: inconclusive
+passed: False
+platform_post_id: None
+live_url: None
+deletion_confirmed: False
+evidence_file: None
+started_at: 2026-10-23T18:56:37.280306+00:00
+completed_at: 2026-10-23T18:56:37.281956+00:00
+error_message: Dev.to authentication failed or expired: {"error":"Unauthorized or credentials expired."}
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}

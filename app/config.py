@@ -26,6 +26,8 @@ class Settings(BaseSettings):
     # Security & HMAC
     INCUBRIX_WEBHOOK_SECRET: str = "incubrix_dev_secret_key_change_in_prod_32bytes"
     CALLBACK_SIGNATURE_HEADER: str = "X-IncuBrix-Signature"
+    DEMO_API_TOKEN: Optional[str] = None
+    DEMO_RATE_LIMIT_PER_MINUTE: int = 120
 
     # Platform Mock URLs
     MOCK_SERVER_URL: str = "http://localhost:8001"

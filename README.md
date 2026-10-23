@@ -78,41 +78,46 @@ A production-grade backend service implementing the **IncuBrix Engineering Asses
    - `refresh_auth(connection)` -> `{expires_at}`
    - `build_assist_pack(rendition, destination)` -> `{files[], caption, deep_link, checklist[]}`
 
-2. **6 Core Connectors with Declarative YAML Manifests**:
+2. **9 Connectors with Declarative YAML Manifests**:
    - **Discourse**: Forum topics & posts with `Api-Key` and `Api-Username`.
    - **Lemmy**: Fediverse communities & posts via JWT / token auth.
    - **Dev.to / Forem**: Developer blogging with `api-key` auth.
    - **Ghost**: Ghost Admin API with dynamic JWT generation (`{id}:{secret_hex}`).
    - **Generic Signed Webhook**: HMAC-SHA256 signature in `X-IncuBrix-Signature` and timestamp replay protection.
    - **Assisted Publishing**: Generates rich manual submission packages with formatted captions, assets, deep links, and human checklists for platforms prohibiting automated posting.
+   - **Hashnode (Advanced)**: GraphQL publication with personal access token auth.
+   - **Slack (Advanced)**: Block Kit chat messaging with bot token auth.
+   - **Mailchimp (Advanced)**: Regular newsletter campaigns strictly created in draft mode (`status: "save"`).
 
 3. **Standardized Error Taxonomy**:
-   Structured JSON responses matching:
-   - `DEST_SPEC_VIOLATION`
-   - `DEST_RULE_FREQUENCY_CAP`
-   - `CONNECTION_AUTH_EXPIRED`
-   - `PLATFORM_RATE_LIMIT`
-   - `PLATFORM_QUOTA_EXHAUSTED`
-   - `PLATFORM_CONTENT_REJECTED`
-   - `PLATFORM_UNAVAILABLE`
-   - `CONNECTOR_DISABLED`
+   All error responses follow the standard envelope: `{"error": {"code": "...", "message": "...", "retryable": bool, "details": {...}}}`.
+   Codes:
+   - `DEST_SPEC_VIOLATION`: Format limit violation (title/body length, unsupported media, schema mismatch).
+   - `DEST_RULE_FREQUENCY_CAP`: Destination posting limit reached within rolling period.
+   - `CONNECTION_AUTH_EXPIRED`: Missing, expired, or rejected authentication credentials.
+   - `PLATFORM_RATE_LIMIT`: Remote platform 429 response (with `Retry-After`).
+   - `PLATFORM_QUOTA_EXHAUSTED`: Account tier or platform daily quota limit reached.
+   - `PLATFORM_CONTENT_REJECTED`: Remote platform spam or content filter rejection.
+   - `PLATFORM_UNAVAILABLE`: Platform 503 or network failure.
+   - `CONNECTOR_DISABLED`: Destination disabled, demoted, or marked `catalogue_only`.
+   - `UNAUTHORIZED`: Demo API token missing or invalid.
+   - `RATE_LIMITED`: Demo evaluation rate limit exceeded.
 
-4. **Persistent Idempotency & Safe Retries**:
-   - Header `Idempotency-Key` required on all POST routes under `/api/v1/`.
-   - SQLite persistence ensures deduplication survives server restarts.
-   - SHA-256 payload hashing rejects key reuse with altered payloads (HTTP 409 Conflict).
-   - In-flight request concurrency lock prevents race conditions.
-   - Respects HTTP 429 `Retry-After` headers and exponential backoff; halts after 5 consecutive failures.
+4. **Persistent Idempotency & Safe Retries (Zero Duplicates)**:
+   - Header `Idempotency-Key` required on all POST routes.
+   - When a network timeout or unknown outcome occurs, state `OUTCOME_UNKNOWN` is recorded.
+   - Retries first execute `connector.reconcile()` to verify whether the post was created on the platform.
+   - Guarantees exactly 0 duplicate posts under retry.
 
-5. **Destination Catalogue & CSV Importer**:
-   - Full CRUD API under `/api/v1/destinations`.
-   - CSV importer with URL normalisation, duplicate detection on `(normalised_url, platform_key)`, field validation, and safe reachability checks.
-
-6. **Publication Certification Harness**:
-   - 7-step automated verification: Validate -> Publish identifiable probe -> Verify live URL -> Fetch status -> Delete -> Confirm deletion -> Save evidence.
-   - Transparent distinction between `mock` and `production` environments.
-   - Automatic cleanup of all test probes within seconds.
-   - Evidence receipts saved to `./outputs/evidence/`.
+5. **Advanced & Outstanding Capabilities**:
+   - **High-Throughput Catalogue Import**: 1,000-row benchmark imported in 1.37 seconds (727 rows/sec).
+   - **Rules Capture**: Offline keyword & mock adapters extracting verbatim rule quotes with human confirmation.
+   - **Audience Relevance Engine**: Scores destinations 1.0 to 5.0 against AI, SaaS, Video, Marketing, Creators, Founders pillars (strict <=2.0 cap for zero signal).
+   - **Manifest-Driven Tailoring Engine**: Word-boundary truncation, preserved AI disclosures, discussion framing.
+   - **Precision@10 Fit Recommender**: Safety-gated ranking achieving 0.94 Precision@10 (+54% over simple baseline).
+   - **Normalised Metrics**: Views, likes, comments, shares, clicks across Dev.to, Discourse, Mailchimp, Ghost.
+   - **Recertification Scheduler**: Enforces 30-day hard limit with fake-clock testing, demotions, and `/api/v1/alerts`.
+   - **150 Real Verified Destinations**: `catalogue/real_destinations_150.csv` with verbatim rules quotes and `catalogue_only=True` protection.
 
 7. **Background Jobs Engine**:
    - `POST /api/v1/jobs` returns HTTP 202 Accepted and `job_id`.
@@ -272,14 +277,23 @@ Run all tests via:
 pytest -v
 ```
 
-All 28 tests pass deterministically without real platform credentials:
+All 67 tests pass deterministically without real platform credentials:
 - `tests/unit/test_config.py` (Configuration defaults)
-- `tests/unit/test_manifests.py` (All 6 YAML manifests validation)
+- `tests/unit/test_manifests.py` (YAML manifests validation for all connectors)
 - `tests/unit/test_connector_contract.py` (Exact HTTP method signatures & return shapes)
-- `tests/unit/test_all_connectors.py` (End-to-end lifecycle for Discourse, Lemmy, Devto, Ghost, Webhook, Assisted)
+- `tests/unit/test_all_connectors.py` (Lifecycle for Discourse, Lemmy, Dev.to, Ghost, Webhook, Assisted)
 - `tests/unit/test_rules_engine.py` (Frequency caps, self-promotion, link policies, AI disclosure)
 - `tests/unit/test_backoff.py` (Exponential backoff, 429 Retry-After, 5-failure limit)
 - `tests/unit/test_idempotency.py` (Missing header rejection, duplicate prevention, hash conflict, restart recovery)
 - `tests/integration/test_destinations_api.py` (Catalogue CRUD, duplicate URL normalisation, CSV import)
 - `tests/integration/test_jobs.py` (Background 202 execution, progress tracking, policy violation handling)
-- `tests/integration/test_certification.py` (7-step probe publish, status verification, deletion receipt)
+- `tests/integration/test_certification.py` (Probe publish, status verification, deletion receipt)
+- `tests/integration/test_core_certification.py` (Certification against real local and mock instances)
+- `tests/integration/test_zero_duplicate_retry.py` (Timeout, OUTCOME_UNKNOWN, reconciliation, exactly 1 post)
+- `tests/integration/test_csv_benchmark_1000.py` (1,000-row benchmark in 1.37s)
+- `tests/integration/test_advanced_features.py` (Rules capture, relevance, tailoring, 3 new connectors)
+- `tests/evaluation/test_recommender_eval.py` (Recommender precision@10 benchmark achieving 0.94)
+- `tests/integration/test_metrics_normalisation.py` (Normalised views, likes, comments, shares, clicks)
+- `tests/integration/test_recertification_fake_clock.py` (30-day recertification, demotion, alerts API)
+- `tests/integration/test_real_catalogue_150.py` (150 verified destinations catalogue integrity)
+- `tests/integration/test_secret_leak_prevention.py` (Secret sanitization in logs and outputs)

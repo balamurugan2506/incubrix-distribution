@@ -2,12 +2,14 @@
 
 import uuid
 import asyncio
+import time
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import Request, Response
 from fastapi.responses import JSONResponse
 from app.rules.errors import ConnectorException, ErrorCode
 from app.storage.idempotency_store import IdempotencyStore
 from app.logging_conf import logger, current_correlation_id
+from app.config import settings
 
 
 class CorrelationIdMiddleware(BaseHTTPMiddleware):
@@ -200,3 +202,72 @@ async def connector_exception_handler(request: Request, exc: ConnectorException)
         content=exc.to_dict(),
         headers={"X-Correlation-Id": correlation_id or ""}
     )
+
+
+class DemoAuthAndRateLimitMiddleware(BaseHTTPMiddleware):
+    """Enforces demo API token authentication and rate limiting for live demo deployments."""
+
+    def __init__(self, app):
+        super().__init__(app)
+        self._request_history = {}
+
+    async def dispatch(self, request: Request, call_next):
+        path = request.url.path
+
+        # Public paths exempt from demo authentication
+        public_prefixes = ("/health", "/ready", "/docs", "/redoc", "/openapi", "/robots.txt", "/mock")
+        if any(path.startswith(prefix) for prefix in public_prefixes):
+            return await call_next(request)
+
+        # 1. API Token Check (enforced when DEMO_API_TOKEN is configured)
+        if settings.DEMO_API_TOKEN:
+            auth_header = request.headers.get("Authorization", "")
+            api_key_header = request.headers.get("X-API-Key", "")
+            token = ""
+            if auth_header.startswith("Bearer "):
+                token = auth_header.split("Bearer ", 1)[1].strip()
+            elif api_key_header:
+                token = api_key_header.strip()
+
+            if token != settings.DEMO_API_TOKEN:
+                return JSONResponse(
+                    status_code=401,
+                    content={
+                        "error": {
+                            "code": ErrorCode.UNAUTHORIZED.value,
+                            "message": "Missing or invalid demo API token. Provide Authorization: Bearer <token>",
+                            "retryable": False,
+                            "details": {}
+                        },
+                        "code": ErrorCode.UNAUTHORIZED.value,
+                        "message": "Missing or invalid demo API token. Provide Authorization: Bearer <token>"
+                    }
+                )
+
+        # 2. Rate Limiting Check (requests per minute per client)
+        now = time.time()
+        client_ip = request.client.host if request.client else "global"
+
+        if client_ip not in self._request_history:
+            self._request_history[client_ip] = []
+        self._request_history[client_ip] = [t for t in self._request_history[client_ip] if now - t < 60.0]
+
+        limit = settings.DEMO_RATE_LIMIT_PER_MINUTE
+        if len(self._request_history[client_ip]) >= limit:
+            return JSONResponse(
+                status_code=429,
+                headers={"Retry-After": "10"},
+                content={
+                    "error": {
+                        "code": ErrorCode.RATE_LIMITED.value,
+                        "message": "Rate limit exceeded. Too many requests per minute.",
+                        "retryable": True,
+                        "details": {"retry_after_seconds": 10}
+                    },
+                    "code": ErrorCode.RATE_LIMITED.value,
+                    "message": "Rate limit exceeded. Too many requests per minute."
+                }
+            )
+
+        self._request_history[client_ip].append(now)
+        return await call_next(request)
