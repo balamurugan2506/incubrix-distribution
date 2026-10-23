@@ -8,6 +8,4 @@ __pycache__/
 htmlcov/
 *.sqlite3
 *.db
-outputs/evidence/
-outputs/test_runs/
 .env
