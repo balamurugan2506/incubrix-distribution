@@ -1,0 +1,95 @@
+{
+  "assessment": "IncuBrix Engineering Assessment 4: Distribution: Long-Tail Destination Network",
+  "candidate": "Senior Backend Engineering Candidate",
+  "submission_date": "2026-10-23",
+  "overall_status": "Complete & Verified",
+  "technology_stack": {
+    "language": "Python 3.12",
+    "framework": "FastAPI",
+    "schemas": "Pydantic v2",
+    "database": "SQLAlchemy 2.0 with aiosqlite (SQLite)",
+    "http_client": "HTTPX",
+    "test_framework": "Pytest 9.1",
+    "containerization": "Docker & Docker Compose",
+    "storage": "Local Disk / MinIO S3 Compatible",
+    "api_specification": "OpenAPI 3.1.0"
+  },
+  "modules_status": {
+    "module_1_connector_contract": {
+      "status": "Completed",
+      "route": "POST /connector/v1/{connector_key}/{method}",
+      "methods_implemented": ["validate", "publish", "get_status", "delete", "fetch_metrics", "refresh_auth", "build_assist_pack"],
+      "verified_tests": "tests/unit/test_connector_contract.py"
+    },
+    "module_2_manifest_registry": {
+      "status": "Completed",
+      "manifests_count": 6,
+      "manifest_dir": "connectors/manifests",
+      "verified_tests": "tests/unit/test_manifests.py"
+    },
+    "module_3_six_core_connectors": {
+      "status": "Completed",
+      "connectors": ["discourse", "lemmy", "devto", "ghost", "signed_webhook", "assisted"],
+      "verified_tests": "tests/unit/test_all_connectors.py"
+    },
+    "module_4_posting_rules_engine": {
+      "status": "Completed",
+      "rules_enforced": ["frequency_cap", "self_promotion", "link_restrictions", "ai_disclosure", "character_limits", "automation_allowance"],
+      "error_taxonomy": ["DEST_SPEC_VIOLATION", "DEST_RULE_FREQUENCY_CAP", "CONNECTION_AUTH_EXPIRED", "PLATFORM_RATE_LIMIT", "PLATFORM_QUOTA_EXHAUSTED", "PLATFORM_CONTENT_REJECTED", "PLATFORM_UNAVAILABLE", "CONNECTOR_DISABLED"],
+      "verified_tests": "tests/unit/test_rules_engine.py, tests/unit/test_backoff.py"
+    },
+    "module_5_safe_retries_and_idempotency": {
+      "status": "Completed",
+      "header_required": "Idempotency-Key on POST /api/v1/*",
+      "persistence": "SQLite (survives service restarts)",
+      "payload_conflict_detection": "SHA-256 (HTTP 409 Conflict)",
+      "verified_tests": "tests/unit/test_idempotency.py"
+    },
+    "module_6_destination_catalogue": {
+      "status": "Completed",
+      "features": ["CRUD endpoints", "URL normalisation", "duplicate detection on (url, platform)", "CSV importer", "safe reachability checks"],
+      "verified_tests": "tests/integration/test_destinations_api.py"
+    },
+    "module_7_publication_certification_harness": {
+      "status": "Completed",
+      "steps": ["1. validate", "2. publish probe", "3. verify visibility", "4. get status", "5. delete probe", "6. confirm deletion", "7. save evidence"],
+      "evidence_directory": "outputs/evidence",
+      "cleanup_guarantee": "Under 10 minutes (immediate post deletion)",
+      "verified_tests": "tests/integration/test_certification.py"
+    },
+    "module_8_background_jobs_and_webhooks": {
+      "status": "Completed",
+      "endpoints": ["POST /api/v1/jobs (HTTP 202)", "GET /api/v1/jobs/{job_id}"],
+      "callback_signatures": "HMAC-SHA256 in X-IncuBrix-Signature",
+      "verified_tests": "tests/integration/test_jobs.py"
+    },
+    "module_9_simulation_mode_and_mock_servers": {
+      "status": "Completed",
+      "triggers_simulated": ["200 Success", "429 Rate Limit", "401 Expired Auth", "422 Content Rejection", "503 Platform Unavailable"],
+      "mock_server": "mock_platforms/server.py"
+    },
+    "module_10_deliverables": {
+      "status": "Completed",
+      "deliverables": [
+        "Dockerfile",
+        "docker-compose.yml",
+        ".env.example",
+        "openapi.yaml",
+        "README.md",
+        "REPORT.md",
+        "SOURCES.md",
+        "AI_USE.md",
+        "REQUIREMENTS_CHECKLIST.md",
+        "docs/DEMO_OUTLINE.md",
+        "scripts/batch_runner.py",
+        "scripts/export_openapi.py"
+      ]
+    }
+  },
+  "test_metrics": {
+    "total_automated_tests": 28,
+    "passed": 28,
+    "failed": 0,
+    "execution_time_seconds": 3.97
+  }
+}

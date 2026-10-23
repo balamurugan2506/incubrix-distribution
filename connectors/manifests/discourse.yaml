@@ -1,0 +1,48 @@
+key: discourse
+name: Discourse Forum Connector
+version: 1.0.0
+tier: core
+auth:
+  type: header_key_user
+  fields:
+    - api_key
+    - api_username
+surfaces:
+  - topic
+  - post
+content_types:
+  - markdown
+  - text/markdown
+format_limits:
+  title_min_chars: 15
+  title_max_chars: 255
+  body_min_chars: 20
+  body_max_chars: 65535
+  max_tags: 5
+  max_media_bytes: 50000000
+rate_limits:
+  requests_per_minute: 20
+  burst: 5
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: true
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Discourse forum category and subcategory configuration"
+  fields:
+    category_id:
+      type: integer
+      required: true
+    topic_id:
+      type: integer
+      required: false
+error_map:
+  401: CONNECTION_AUTH_EXPIRED
+  403: CONNECTION_AUTH_EXPIRED
+  422: PLATFORM_CONTENT_REJECTED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+  503: PLATFORM_UNAVAILABLE

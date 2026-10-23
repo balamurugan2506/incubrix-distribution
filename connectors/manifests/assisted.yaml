@@ -1,0 +1,42 @@
+key: assisted
+name: Assisted Publishing Connector
+version: 1.0.0
+tier: core
+auth:
+  type: none
+  fields: []
+surfaces:
+  - manual_submission
+  - moderated_community
+content_types:
+  - any
+  - markdown
+  - text
+format_limits:
+  title_min_chars: 0
+  title_max_chars: 1000
+  body_min_chars: 0
+  body_max_chars: 5000000
+  max_tags: 100
+  max_media_bytes: 500000000
+rate_limits:
+  requests_per_minute: 300
+  burst: 50
+capabilities:
+  publish: false
+  delete: false
+  get_status: false
+  fetch_metrics: false
+  refresh_auth: false
+  build_assist_pack: true
+instance_param:
+  description: "Manual destination submission guidelines and submission URL"
+  fields:
+    submission_url:
+      type: string
+      required: true
+    guidelines_summary:
+      type: string
+      required: false
+error_map:
+  400: DEST_SPEC_VIOLATION

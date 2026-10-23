@@ -1,0 +1,46 @@
+key: lemmy
+name: Lemmy Fediverse Connector
+version: 1.0.0
+tier: core
+auth:
+  type: bearer_token
+  fields:
+    - auth_token
+surfaces:
+  - community
+  - post
+content_types:
+  - markdown
+  - link
+format_limits:
+  title_min_chars: 3
+  title_max_chars: 200
+  body_min_chars: 0
+  body_max_chars: 40000
+  max_tags: 0
+  max_media_bytes: 20000000
+rate_limits:
+  requests_per_minute: 15
+  burst: 3
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: true
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Target Lemmy community identifier or name"
+  fields:
+    community_id:
+      type: integer
+      required: false
+    community_name:
+      type: string
+      required: false
+error_map:
+  400: PLATFORM_CONTENT_REJECTED
+  401: CONNECTION_AUTH_EXPIRED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+  503: PLATFORM_UNAVAILABLE

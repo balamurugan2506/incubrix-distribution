@@ -1,0 +1,48 @@
+key: signed_webhook
+name: Generic HMAC Signed Webhook Connector
+version: 1.0.0
+tier: core
+auth:
+  type: hmac_sha256
+  fields:
+    - hmac_secret
+surfaces:
+  - webhook
+  - partner_api
+content_types:
+  - json
+  - application/json
+format_limits:
+  title_min_chars: 0
+  title_max_chars: 500
+  body_min_chars: 1
+  body_max_chars: 1000000
+  max_tags: 50
+  max_media_bytes: 100000000
+rate_limits:
+  requests_per_minute: 120
+  burst: 20
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: false
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Webhook destination URL and signing parameters"
+  fields:
+    endpoint_url:
+      type: string
+      required: true
+    header_name:
+      type: string
+      required: false
+      default: "X-IncuBrix-Signature"
+error_map:
+  401: CONNECTION_AUTH_EXPIRED
+  403: CONNECTION_AUTH_EXPIRED
+  422: PLATFORM_CONTENT_REJECTED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+  503: PLATFORM_UNAVAILABLE

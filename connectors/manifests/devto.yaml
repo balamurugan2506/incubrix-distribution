@@ -1,0 +1,48 @@
+key: devto
+name: Dev.to / Forem Connector
+version: 1.0.0
+tier: core
+auth:
+  type: api_key
+  header_name: api-key
+  fields:
+    - api_key
+surfaces:
+  - article
+  - blog
+content_types:
+  - markdown
+  - text/markdown
+format_limits:
+  title_min_chars: 5
+  title_max_chars: 128
+  body_min_chars: 30
+  body_max_chars: 100000
+  max_tags: 4
+  max_media_bytes: 25000000
+rate_limits:
+  requests_per_minute: 30
+  burst: 5
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: true
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Dev.to organization or series ID, or custom base URL for self-hosted Forem"
+  fields:
+    organization_id:
+      type: integer
+      required: false
+    series:
+      type: string
+      required: false
+error_map:
+  401: CONNECTION_AUTH_EXPIRED
+  422: PLATFORM_CONTENT_REJECTED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+  502: PLATFORM_UNAVAILABLE
+  503: PLATFORM_UNAVAILABLE

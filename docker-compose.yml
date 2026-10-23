@@ -1,0 +1,63 @@
+services:
+  incubrix-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: incubrix-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - SIMULATION_MODE=true
+      - MOCK_SERVER_URL=http://incubrix-mock:8001
+      - DISCOURSE_BASE_URL=http://incubrix-mock:8001/discourse
+      - LEMMY_BASE_URL=http://incubrix-mock:8001/lemmy
+      - DEVTO_BASE_URL=http://incubrix-mock:8001/devto
+      - GHOST_BASE_URL=http://incubrix-mock:8001/ghost
+      - WEBHOOK_TEST_URL=http://incubrix-mock:8001/webhook
+      - STORAGE_BACKEND=local
+      - DATABASE_URL=sqlite+aiosqlite:///./incubrix.db
+      - INCUBRIX_WEBHOOK_SECRET=incubrix_dev_secret_key_change_in_prod_32bytes
+    volumes:
+      - ./outputs:/app/outputs
+      - ./incubrix.db:/app/incubrix.db
+    depends_on:
+      - incubrix-mock
+    networks:
+      - incubrix-net
+
+  incubrix-mock:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: incubrix-mock
+    restart: unless-stopped
+    command: ["uvicorn", "mock_platforms.server:mock_app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+    networks:
+      - incubrix-net
+
+  minio:
+    image: minio/minio:RELEASE.2024-05-10T01-41-38Z
+    container_name: incubrix-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - incubrix-net
+
+networks:
+  incubrix-net:
+    driver: bridge
+
+volumes:
+  minio-data:

@@ -1,0 +1,1619 @@
+openapi: 3.1.0
+info:
+  title: IncuBrix Distribution Network API
+  description: Production-grade long-tail destination network for multichannel content
+    distribution.
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      tags:
+      - Health
+      summary: Health Check
+      operationId: health_check_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /ready:
+    get:
+      tags:
+      - Health
+      summary: Readiness Check
+      operationId: readiness_check_ready_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /connector/v1/{connector_key}/validate:
+    post:
+      tags:
+      - Connector Contract
+      summary: Validate Post
+      operationId: validate_post_connector_v1__connector_key__validate_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/publish:
+    post:
+      tags:
+      - Connector Contract
+      summary: Publish Post
+      operationId: publish_post_connector_v1__connector_key__publish_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/get_status:
+    post:
+      tags:
+      - Connector Contract
+      summary: Get Status Post
+      operationId: get_status_post_connector_v1__connector_key__get_status_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/delete:
+    post:
+      tags:
+      - Connector Contract
+      summary: Delete Post
+      operationId: delete_post_connector_v1__connector_key__delete_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/fetch_metrics:
+    post:
+      tags:
+      - Connector Contract
+      summary: Fetch Metrics Post
+      operationId: fetch_metrics_post_connector_v1__connector_key__fetch_metrics_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchMetricsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/refresh_auth:
+    post:
+      tags:
+      - Connector Contract
+      summary: Refresh Auth Post
+      operationId: refresh_auth_post_connector_v1__connector_key__refresh_auth_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshAuthRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefreshAuthResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/build_assist_pack:
+    post:
+      tags:
+      - Connector Contract
+      summary: Build Assist Pack Post
+      operationId: build_assist_pack_post_connector_v1__connector_key__build_assist_pack_post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildAssistPackRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistPackResult'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/manifests:
+    get:
+      tags:
+      - Connector Contract
+      summary: List Manifests
+      operationId: list_manifests_connector_v1_manifests_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /connector/v1/{connector_key}/manifest:
+    get:
+      tags:
+      - Connector Contract
+      summary: Get Manifest
+      operationId: get_manifest_connector_v1__connector_key__manifest_get
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations:
+    get:
+      tags:
+      - Destination Catalogue
+      summary: List Destinations
+      operationId: list_destinations_api_v1_destinations_get
+      parameters:
+      - name: platform_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Platform Key
+      - name: category
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+      - name: enabled
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Enabled
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 500
+          minimum: 1
+          default: 100
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DestinationResponse'
+                title: Response List Destinations Api V1 Destinations Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Destination Catalogue
+      summary: Create Destination
+      operationId: create_destination_api_v1_destinations_post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DestinationCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/{destination_id}:
+    get:
+      tags:
+      - Destination Catalogue
+      summary: Get Destination
+      operationId: get_destination_api_v1_destinations__destination_id__get
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Destination Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Destination Catalogue
+      summary: Update Destination
+      operationId: update_destination_api_v1_destinations__destination_id__put
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Destination Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DestinationUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Destination Catalogue
+      summary: Delete Destination
+      operationId: delete_destination_api_v1_destinations__destination_id__delete
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Destination Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/import-csv:
+    post:
+      tags:
+      - Destination Catalogue
+      summary: Import Csv
+      operationId: import_csv_api_v1_destinations_import_csv_post
+      parameters:
+      - name: check_reachability
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+          title: Check Reachability
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_import_csv_api_v1_destinations_import_csv_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CSVImportSummary'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/jobs:
+    post:
+      tags:
+      - Background Jobs
+      summary: Submit Job
+      description: Submit a long-running publication job. Returns HTTP 202 Accepted
+        and job_id.
+      operationId: submit_job_api_v1_jobs_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobSubmitRequest'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobSubmitResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/jobs/{job_id}:
+    get:
+      tags:
+      - Background Jobs
+      summary: Get Job Status
+      description: Retrieve job progress (0-100), execution state, and live published
+        links.
+      operationId: get_job_status_api_v1_jobs__job_id__get
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/certification/run:
+    post:
+      tags:
+      - Certification Harness
+      summary: Run Certification
+      description: Executes the full 7-step certification harness for a destination.
+      operationId: run_certification_api_v1_certification_run_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationRunRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationReport'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/certification/evidence/{destination_id}:
+    get:
+      tags:
+      - Certification Harness
+      summary: List Certification Evidence
+      description: Retrieve historical certification receipts and evidence records
+        for a destination.
+      operationId: list_certification_evidence_api_v1_certification_evidence__destination_id__get
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Destination Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/certification/receipt/{certification_id}:
+    get:
+      tags:
+      - Certification Harness
+      summary: Get Certification Receipt
+      description: Fetch raw evidence envelope for a specific certification run.
+      operationId: get_certification_receipt_api_v1_certification_receipt__certification_id__get
+      parameters:
+      - name: certification_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Certification Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    AssistPackResult:
+      properties:
+        files:
+          items:
+            type: string
+          type: array
+          title: Files
+        caption:
+          type: string
+          title: Caption
+        deep_link:
+          type: string
+          title: Deep Link
+        checklist:
+          items:
+            type: string
+          type: array
+          title: Checklist
+      type: object
+      required:
+      - caption
+      - deep_link
+      title: AssistPackResult
+    Body_import_csv_api_v1_destinations_import_csv_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+      - file
+      title: Body_import_csv_api_v1_destinations_import_csv_post
+    BuildAssistPackRequest:
+      properties:
+        rendition:
+          $ref: '#/components/schemas/RenditionSchema'
+        destination:
+          $ref: '#/components/schemas/DestinationSchema'
+      type: object
+      required:
+      - rendition
+      - destination
+      title: BuildAssistPackRequest
+    CSVImportRowResult:
+      properties:
+        row_number:
+          type: integer
+          title: Row Number
+        name:
+          type: string
+          title: Name
+        url:
+          type: string
+          title: Url
+        status:
+          type: string
+          title: Status
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reason
+      type: object
+      required:
+      - row_number
+      - name
+      - url
+      - status
+      title: CSVImportRowResult
+    CSVImportSummary:
+      properties:
+        total_rows:
+          type: integer
+          title: Total Rows
+        imported_count:
+          type: integer
+          title: Imported Count
+        skipped_duplicates:
+          type: integer
+          title: Skipped Duplicates
+        errors_count:
+          type: integer
+          title: Errors Count
+        rows:
+          items:
+            $ref: '#/components/schemas/CSVImportRowResult'
+          type: array
+          title: Rows
+      type: object
+      required:
+      - total_rows
+      - imported_count
+      - skipped_duplicates
+      - errors_count
+      title: CSVImportSummary
+    CertificationReport:
+      properties:
+        certification_id:
+          type: string
+          title: Certification Id
+        destination_id:
+          type: string
+          title: Destination Id
+        destination_name:
+          type: string
+          title: Destination Name
+        connector_key:
+          type: string
+          title: Connector Key
+        connector_version:
+          type: string
+          title: Connector Version
+        environment:
+          type: string
+          title: Environment
+        passed:
+          type: boolean
+          title: Passed
+        platform_post_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Platform Post Id
+        live_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Live Url
+        deletion_confirmed:
+          type: boolean
+          title: Deletion Confirmed
+          default: false
+        evidence_file:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Evidence File
+        started_at:
+          type: string
+          title: Started At
+        completed_at:
+          type: string
+          title: Completed At
+        steps:
+          items:
+            $ref: '#/components/schemas/CertificationStepReceipt'
+          type: array
+          title: Steps
+        error_message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error Message
+      type: object
+      required:
+      - certification_id
+      - destination_id
+      - destination_name
+      - connector_key
+      - connector_version
+      - environment
+      - passed
+      - started_at
+      - completed_at
+      title: CertificationReport
+    CertificationRunRequest:
+      properties:
+        destination_id:
+          type: string
+          title: Destination Id
+          description: Destination ID to certify
+        connection:
+          anyOf:
+          - $ref: '#/components/schemas/ConnectionSchema'
+          - type: 'null'
+        environment:
+          type: string
+          title: Environment
+          description: '''mock'' for local simulation, ''production'' for real platform'
+          default: mock
+      type: object
+      required:
+      - destination_id
+      title: CertificationRunRequest
+    CertificationStepReceipt:
+      properties:
+        step:
+          type: string
+          title: Step
+        status:
+          type: string
+          title: Status
+        timestamp:
+          type: string
+          title: Timestamp
+        details:
+          additionalProperties: true
+          type: object
+          title: Details
+      type: object
+      required:
+      - step
+      - status
+      - timestamp
+      title: CertificationStepReceipt
+    ConnectionSchema:
+      properties:
+        base_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Base Url
+          description: Base API endpoint if configurable per instance
+        credentials:
+          additionalProperties: true
+          type: object
+          title: Credentials
+          description: Credentials (api_key, token, secret, username)
+        expires_at:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Expires At
+          description: ISO timestamp of token expiry
+        metadata:
+          additionalProperties: true
+          type: object
+          title: Metadata
+          description: Additional connection state
+      type: object
+      title: ConnectionSchema
+    DeleteRequest:
+      properties:
+        platform_post_id:
+          type: string
+          title: Platform Post Id
+          description: External platform post ID
+        connection:
+          $ref: '#/components/schemas/ConnectionSchema'
+      type: object
+      required:
+      - platform_post_id
+      - connection
+      title: DeleteRequest
+    DeleteResult:
+      properties:
+        deleted:
+          type: boolean
+          title: Deleted
+      type: object
+      required:
+      - deleted
+      title: DeleteResult
+    DestinationCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 2
+          title: Name
+        url:
+          type: string
+          maxLength: 512
+          minLength: 4
+          title: Url
+        platform_key:
+          type: string
+          maxLength: 64
+          minLength: 2
+          title: Platform Key
+        connector_key:
+          type: string
+          maxLength: 64
+          minLength: 2
+          title: Connector Key
+        surface:
+          type: string
+          maxLength: 64
+          title: Surface
+          default: main
+        category:
+          type: string
+          maxLength: 128
+          title: Category
+          default: general
+        audience_tags:
+          items:
+            type: string
+          type: array
+          title: Audience Tags
+        language:
+          type: string
+          maxLength: 16
+          title: Language
+          default: en
+        geo:
+          type: string
+          maxLength: 32
+          title: Geo
+          default: global
+        est_audience:
+          type: integer
+          minimum: 0.0
+          title: Est Audience
+          default: 0
+        rules_url:
+          anyOf:
+          - type: string
+            maxLength: 512
+          - type: 'null'
+          title: Rules Url
+        frequency_cap:
+          type: integer
+          minimum: 0.0
+          title: Frequency Cap
+          description: Max allowed posts per 24 hours (0 = unlimited)
+          default: 10
+        self_promo_allowed:
+          type: boolean
+          title: Self Promo Allowed
+          default: true
+        link_policy:
+          type: string
+          title: Link Policy
+          description: allowed, restricted, or none
+          default: allowed
+        disclosure_required:
+          type: boolean
+          title: Disclosure Required
+          default: false
+        automation_allowed:
+          type: boolean
+          title: Automation Allowed
+          default: true
+        relevance_score:
+          type: number
+          maximum: 5.0
+          minimum: 1.0
+          title: Relevance Score
+          default: 3.0
+        relevance_reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Relevance Reason
+        level:
+          type: string
+          title: Level
+          description: core, tier2, experimental
+          default: standard
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+        instance_config:
+          additionalProperties: true
+          type: object
+          title: Instance Config
+      type: object
+      required:
+      - name
+      - url
+      - platform_key
+      - connector_key
+      title: DestinationCreate
+    DestinationResponse:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 2
+          title: Name
+        url:
+          type: string
+          maxLength: 512
+          minLength: 4
+          title: Url
+        platform_key:
+          type: string
+          maxLength: 64
+          minLength: 2
+          title: Platform Key
+        connector_key:
+          type: string
+          maxLength: 64
+          minLength: 2
+          title: Connector Key
+        surface:
+          type: string
+          maxLength: 64
+          title: Surface
+          default: main
+        category:
+          type: string
+          maxLength: 128
+          title: Category
+          default: general
+        audience_tags:
+          items:
+            type: string
+          type: array
+          title: Audience Tags
+        language:
+          type: string
+          maxLength: 16
+          title: Language
+          default: en
+        geo:
+          type: string
+          maxLength: 32
+          title: Geo
+          default: global
+        est_audience:
+          type: integer
+          minimum: 0.0
+          title: Est Audience
+          default: 0
+        rules_url:
+          anyOf:
+          - type: string
+            maxLength: 512
+          - type: 'null'
+          title: Rules Url
+        frequency_cap:
+          type: integer
+          minimum: 0.0
+          title: Frequency Cap
+          description: Max allowed posts per 24 hours (0 = unlimited)
+          default: 10
+        self_promo_allowed:
+          type: boolean
+          title: Self Promo Allowed
+          default: true
+        link_policy:
+          type: string
+          title: Link Policy
+          description: allowed, restricted, or none
+          default: allowed
+        disclosure_required:
+          type: boolean
+          title: Disclosure Required
+          default: false
+        automation_allowed:
+          type: boolean
+          title: Automation Allowed
+          default: true
+        relevance_score:
+          type: number
+          maximum: 5.0
+          minimum: 1.0
+          title: Relevance Score
+          default: 3.0
+        relevance_reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Relevance Reason
+        level:
+          type: string
+          title: Level
+          description: core, tier2, experimental
+          default: standard
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+        instance_config:
+          additionalProperties: true
+          type: object
+          title: Instance Config
+        id:
+          type: string
+          title: Id
+        normalised_url:
+          type: string
+          title: Normalised Url
+        last_certified_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Certified At
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - name
+      - url
+      - platform_key
+      - connector_key
+      - id
+      - normalised_url
+      - created_at
+      - updated_at
+      title: DestinationResponse
+    DestinationSchema:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+          description: Unique destination ID in IncuBrix catalogue
+        name:
+          type: string
+          title: Name
+          description: Display name of the destination
+        url:
+          type: string
+          title: Url
+          description: Destination site or community URL
+        platform_key:
+          type: string
+          title: Platform Key
+          description: Platform identifier (discourse, lemmy, devto, ghost, webhook,
+            assisted)
+        connector_key:
+          type: string
+          title: Connector Key
+          description: Target connector key matching manifest
+        surface:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Surface
+          description: Surface type (forum, blog, feed, webhook)
+          default: main
+        instance_config:
+          additionalProperties: true
+          type: object
+          title: Instance Config
+          description: Platform instance settings (e.g. category_id, sub-community)
+        rules:
+          additionalProperties: true
+          type: object
+          title: Rules
+          description: Posting rules (length limits, link limits, etc.)
+      type: object
+      required:
+      - name
+      - url
+      - platform_key
+      - connector_key
+      title: DestinationSchema
+    DestinationUpdate:
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Url
+        surface:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Surface
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        audience_tags:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Audience Tags
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        geo:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Geo
+        est_audience:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Est Audience
+        rules_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rules Url
+        frequency_cap:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Frequency Cap
+        self_promo_allowed:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Self Promo Allowed
+        link_policy:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Link Policy
+        disclosure_required:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Disclosure Required
+        automation_allowed:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Automation Allowed
+        relevance_score:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Relevance Score
+        relevance_reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Relevance Reason
+        level:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Level
+        enabled:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Enabled
+        instance_config:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Instance Config
+      type: object
+      title: DestinationUpdate
+    FetchMetricsRequest:
+      properties:
+        platform_post_id:
+          type: string
+          title: Platform Post Id
+          description: External platform post ID
+        connection:
+          $ref: '#/components/schemas/ConnectionSchema'
+        since:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Since
+          description: ISO date filter for metrics query
+      type: object
+      required:
+      - platform_post_id
+      - connection
+      title: FetchMetricsRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    JobStatusResponse:
+      properties:
+        job_id:
+          type: string
+          title: Job Id
+        destination_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Destination Id
+        status:
+          type: string
+          title: Status
+        progress:
+          type: integer
+          title: Progress
+        error_code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error Code
+        error_message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error Message
+        result:
+          additionalProperties: true
+          type: object
+          title: Result
+        callback_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Callback Url
+      type: object
+      required:
+      - job_id
+      - status
+      - progress
+      title: JobStatusResponse
+    JobSubmitRequest:
+      properties:
+        destination_id:
+          type: string
+          title: Destination Id
+          description: Target destination ID from catalogue
+        rendition:
+          $ref: '#/components/schemas/RenditionSchema'
+        connection:
+          anyOf:
+          - $ref: '#/components/schemas/ConnectionSchema'
+          - type: 'null'
+        callback_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Callback Url
+          description: Optional webhook URL for completion callback
+      type: object
+      required:
+      - destination_id
+      - rendition
+      title: JobSubmitRequest
+    JobSubmitResponse:
+      properties:
+        job_id:
+          type: string
+          title: Job Id
+        status:
+          type: string
+          title: Status
+        progress:
+          type: integer
+          title: Progress
+        status_url:
+          type: string
+          title: Status Url
+      type: object
+      required:
+      - job_id
+      - status
+      - progress
+      - status_url
+      title: JobSubmitResponse
+    MetricsResult:
+      properties:
+        views:
+          type: integer
+          title: Views
+          default: 0
+        likes:
+          type: integer
+          title: Likes
+          default: 0
+        comments:
+          type: integer
+          title: Comments
+          default: 0
+        shares:
+          type: integer
+          title: Shares
+          default: 0
+        saves:
+          type: integer
+          title: Saves
+          default: 0
+        watch_time_s:
+          type: integer
+          title: Watch Time S
+          default: 0
+        clicks:
+          type: integer
+          title: Clicks
+          default: 0
+      type: object
+      title: MetricsResult
+    PublishRequest:
+      properties:
+        rendition:
+          $ref: '#/components/schemas/RenditionSchema'
+        destination:
+          $ref: '#/components/schemas/DestinationSchema'
+        connection:
+          $ref: '#/components/schemas/ConnectionSchema'
+        idempotency_key:
+          type: string
+          title: Idempotency Key
+          description: Unique client idempotency key
+      type: object
+      required:
+      - rendition
+      - destination
+      - connection
+      - idempotency_key
+      title: PublishRequest
+    PublishResult:
+      properties:
+        platform_post_id:
+          type: string
+          title: Platform Post Id
+        live_url:
+          type: string
+          title: Live Url
+        status:
+          type: string
+          title: Status
+          description: Post publication state (e.g. published, draft, queued)
+      type: object
+      required:
+      - platform_post_id
+      - live_url
+      - status
+      title: PublishResult
+    RefreshAuthRequest:
+      properties:
+        connection:
+          $ref: '#/components/schemas/ConnectionSchema'
+      type: object
+      required:
+      - connection
+      title: RefreshAuthRequest
+    RefreshAuthResult:
+      properties:
+        expires_at:
+          type: string
+          title: Expires At
+      type: object
+      required:
+      - expires_at
+      title: RefreshAuthResult
+    RenditionSchema:
+      properties:
+        title:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Title
+          description: Title or headline of the rendition
+        body:
+          type: string
+          title: Body
+          description: Main text body (markdown, HTML, or plain text)
+        summary:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Summary
+          description: Short excerpt or description
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+          description: Keywords or hashtags
+        media_urls:
+          items:
+            type: string
+          type: array
+          title: Media Urls
+          description: Associated image, video, or asset URLs
+        canonical_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Canonical Url
+          description: Original canonical source URL
+        is_ai_generated:
+          type: boolean
+          title: Is Ai Generated
+          description: Flag indicating if content was AI-generated
+          default: false
+        ai_disclosure_text:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Ai Disclosure Text
+          description: Explicit statement of AI disclosure if required
+        metadata:
+          additionalProperties: true
+          type: object
+          title: Metadata
+          description: Custom platform-specific parameters
+      type: object
+      required:
+      - body
+      title: RenditionSchema
+    StatusRequest:
+      properties:
+        platform_post_id:
+          type: string
+          title: Platform Post Id
+          description: External platform post ID
+        connection:
+          $ref: '#/components/schemas/ConnectionSchema'
+      type: object
+      required:
+      - platform_post_id
+      - connection
+      title: StatusRequest
+    StatusResult:
+      properties:
+        status:
+          type: string
+          title: Status
+        live_url:
+          type: string
+          title: Live Url
+      type: object
+      required:
+      - status
+      - live_url
+      title: StatusResult
+    ValidateRequest:
+      properties:
+        rendition:
+          $ref: '#/components/schemas/RenditionSchema'
+        destination:
+          $ref: '#/components/schemas/DestinationSchema'
+        connection:
+          $ref: '#/components/schemas/ConnectionSchema'
+      type: object
+      required:
+      - rendition
+      - destination
+      - connection
+      title: ValidateRequest
+    ValidateResult:
+      properties:
+        ok:
+          type: boolean
+          title: Ok
+        violations:
+          items:
+            type: string
+          type: array
+          title: Violations
+      type: object
+      required:
+      - ok
+      title: ValidateResult
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
