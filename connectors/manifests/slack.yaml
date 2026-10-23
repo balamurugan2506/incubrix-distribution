@@ -1,0 +1,52 @@
+key: slack
+name: Slack App Channel Connector
+version: 1.0.0
+tier: advanced
+auth:
+  type: bearer_token
+  fields:
+    - bot_token
+    - channel_id
+surfaces:
+  - message
+  - channel
+content_types:
+  - text/plain
+  - mrkdwn
+format_limits:
+  title_min_chars: 1
+  title_max_chars: 150
+  body_min_chars: 1
+  body_max_chars: 40000
+  max_tags: 0
+  max_media_bytes: 20000000
+rate_limits:
+  requests_per_minute: 60
+  burst: 5
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: true
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Slack target channel ID and thread configuration"
+  fields:
+    channel_id:
+      type: string
+      required: true
+    thread_ts:
+      type: string
+      required: false
+error_map:
+  401: CONNECTION_AUTH_EXPIRED
+  403: CONNECTION_AUTH_EXPIRED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+tailoring:
+  framing: standard
+  closing_question: false
+  attach_canonical_url: false
+  tag_style: none
+  default_language: en

@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_adbff99d2874
+Timestamp: 2026-10-23T18:15:10.847153+00:00
+Backend: local
+============================================================
+certification_id: cert_adbff99d2874
+destination_id: dest_fd635a87c1f0
+destination_name: Dev.to Certification Candidate
+connector_key: devto
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: 136955
+live_url: https://dev.to/mock_user/136955
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T18:15:10.841499+00:00
+completed_at: 2026-10-23T18:15:10.847153+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "136955", "live_url": "https://dev.to/mock_user/136955", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://dev.to/mock_user/136955"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

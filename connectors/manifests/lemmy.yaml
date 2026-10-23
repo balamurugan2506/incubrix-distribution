@@ -44,3 +44,9 @@ error_map:
   429: PLATFORM_RATE_LIMIT
   500: PLATFORM_UNAVAILABLE
   503: PLATFORM_UNAVAILABLE
+tailoring:
+  framing: discussion_first
+  closing_question: true
+  attach_canonical_url: true
+  tag_style: none
+  default_language: en

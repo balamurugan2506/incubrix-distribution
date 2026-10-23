@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_d0c785460a47
+Timestamp: 2026-10-23T18:12:35.997169+00:00
+Backend: local
+============================================================
+certification_id: cert_d0c785460a47
+destination_id: cert_disc_234eddb1
+destination_name: Discourse Certification Community
+connector_key: discourse
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: 50330
+live_url: http://localhost:8001/discourse/t/incubrix-test-topic/1823/1
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T18:12:35.994154+00:00
+completed_at: 2026-10-23T18:12:35.997169+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "50330", "live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/1823/1", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "http://localhost:8001/discourse/t/incubrix-test-topic/1823/1"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

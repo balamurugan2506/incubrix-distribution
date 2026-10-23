@@ -1,0 +1,69 @@
+{
+  "evidence_id": "cert_5c3710152758",
+  "created_at": "2026-10-23T18:12:35.497066+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_5c3710152758",
+  "payload": {
+    "certification_id": "cert_5c3710152758",
+    "destination_id": "dest_d6c85740",
+    "destination_name": "Slack Announcements Channel",
+    "connector_key": "slack",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "240373217.000100",
+    "live_url": "https://slack.com/archives/C_DEV/p240373217000100",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-23T18:12:35.492645+00:00",
+    "completed_at": "2026-10-23T18:12:35.497066+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:12:35.493647+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:12:35.493647+00:00",
+        "details": {
+          "platform_post_id": "240373217.000100",
+          "live_url": "https://slack.com/archives/C_DEV/p240373217000100",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:12:35.494647+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://slack.com/archives/channel/p240373217000100"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:12:35.495648+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:12:35.496034+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

@@ -51,6 +51,7 @@ class ConnectorManifest(BaseModel):
     capabilities: ManifestCapabilities
     instance_param: Dict[str, Any] = Field(default_factory=dict)
     error_map: Dict[int, str] = Field(default_factory=dict)
+    tailoring: Dict[str, Any] = Field(default_factory=dict)
 
 
 class ConnectorRegistry:

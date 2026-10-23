@@ -1,0 +1,35 @@
+{
+  "evidence_id": "cert_d901cfa29d0c",
+  "created_at": "2026-10-23T18:07:26.730682+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_d901cfa29d0c",
+  "payload": {
+    "certification_id": "cert_d901cfa29d0c",
+    "destination_id": "dest_9212d1a0",
+    "destination_name": "Slack Announcements Channel",
+    "connector_key": "slack",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "failed",
+    "passed": false,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-23T18:07:26.729632+00:00",
+    "completed_at": "2026-10-23T18:07:26.730682+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "failed",
+        "timestamp": "2026-10-23T18:07:26.729632+00:00",
+        "details": {
+          "violations": [
+            "Slack messages do not support tags"
+          ]
+        }
+      }
+    ],
+    "error_message": "Rendition validation failed: Slack messages do not support tags"
+  }
+}

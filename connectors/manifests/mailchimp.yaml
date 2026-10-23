@@ -1,0 +1,52 @@
+key: mailchimp
+name: Mailchimp Newsletter Campaign Connector (Drafts Only)
+version: 1.0.0
+tier: advanced
+auth:
+  type: api_key
+  fields:
+    - api_key
+    - server_prefix
+surfaces:
+  - campaign_draft
+content_types:
+  - text/html
+  - text/plain
+format_limits:
+  title_min_chars: 5
+  title_max_chars: 150
+  body_min_chars: 20
+  body_max_chars: 100000
+  max_tags: 0
+  max_media_bytes: 10000000
+rate_limits:
+  requests_per_minute: 120
+  burst: 10
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: true
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Mailchimp Audience/List ID. Creates campaign drafts only; never triggers delivery."
+  fields:
+    list_id:
+      type: string
+      required: true
+    subject_line:
+      type: string
+      required: false
+error_map:
+  401: CONNECTION_AUTH_EXPIRED
+  403: CONNECTION_AUTH_EXPIRED
+  422: PLATFORM_CONTENT_REJECTED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+tailoring:
+  framing: article_canonical
+  closing_question: false
+  attach_canonical_url: false
+  tag_style: none
+  default_language: en

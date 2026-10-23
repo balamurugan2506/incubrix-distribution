@@ -1,0 +1,69 @@
+{
+  "evidence_id": "cert_ab4b08e6831b",
+  "created_at": "2026-10-23T18:10:28.288943+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_ab4b08e6831b",
+  "payload": {
+    "certification_id": "cert_ab4b08e6831b",
+    "destination_id": "dest_5e214f97",
+    "destination_name": "Mailchimp Newsletter Campaign (Drafts)",
+    "connector_key": "mailchimp",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "mc_c35b6464",
+    "live_url": "https://mailchimp.com/campaigns/mc_c35b6464",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-23T18:10:28.282694+00:00",
+    "completed_at": "2026-10-23T18:10:28.288943+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:10:28.282694+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:10:28.282694+00:00",
+        "details": {
+          "platform_post_id": "mc_c35b6464",
+          "live_url": "https://mailchimp.com/campaigns/mc_c35b6464",
+          "status": "draft"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:10:28.285844+00:00",
+        "details": {
+          "status": "draft",
+          "verified_live_url": "https://mailchimp.com/campaigns/mc_c35b6464"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:10:28.286848+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-23T18:10:28.287855+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

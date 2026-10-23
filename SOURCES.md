@@ -28,7 +28,7 @@ This document tracks all external dependencies, libraries, APIs, and components 
 |---|---|---|---|
 | **Python** | 3.12-slim | PSF License | Base Docker container runtime |
 | **SQLite** | 3.x (Built-in) | Public Domain | Zero-configuration relational database |
-| **MinIO** | RELEASE.2024-05-10 | AGPLv3 (runtime service) | S3-compatible local evidence & asset storage |
+| **MinIO** | `cgr.dev/chainguard/minio:latest` | AGPLv3 (runtime service) | S3-compatible local evidence & asset storage |
 
 ## External Platform API Specs Consulted
 

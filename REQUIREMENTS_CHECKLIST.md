@@ -8,10 +8,10 @@ This document tracks every mandatory and advanced requirement for the IncuBrix E
 
 | Req ID | Requirement | Planned / Actual Source File(s) | Verification / Test File(s) | Status |
 |---|---|---|---|---|
-| **ARCH-01** | Python 3.11+, FastAPI, Pydantic v2 schemas | `app/main.py`, `app/schemas/*`, `app/config.py` | `tests/unit/test_config.py`, `tests/e2e/test_api.py` | ✅ Completed |
-| **ARCH-02** | SQLite + SQLAlchemy ORM with async/sync session management | `app/database.py`, `app/models/*` | `tests/unit/test_database.py`, `tests/integration/test_destinations_api.py` | ✅ Completed |
-| **ARCH-03** | OpenAPI 3.1 schema specification & documentation export | `app/main.py`, `scripts/export_openapi.py`, `openapi.yaml` | `tests/integration/test_openapi.py`, manual export | ✅ Completed |
-| **ARCH-04** | Structured JSON logging with `timestamp`, `level`, `job_id`, `X-Correlation-Id` | `app/logging_conf.py`, `app/api/middleware.py` | `tests/unit/test_logging.py`, `tests/unit/test_connector_contract.py` | ✅ Completed |
+| **ARCH-01** | Python 3.11+, FastAPI, Pydantic v2 schemas | `app/main.py`, `app/schemas/*`, `app/config.py` | `tests/unit/test_config.py`, `tests/unit/test_connector_contract.py` | ✅ Completed |
+| **ARCH-02** | SQLite + SQLAlchemy ORM with async/sync session management | `app/database.py`, `app/models/*` | `tests/integration/test_destinations_api.py`, `tests/unit/test_idempotency.py` | ✅ Completed |
+| **ARCH-03** | OpenAPI 3.1 schema specification & documentation export | `app/main.py`, `scripts/export_openapi.py`, `openapi.yaml` | `scripts/export_openapi.py`, `openapi.yaml` export | ✅ Completed |
+| **ARCH-04** | Structured JSON logging with `timestamp`, `level`, `job_id`, `X-Correlation-Id` | `app/logging_conf.py`, `app/api/middleware.py` | `app/logging_conf.py`, `tests/unit/test_connector_contract.py` | ✅ Completed |
 | **ARCH-05** | Service Health check endpoints (`GET /health`, `GET /ready`) | `app/api/health.py` | `tests/unit/test_connector_contract.py` | ✅ Completed |
 | **ARCH-06** | Configuration via environment variables & `.env.example` | `app/config.py`, `.env.example` | `tests/unit/test_config.py` | ✅ Completed |
 | **ARCH-07** | Docker containerization & Docker Compose stack | `Dockerfile`, `docker-compose.yml` | Verified compose configuration | ✅ Completed |

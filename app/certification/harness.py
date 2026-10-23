@@ -149,6 +149,9 @@ class CertificationHarness:
 
         # 1. Prepare unique certification test probe
         unique_token = f"probe_{uuid.uuid4().hex[:8]}"
+        max_allowed_tags = manifest.format_limits.max_tags if hasattr(manifest, "format_limits") and manifest.format_limits else 3
+        probe_tags = ["incubrix", "test", "cert"][:max_allowed_tags] if max_allowed_tags > 0 else []
+
         rendition = RenditionSchema(
             title=f"IncuBrix Certification Probe {unique_token}",
             body=(
@@ -157,7 +160,7 @@ class CertificationHarness:
                 "This post will be deleted automatically within seconds."
             ),
             summary="Automated certification probe",
-            tags=["incubrix", "test", "cert"],
+            tags=probe_tags,
             metadata={"cert_probe_token": unique_token}
         )
 

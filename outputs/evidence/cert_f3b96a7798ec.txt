@@ -1,0 +1,22 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_f3b96a7798ec
+Timestamp: 2026-10-23T18:05:31.933966+00:00
+Backend: local
+============================================================
+certification_id: cert_f3b96a7798ec
+destination_id: dest_a6584632
+destination_name: Hashnode Dev Engineering Blog
+connector_key: hashnode
+connector_version: 1.0.0
+environment: mock
+verdict: failed
+passed: False
+platform_post_id: None
+live_url: None
+deletion_confirmed: False
+evidence_file: None
+started_at: 2026-10-23T18:05:31.696802+00:00
+completed_at: 2026-10-23T18:05:31.933966+00:00
+error_message: Hashnode error: HTTP 404
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}

@@ -1,0 +1,53 @@
+key: hashnode
+name: Hashnode Developer Blogging Connector
+version: 1.0.0
+tier: advanced
+auth:
+  type: header_token
+  fields:
+    - personal_access_token
+    - publication_id
+surfaces:
+  - post
+  - draft
+content_types:
+  - markdown
+  - text/markdown
+format_limits:
+  title_min_chars: 5
+  title_max_chars: 250
+  body_min_chars: 20
+  body_max_chars: 100000
+  max_tags: 5
+  max_media_bytes: 25000000
+rate_limits:
+  requests_per_minute: 60
+  burst: 10
+capabilities:
+  publish: true
+  delete: true
+  get_status: true
+  fetch_metrics: true
+  refresh_auth: false
+  build_assist_pack: false
+instance_param:
+  description: "Hashnode publication ID and series settings"
+  fields:
+    publication_id:
+      type: string
+      required: true
+    series_id:
+      type: string
+      required: false
+error_map:
+  401: CONNECTION_AUTH_EXPIRED
+  403: CONNECTION_AUTH_EXPIRED
+  422: PLATFORM_CONTENT_REJECTED
+  429: PLATFORM_RATE_LIMIT
+  500: PLATFORM_UNAVAILABLE
+tailoring:
+  framing: article_canonical
+  closing_question: false
+  attach_canonical_url: true
+  tag_style: slug
+  default_language: en

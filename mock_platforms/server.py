@@ -397,3 +397,169 @@ async def webhook_delete(wh_id: str, request: Request):
     if wh_id in _webhook_records:
         del _webhook_records[wh_id]
     return JSONResponse(status_code=200, content={"deleted": True})
+
+
+# ---------------- HASHNODE MOCK ----------------
+_hashnode_posts: Dict[str, Any] = {}
+
+@mock_app.post("/hashnode/graphql")
+async def hashnode_graphql(request: Request):
+    trigger = check_simulation_triggers(request)
+    if trigger:
+        return trigger
+
+    auth = request.headers.get("Authorization")
+    if not auth or "invalid" in auth:
+        return JSONResponse(status_code=401, content={"errors": [{"message": "Unauthorized: invalid personal access token"}]})
+
+    body = await request.json()
+    query = body.get("query", "")
+    variables = body.get("variables", {})
+
+    if "publishPost" in query:
+        post_input = variables.get("input", {})
+        post_id = f"hn_{uuid.uuid4().hex[:8]}"
+        title = post_input.get("title", "")
+        post_obj = {
+            "id": post_id,
+            "title": title,
+            "url": f"https://hashnode.com/post/{post_id}",
+            "views": 25,
+            "reactions": 5,
+            "comments": 2
+        }
+        _hashnode_posts[post_id] = post_obj
+        return JSONResponse(status_code=200, content={"data": {"publishPost": {"post": post_obj}}})
+
+    elif "deletePost" in query:
+        del_input = variables.get("input", {})
+        p_id = del_input.get("id")
+        if p_id in _hashnode_posts:
+            del _hashnode_posts[p_id]
+        return JSONResponse(status_code=200, content={"data": {"deletePost": {"post": {"id": p_id}}}})
+
+    elif "post(" in query or "query Post" in query:
+        p_id = variables.get("id")
+        post_obj = _hashnode_posts.get(p_id)
+        if not post_obj:
+            return JSONResponse(status_code=200, content={"data": {"post": None}})
+        return JSONResponse(status_code=200, content={"data": {"post": post_obj}})
+
+    return JSONResponse(status_code=200, content={"data": {}})
+
+
+# ---------------- SLACK MOCK ----------------
+_slack_messages: Dict[str, Any] = {}
+
+@mock_app.post("/slack/api/chat.postMessage")
+async def slack_post_message(request: Request):
+    trigger = check_simulation_triggers(request)
+    if trigger:
+        return trigger
+
+    auth = request.headers.get("Authorization")
+    if not auth or "invalid" in auth:
+        return JSONResponse(status_code=401, content={"ok": False, "error": "invalid_auth"})
+
+    body = await request.json()
+    channel = body.get("channel", "C123")
+    text = body.get("text", "")
+    msg_id = f"{int(uuid.uuid4().int % 1000000000)}.000100"
+
+    record = {
+        "channel": channel,
+        "ts": msg_id,
+        "text": text,
+        "reactions": [{"name": "thumbsup", "count": 4}],
+        "reply_count": 1
+    }
+    _slack_messages[msg_id] = record
+
+    return JSONResponse(status_code=200, content={
+        "ok": True,
+        "channel": channel,
+        "ts": msg_id,
+        "message": record
+    })
+
+
+@mock_app.post("/slack/api/chat.delete")
+async def slack_delete_message(request: Request):
+    body = await request.json()
+    ts = body.get("ts")
+    if ts in _slack_messages:
+        del _slack_messages[ts]
+        return JSONResponse(status_code=200, content={"ok": True, "ts": ts})
+    return JSONResponse(status_code=404, content={"ok": False, "error": "message_not_found"})
+
+
+@mock_app.get("/slack/api/conversations.history")
+async def slack_history(request: Request):
+    latest = request.query_params.get("latest")
+    if latest and latest in _slack_messages:
+        return JSONResponse(status_code=200, content={"ok": True, "messages": [_slack_messages[latest]]})
+    return JSONResponse(status_code=200, content={"ok": True, "messages": list(_slack_messages.values())})
+
+
+# ---------------- MAILCHIMP MOCK ----------------
+_mailchimp_campaigns: Dict[str, Any] = {}
+
+@mock_app.post("/mailchimp/3.0/campaigns")
+async def mailchimp_create_campaign_draft(request: Request):
+    trigger = check_simulation_triggers(request)
+    if trigger:
+        return trigger
+
+    auth = request.headers.get("Authorization")
+    if not auth or "invalid" in auth:
+        return JSONResponse(status_code=401, content={"title": "Unauthorized", "detail": "Invalid API key"})
+
+    body = await request.json()
+    camp_id = f"mc_{uuid.uuid4().hex[:8]}"
+
+    # Enforce DRAFT status only: Mailchimp campaign creation creates a draft ("save")
+    record = {
+        "id": camp_id,
+        "type": body.get("type", "regular"),
+        "status": "save",  # "save" represents draft in Mailchimp
+        "settings": body.get("settings", {}),
+        "archive_url": f"https://mailchimp.com/campaigns/{camp_id}",
+        "emails_sent": 0  # CRITICAL: Drafts only, 0 emails sent to real subscribers
+    }
+    _mailchimp_campaigns[camp_id] = record
+
+    return JSONResponse(status_code=201, content=record)
+
+
+@mock_app.put("/mailchimp/3.0/campaigns/{campaign_id}/content")
+async def mailchimp_set_content(campaign_id: str, request: Request):
+    if campaign_id not in _mailchimp_campaigns:
+        return JSONResponse(status_code=404, content={"title": "Not Found"})
+    body = await request.json()
+    _mailchimp_campaigns[campaign_id]["html"] = body.get("html", "")
+    return JSONResponse(status_code=200, content={"status": "save"})
+
+
+@mock_app.get("/mailchimp/3.0/campaigns/{campaign_id}")
+async def mailchimp_get_campaign(campaign_id: str, request: Request):
+    if campaign_id not in _mailchimp_campaigns:
+        return JSONResponse(status_code=404, content={"title": "Not Found", "detail": "Campaign draft not found"})
+    return JSONResponse(status_code=200, content=_mailchimp_campaigns[campaign_id])
+
+
+@mock_app.delete("/mailchimp/3.0/campaigns/{campaign_id}")
+async def mailchimp_delete_campaign(campaign_id: str, request: Request):
+    if campaign_id in _mailchimp_campaigns:
+        del _mailchimp_campaigns[campaign_id]
+        return Response(status_code=204)
+    return JSONResponse(status_code=404, content={"title": "Not Found"})
+
+
+@mock_app.get("/mailchimp/3.0/reports/{campaign_id}")
+async def mailchimp_get_report(campaign_id: str, request: Request):
+    return JSONResponse(status_code=200, content={
+        "opens": {"unique_opens": 15},
+        "clicks": {"unique_subscriber_clicks": 5},
+        "shares": {"facebook_shares": 1}
+    })
+

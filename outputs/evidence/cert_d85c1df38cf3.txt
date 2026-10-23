@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_d85c1df38cf3
+Timestamp: 2026-10-23T18:09:54.255155+00:00
+Backend: local
+============================================================
+certification_id: cert_d85c1df38cf3
+destination_id: dest_c8181ad2
+destination_name: Hashnode Dev Engineering Blog
+connector_key: hashnode
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: hn_d1f50094
+live_url: https://hashnode.com/post/hn_d1f50094
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T18:09:54.250394+00:00
+completed_at: 2026-10-23T18:09:54.255155+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "hn_d1f50094", "live_url": "https://hashnode.com/post/hn_d1f50094", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://hashnode.com/post/hn_d1f50094"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

@@ -1,0 +1,26 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_7c3a3157c0d8
+Timestamp: 2026-10-23T18:12:36.015174+00:00
+Backend: local
+============================================================
+certification_id: cert_7c3a3157c0d8
+destination_id: cert_devto_87a77f4d
+destination_name: Dev.to Certification Hub
+connector_key: devto
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: 132941
+live_url: https://dev.to/mock_user/132941
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-23T18:12:36.010772+00:00
+completed_at: 2026-10-23T18:12:36.015174+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "132941", "live_url": "https://dev.to/mock_user/132941", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://dev.to/mock_user/132941"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}
