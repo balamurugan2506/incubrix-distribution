@@ -1,0 +1,24 @@
+{
+  "evidence_id": "cert_1a6d0c1b7e7a",
+  "created_at": "2026-10-23T18:42:25.852295+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_1a6d0c1b7e7a",
+  "payload": {
+    "certification_id": "cert_1a6d0c1b7e7a",
+    "destination_id": "dest_0aeb54413b65",
+    "destination_name": "Hugging Face Forums",
+    "connector_key": "discourse",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "failed (demote)",
+    "passed": false,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-23T18:42:25.852295+00:00",
+    "completed_at": "2026-10-23T18:42:25.852295+00:00",
+    "steps": [],
+    "error_message": "Destination 'Hugging Face Forums' is marked catalogue_only and cannot be certified."
+  }
+}

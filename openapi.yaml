@@ -748,8 +748,149 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/alerts:
+    get:
+      tags:
+      - Alerts
+      summary: List Alerts
+      description: Retrieve operational alerts such as recertification failures or
+        schema demotions.
+      operationId: list_alerts_api_v1_alerts_get
+      parameters:
+      - name: destination_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by destination ID
+          title: Destination Id
+        description: Filter by destination ID
+      - name: alert_type
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by alert type
+          title: Alert Type
+        description: Filter by alert type
+      - name: severity
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by severity (high, medium, low)
+          title: Severity
+        description: Filter by severity (high, medium, low)
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlertResponse'
+                title: Response List Alerts Api V1 Alerts Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/recommendations:
+    post:
+      tags:
+      - Recommendations
+      summary: Get Destination Recommendations
+      description: 'Rank candidate destinations for a content item.
+
+        Excludes demoted, disabled, catalogue-only, and rule-blocked destinations.'
+      operationId: get_destination_recommendations_api_v1_recommendations_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecommendationRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DestinationRecommendation'
+                type: array
+                title: Response Get Destination Recommendations Api V1 Recommendations
+                  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    AlertResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        destination_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Destination Id
+        destination_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Destination Name
+        alert_type:
+          type: string
+          title: Alert Type
+        severity:
+          type: string
+          title: Severity
+        message:
+          type: string
+          title: Message
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Created At
+      type: object
+      required:
+      - id
+      - alert_type
+      - severity
+      - message
+      title: AlertResponse
     AssistPackResult:
       properties:
         files:
@@ -1136,6 +1277,48 @@ components:
       - platform_key
       - connector_key
       title: DestinationCreate
+    DestinationRecommendation:
+      properties:
+        destination_id:
+          type: string
+          title: Destination Id
+        destination_name:
+          type: string
+          title: Destination Name
+        connector_key:
+          type: string
+          title: Connector Key
+        platform_key:
+          type: string
+          title: Platform Key
+        fit_score:
+          type: number
+          title: Fit Score
+        audience_relevance:
+          type: number
+          title: Audience Relevance
+        relevance_reason:
+          type: string
+          title: Relevance Reason
+        reason:
+          type: string
+          title: Reason
+        warnings:
+          items:
+            type: string
+          type: array
+          title: Warnings
+      type: object
+      required:
+      - destination_id
+      - destination_name
+      - connector_key
+      - platform_key
+      - fit_score
+      - audience_relevance
+      - relevance_reason
+      - reason
+      title: DestinationRecommendation
     DestinationResponse:
       properties:
         name:
@@ -1616,6 +1799,47 @@ components:
       - live_url
       - status
       title: PublishResult
+    RecommendationRequest:
+      properties:
+        title:
+          type: string
+          minLength: 1
+          title: Title
+        body:
+          type: string
+          minLength: 1
+          title: Body
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+        media_urls:
+          items:
+            type: string
+          type: array
+          title: Media Urls
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+          default: general
+        is_automated:
+          type: boolean
+          title: Is Automated
+          default: true
+        limit:
+          type: integer
+          maximum: 50.0
+          minimum: 1.0
+          title: Limit
+          default: 10
+      type: object
+      required:
+      - title
+      - body
+      title: RecommendationRequest
     RefreshAuthRequest:
       properties:
         connection:

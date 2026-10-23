@@ -1,0 +1,46 @@
+{
+  "evaluation_name": "IncuBrix Destination Recommender Precision@10 Evaluation",
+  "eval_timestamp": "2026-10-23T18:42:36.436607+00:00",
+  "total_test_queries": 5,
+  "catalogue_size": 30,
+  "metrics": {
+    "incubrix_recommender_mean_p10": 0.94,
+    "simple_score_baseline_mean_p10": 0.4,
+    "random_baseline_mean_p10": 0.46,
+    "improvement_over_simple_baseline": "54.0%",
+    "improvement_over_random_baseline": "48.0%"
+  },
+  "query_breakdown": [
+    {
+      "query_id": "q1_ai_technical_guide",
+      "incubrix_p10": 0.9,
+      "simple_p10": 0.0,
+      "random_p10": 0.5
+    },
+    {
+      "query_id": "q2_ai_product_announcement_promo",
+      "incubrix_p10": 1.0,
+      "simple_p10": 1.0,
+      "random_p10": 0.8
+    },
+    {
+      "query_id": "q3_llm_inference_latency",
+      "incubrix_p10": 0.9,
+      "simple_p10": 0.0,
+      "random_p10": 0.3
+    },
+    {
+      "query_id": "q4_saas_pricing_playbook",
+      "incubrix_p10": 1.0,
+      "simple_p10": 1.0,
+      "random_p10": 0.3
+    },
+    {
+      "query_id": "q5_neural_search_embeddings",
+      "incubrix_p10": 0.9,
+      "simple_p10": 0.0,
+      "random_p10": 0.4
+    }
+  ],
+  "disclosure": "Labelled ground truth created by candidate based on destination audience alignment, recertification status, and posting rule safety gating."
+}

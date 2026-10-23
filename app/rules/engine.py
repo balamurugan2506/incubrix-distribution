@@ -184,6 +184,15 @@ class PostingRulesEngine:
                 status_code=400
             )
 
+        catalogue_only = getattr(destination, "catalogue_only", False)
+        if catalogue_only:
+            raise ConnectorException(
+                code=ErrorCode.CONNECTOR_DISABLED,
+                message=f"Destination '{dest_name}' is marked catalogue_only and cannot accept posts.",
+                retryable=False,
+                status_code=400
+            )
+
         # 2. Destination Enabled Check
         if enabled is False:
             raise ConnectorException(

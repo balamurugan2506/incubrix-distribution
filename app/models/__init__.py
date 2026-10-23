@@ -6,6 +6,7 @@ from app.models.idempotency import IdempotencyRecordModel
 from app.models.publication import PublicationRecordModel
 from app.models.job import JobRecordModel
 from app.models.certification import CertificationRecordModel
+from app.models.alert import AlertModel
 
 __all__ = [
     "Base",
@@ -14,4 +15,5 @@ __all__ = [
     "PublicationRecordModel",
     "JobRecordModel",
     "CertificationRecordModel",
+    "AlertModel",
 ]

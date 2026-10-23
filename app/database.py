@@ -41,6 +41,8 @@ async def get_db():
 
 async def init_db():
     """Create all tables on application startup and ensure schema completeness."""
+    # Ensure all models are registered on Base
+    import app.models  # noqa: F401
     async with async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
         try:
@@ -51,5 +53,10 @@ async def init_db():
         try:
             from sqlalchemy import text
             await conn.execute(text("ALTER TABLE destinations ADD COLUMN status VARCHAR(32) DEFAULT 'active'"))
+        except Exception:
+            pass
+        try:
+            from sqlalchemy import text
+            await conn.execute(text("ALTER TABLE destinations ADD COLUMN catalogue_only BOOLEAN DEFAULT 0"))
         except Exception:
             pass

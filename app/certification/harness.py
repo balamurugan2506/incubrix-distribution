@@ -83,6 +83,13 @@ class CertificationHarness:
             completed_at=""
         )
 
+        if getattr(destination, "catalogue_only", False):
+            report.verdict = "failed (demote)"
+            report.error_message = f"Destination '{destination.name}' is marked catalogue_only and cannot be certified."
+            report.completed_at = datetime.now(timezone.utc).isoformat()
+            await cls._save_report_and_update_db(report, destination)
+            return report
+
         dest_schema = DestinationSchema(
             id=destination.id,
             name=destination.name,

@@ -38,6 +38,7 @@ class DestinationModel(Base):
     # Operational status
     enabled = Column(Boolean, default=True)
     status = Column(String(32), default="active")  # active, demoted, inactive
+    catalogue_only = Column(Boolean, default=False)  # If True, never certified or posted to
     last_certified_at = Column(DateTime(timezone=True), nullable=True)
     instance_config = Column(JSON, default=dict)
 
@@ -53,4 +54,5 @@ class DestinationModel(Base):
         kwargs.setdefault("automation_allowed", True)
         kwargs.setdefault("enabled", True)
         kwargs.setdefault("status", "active")
+        kwargs.setdefault("catalogue_only", False)
         super().__init__(**kwargs)

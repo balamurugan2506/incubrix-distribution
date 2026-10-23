@@ -188,7 +188,11 @@ async def import_destinations_from_csv(
     - Metadata and platform enrichment
     - High-throughput asynchronous batching
     """
-    reader = list(csv.DictReader(io.StringIO(csv_content)))
+    if isinstance(csv_content, bytes):
+        csv_text = csv_content.decode("utf-8", errors="replace")
+    else:
+        csv_text = str(csv_content)
+    reader = list(csv.DictReader(io.StringIO(csv_text)))
     summary = CSVImportSummary(total_rows=0, imported_count=0, skipped_duplicates=0, errors_count=0)
 
     # Load existing (normalised_url, platform_key) sets to prevent DB duplicates
@@ -312,7 +316,8 @@ async def import_destinations_from_csv(
             relevance_score=float(row.get("relevance_score", 3.0) or 3.0),
             relevance_reason=row.get("relevance_reason", "").strip() or None,
             level=row.get("level", "standard").strip() or "standard",
-            enabled=to_bool(row.get("enabled"), True)
+            enabled=to_bool(row.get("enabled"), True),
+            catalogue_only=to_bool(row.get("catalogue_only"), False)
         )
 
         return {

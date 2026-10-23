@@ -238,6 +238,41 @@ class GhostConnector(BaseConnector):
 
         self._handle_http_error(resp)
 
+    async def fetch_metrics(
+        self,
+        platform_post_id: str,
+        connection: ConnectionSchema,
+        since: Optional[str] = None
+    ) -> MetricsResult:
+        base_url = self._get_base_url(connection)
+        headers = self._get_headers(connection)
+        endpoint = self._admin_endpoint(base_url, f"posts/{platform_post_id}/")
+
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                resp = await client.get(endpoint, headers=headers)
+            except httpx.RequestError as exc:
+                raise ConnectorException(
+                    code=ErrorCode.PLATFORM_UNAVAILABLE,
+                    message=f"Failed to fetch Ghost metrics: {str(exc)}",
+                    retryable=True,
+                    status_code=503
+                )
+
+        if resp.status_code == 200:
+            posts = resp.json().get("posts", [])
+            if posts:
+                post = posts[0]
+                email_obj = post.get("email") or {}
+                return MetricsResult(
+                    views=int(email_obj.get("opened_count", 0)),
+                    likes=0,
+                    comments=int(post.get("count", {}).get("comments", 0)),
+                    shares=0,
+                    clicks=int(email_obj.get("clicked_count", 0))
+                )
+        return MetricsResult()
+
     def _handle_http_error(self, resp: httpx.Response):
         status = resp.status_code
         text = resp.text
