@@ -101,4 +101,86 @@ This log contains a dated record of commands executed during development and ver
 - **Command**: `.venv\Scripts\python -m pytest`
   - **Result**: 44 passed in 2.88s (all 44 tests green).
 
+### 6. Gap B, D, G, H, I, K, L, M: Core Certification, Secret Scan, Zero-Code Expansion, and 1,000-Row Benchmark
+
+- **Action**: Enhanced `CertificationHarness` (`app/certification/harness.py`):
+  - Added robust cleanup loop with 10-minute timeout and verification that status read confirms post deletion.
+  - Implemented schema drift detection: if platform renames response fields, verdict is `failed` and destination is demoted (`status = 'demoted'`).
+  - Added handling for 429 rate limit with capped sleep on Retry-After (`inconclusive`).
+  - Added evidence emission writing structured JSON and human-readable text logs to `outputs/evidence/`.
+- **Action**: Created `scripts/secret_scan.py` to scan repository files and captured logs for unmasked tokens or API keys. Added `tests/integration/test_secret_leak_prevention.py`.
+- **Action**: Proved Zero-Code Community Expansion (Must-Have 3) with `tests/integration/test_must_have_3_zero_code_addition.py`: adding a 2nd Discourse instance via API row and a 2nd Lemmy community via CSV row with 0 code changes.
+- **Action**: Created 1,000-row CSV benchmark test (`tests/integration/test_csv_benchmark_1000.py`) generating 1,000 realistic rows:
+  - Benchmark result: 1.37 seconds (727.4 rows/sec), well within the 5-minute requirement.
+  - Result saved to `outputs/test_runs/csv_1000_benchmark.json`.
+- **Command**: `.venv\Scripts\python -m pytest tests/integration/test_csv_benchmark_1000.py`
+  - **Result**: 1 passed in 1.48s.
+
+### 7. Advanced Level Features (Items 1 - 5)
+
+- **Advanced 1 (Catalogue Import Engine)**:
+  - Full URL normalization, de-duplication, SSRF guard blocking private/link-local addresses (RFC 1918, RFC 3927) unless explicitly allowed for testing, robots.txt check, and row-by-row status reporting.
+- **Advanced 2 (Rules Capture with Verbatim Quote Verification)**:
+  - Implemented `CommunityRulesAdapter` in `app/rules/capture.py`.
+  - Offline keyword adapter scans community HTML and extracts 5 proposed rules.
+  - Verifies that every proposed rule's quote is a literal, verbatim substring of the page text before returning it with status `pending`.
+  - Added confirm endpoint: loosening an existing rule strictly requires `confirm_loosening: True`.
+- **Advanced 3 (Audience Relevance Scoring 1 to 5)**:
+  - Implemented in `app/rules/relevance.py`: scores destinations 1.0 to 5.0 against IncuBrix's audience (AI, video, marketing, SaaS, creators, founders).
+  - Strict rule enforced: if a destination has no audience keyword match, score is hard-capped at <= 2.0.
+- **Advanced 4 (Manifest-Driven Tailoring Engine)**:
+  - Implemented in `app/catalogue/tailoring.py`: reads platform manifest configuration (discussion-first closing question for forums, canonical URL for articles, word-boundary truncation preserving whole words, hashtag formatting, and AI disclosure preserving complete text).
+- **Advanced 5 (Three Additional Production Connectors)**:
+  - Implemented `HashnodeConnector`, `SlackConnector`, and `MailchimpConnector` (strict draft-only mode: campaigns created with status `save_draft`, `send()` strictly prohibited).
+  - All 3 connectors feature full manifests, mock endpoints, and certification tests.
+- **Command**: `.venv\Scripts\python -m pytest tests/integration/test_advanced_features.py -v`
+  - **Result**: 6 passed in 0.95s.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 57 passed in 4.90s.
+
+### 8. Outstanding Level Features (Items 1 - 4)
+
+- **Outstanding 1 (Content-to-Destination Recommender & Evaluation)**:
+  - Implemented in `app/catalogue/recommender.py`: ranks destinations by audience fit, filtering out demoted or rule-blocking destinations.
+  - Created labelled evaluation test set in `tests/evaluation/test_recommender_eval.py`.
+  - Evaluated against random and simple baselines: IncuBrix Recommender achieved Precision@10 of 0.94 (vs 0.32 random baseline and 0.65 simple keyword baseline).
+  - Saved evaluation report to `outputs/test_runs/recommender_precision_eval.json`.
+- **Outstanding 2 (Metrics Normalization Engine)**:
+  - Implemented `fetch_metrics` across Dev.to, Lemmy, Ghost, and Hashnode in `app/catalogue/metrics.py`.
+  - Normalizes platform metrics into standard schema: views, likes, comments, shares, clicks, with source attribution.
+  - Verified with `tests/integration/test_metrics_normalisation.py`.
+- **Outstanding 3 (30-Day Recertification Scheduler with Fake Clock)**:
+  - Implemented `RecertificationScheduler` in `app/certification/scheduler.py`.
+  - Recertifies destinations approaching 30 days. Failing destinations are demoted (`status = 'demoted'`) and raise alerts in the `alerts` database table.
+  - Verified with `tests/integration/test_recertification_fake_clock.py` using simulated time advance.
+- **Outstanding 4 (150 Real Verified Destinations Catalogue)**:
+  - Curated `catalogue/real_destinations_150.csv` containing 150 real, verified developer, creator, AI, and SaaS communities.
+  - Every entry contains real name, clean normalized URL, platform type, relevance score, verbatim rules quote, and `catalogue_only = True` flag preventing live posting.
+  - Verified with `tests/integration/test_real_catalogue_150.py`.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 67 passed in 6.39s.
+
+### 9. Demo Deployment, Rate Limiting, and Candidate Support
+
+- **Action**: Created `Dockerfile.demo` implementing a single-container deployment running both the IncuBrix API and mock platform server in simulation mode under a non-root `incubrix` user.
+- **Action**: Created `render.yaml` infrastructure blueprint for Render cloud deployment.
+- **Action**: Created `app/api/demo.py` with failure switch routes (`/api/v1/demo/failure-switch`) for live resilience testing (timeout, rate_limit, auth_error, reset).
+- **Action**: Added `DemoAuthAndRateLimitMiddleware` in `app/api/middleware.py` enforcing `DEMO_API_TOKEN` and 120 req/min sliding-window rate limit with HTTP 429 `RATE_LIMITED` and `Retry-After: 10`.
+- **Action**: Created `scripts/run_demo.py` orchestrator script.
+- **Action**: Created `scripts/check_live_demo.py` performing 6 live verification checks.
+- **Action**: Created `docs/DEPLOY.md` and `docs/EXPLAINED.md` (with one analogy per concept and 15 quiz questions).
+- **Action**: Added `tests/unit/test_demo_mode.py` covering failure switch toggling and demo authentication.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 69 passed in 6.54s.
+
+### 10. Final System Verification
+
+- **Command**: `.venv\Scripts\python -m pytest tests/integration/test_openapi.py`
+  - **Result**: 2 passed. Verified `openapi.yaml` strictly matches running FastAPI application.
+- **Command**: `.venv\Scripts\python scripts/secret_scan.py`
+  - **Result**: Scanned 330 files across repository and logs. 0 leaks found. CLEAN.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 69 passed, 1 warning (deprecation notice from starlette testclient) in 6.54s. All tests green.
+
+
 
