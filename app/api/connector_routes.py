@@ -32,9 +32,19 @@ async def validate_post(connector_key: str, payload: ValidateRequest):
     return await connector.validate(payload.rendition, payload.destination, payload.connection)
 
 
+from app.rules.engine import rules_engine
+
 @router.post("/{connector_key}/publish", response_model=PublishResult)
 async def publish_post(connector_key: str, payload: PublishRequest, request: Request):
     connector = registry.get_connector(connector_key)
+
+    # Enforce destination posting rules (fail-closed, limits, links, promo, AI disclosure)
+    await rules_engine.check_rules(
+        rendition=payload.rendition,
+        destination=payload.destination,
+        db=None,
+        is_automated_request=True
+    )
 
     # If retry after timeout or unknown outcome, query platform first to prevent duplication
     if getattr(request.state, "is_retry_after_unknown", False):

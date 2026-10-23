@@ -1039,8 +1039,14 @@ components:
           type: integer
           minimum: 0.0
           title: Frequency Cap
-          description: Max allowed posts per 24 hours (0 = unlimited)
+          description: Max allowed posts per period (0 = unlimited)
           default: 10
+        frequency_period_hours:
+          type: integer
+          minimum: 1.0
+          title: Frequency Period Hours
+          description: Frequency cap period in hours
+          default: 24
         self_promo_allowed:
           type: boolean
           title: Self Promo Allowed
@@ -1151,8 +1157,14 @@ components:
           type: integer
           minimum: 0.0
           title: Frequency Cap
-          description: Max allowed posts per 24 hours (0 = unlimited)
+          description: Max allowed posts per period (0 = unlimited)
           default: 10
+        frequency_period_hours:
+          type: integer
+          minimum: 1.0
+          title: Frequency Period Hours
+          description: Frequency cap period in hours
+          default: 24
         self_promo_allowed:
           type: boolean
           title: Self Promo Allowed
@@ -1328,6 +1340,11 @@ components:
           - type: integer
           - type: 'null'
           title: Frequency Cap
+        frequency_period_hours:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Frequency Period Hours
         self_promo_allowed:
           anyOf:
           - type: boolean

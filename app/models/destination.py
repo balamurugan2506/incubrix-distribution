@@ -23,7 +23,8 @@ class DestinationModel(Base):
     rules_url = Column(String(512), nullable=True)
 
     # Posting rules parameters
-    frequency_cap = Column(Integer, default=10)  # max posts per 24 hours
+    frequency_cap = Column(Integer, default=10)  # max posts per period
+    frequency_period_hours = Column(Integer, default=24)  # period in hours (e.g. 1, 6, 12, 24)
     self_promo_allowed = Column(Boolean, default=True)
     link_policy = Column(String(64), default="allowed")  # allowed, restricted, none
     disclosure_required = Column(Boolean, default=False)
@@ -41,3 +42,13 @@ class DestinationModel(Base):
 
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
     updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
+
+    def __init__(self, **kwargs):
+        kwargs.setdefault("frequency_cap", 10)
+        kwargs.setdefault("frequency_period_hours", 24)
+        kwargs.setdefault("self_promo_allowed", True)
+        kwargs.setdefault("link_policy", "allowed")
+        kwargs.setdefault("disclosure_required", False)
+        kwargs.setdefault("automation_allowed", True)
+        kwargs.setdefault("enabled", True)
+        super().__init__(**kwargs)

@@ -18,7 +18,8 @@ class DestinationBase(BaseModel):
     est_audience: int = Field(0, ge=0)
     rules_url: Optional[str] = Field(None, max_length=512)
 
-    frequency_cap: int = Field(10, ge=0, description="Max allowed posts per 24 hours (0 = unlimited)")
+    frequency_cap: int = Field(10, ge=0, description="Max allowed posts per period (0 = unlimited)")
+    frequency_period_hours: int = Field(24, ge=1, description="Frequency cap period in hours")
     self_promo_allowed: bool = True
     link_policy: str = Field("allowed", description="allowed, restricted, or none")
     disclosure_required: bool = False
@@ -46,6 +47,7 @@ class DestinationUpdate(BaseModel):
     est_audience: Optional[int] = None
     rules_url: Optional[str] = None
     frequency_cap: Optional[int] = None
+    frequency_period_hours: Optional[int] = None
     self_promo_allowed: Optional[bool] = None
     link_policy: Optional[str] = None
     disclosure_required: Optional[bool] = None

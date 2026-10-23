@@ -87,3 +87,18 @@ This log contains a dated record of commands executed during development and ver
 - **Command**: `.venv\Scripts\python -m pytest`
   - **Result**: 39 passed in 2.74s (all 39 tests green).
 
+### 5. Gap E: Posting Rules Engine Enhancements (Must-Have 4)
+
+- **Action**: Enhanced `PostingRulesEngine` in `app/rules/engine.py`:
+  - **Configurable Frequency Cap Period**: Added `frequency_period_hours` (not only 24h) to `DestinationModel` and `DestinationSchema`. Second post inside the cap is blocked with HTTP 429 and clear reason explaining window and cap.
+  - **Comprehensive Link Extraction**: Implemented detection of links across every written form: HTTP, HTTPS, www-prefixed addresses, Markdown `[text](url)`, HTML `<a href="...">`, and bare domains (`incubrix.ai`, `techcrunch.com`).
+  - **Multi-Marker Self-Promotion Detection**: Replaced tiny keyword list with categorized multi-marker heuristic (CTAs, Conversion/Sign-up, Promotional Terms, Standalone Commercial Keywords). Blocks only on strong commercial keywords or when at least 2 distinct marker categories are present, preventing false blocks.
+  - **Fail-Closed Missing Rules Check**: If any of the 5 required posting rules (`frequency_cap`, `self_promo_allowed`, `link_policy`, `disclosure_required`, `automation_allowed`) is missing or NULL, publication is refused with HTTP 422 `DEST_SPEC_VIOLATION`.
+  - **All-Path Enforcement**: Enforced rule validation on both background jobs (`app/jobs/manager.py`) and direct connector contract route (`POST /connector/v1/{connector_key}/publish`).
+  - **Verification**: Created `tests/unit/test_posting_rules_enhanced.py` covering link forms, multi-marker promo, fail-closed refusal on missing rules, link policies (`none`, `restricted`, `max:1`), and frequency cap blocking.
+- **Command**: `.venv\Scripts\python -m pytest tests/unit/test_posting_rules_enhanced.py -v`
+  - **Result**: 5 passed in 0.54s.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 44 passed in 2.88s (all 44 tests green).
+
+

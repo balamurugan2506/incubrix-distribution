@@ -24,7 +24,17 @@ class DestinationSchema(BaseModel):
     connector_key: str = Field(..., description="Target connector key matching manifest")
     surface: Optional[str] = Field("main", description="Surface type (forum, blog, feed, webhook)")
     instance_config: Dict[str, Any] = Field(default_factory=dict, description="Platform instance settings (e.g. category_id, sub-community)")
-    rules: Dict[str, Any] = Field(default_factory=dict, description="Posting rules (length limits, link limits, etc.)")
+    rules: Dict[str, Any] = Field(
+        default_factory=lambda: {
+            "frequency_cap": 10,
+            "frequency_period_hours": 24,
+            "self_promo_allowed": True,
+            "link_policy": "allowed",
+            "disclosure_required": False,
+            "automation_allowed": True
+        },
+        description="Posting rules (length limits, link limits, etc.)"
+    )
 
 
 class ConnectionSchema(BaseModel):
