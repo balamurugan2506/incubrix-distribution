@@ -26,4 +26,24 @@ This log contains a dated record of commands executed during development and ver
   - **Result**: Read all 8 sheets in `Problem Statements/Assessment4_BalaMurugan.xlsx` to audit baseline claims and formulas.
 - **Action**: Created `docs/GAP_ANALYSIS.md` detailing every Must-have (1-9), Level item (Core, Advanced, Outstanding), and Integration Standard point (1-10) with exact gap mapping and execution plan.
 
----
+### 2. Gap A: Local Instances Stack, Dynamic Credentials, and DB Volume Isolation
+
+- **Action**: Configured `docker-compose.yml` with full multi-container stack:
+  - `incubrix-api`: FastAPI backend with named volume `db-data:/app/data` (preventing clean-machine directory mount collisions).
+  - `incubrix-mock`: Local mock server on port 8001 with health check.
+  - `minio`: Chainguard MinIO S3-compatible evidence storage on ports 9000-9001.
+  - `lemmy-postgres`: Dedicated PostgreSQL 15 alpine container.
+  - `lemmy-pictrs`: Official Lemmy image hosting service.
+  - `lemmy`: Official Lemmy 0.19.5 fediverse backend on port 8536.
+  - `lemmy-ui`: Official Lemmy UI 0.19.5 on port 1234.
+  - `ghost-mysql`: Dedicated MySQL 8.0 container.
+  - `ghost`: Official Ghost 5 alpine blog platform on port 2368.
+  - `incubrix-seed`: Automated seeder container executing `scripts/seed_local_instances.py`.
+- **Action**: Created `lemmy/lemmy.hjson` with local test configuration and credentials.
+- **Action**: Created `scripts/seed_local_instances.py` to auto-provision Lemmy admin & community and Ghost owner & API key, writing credentials to `outputs/shared_credentials.json` with fallback for offline environments.
+- **Action**: Updated `app/config.py` with dynamic file-watching helper `get_shared_credentials()`, `get_lemmy_token()`, and `get_ghost_api_key()` to hot-reload credentials without restart.
+- **Action**: Updated `app/connectors/lemmy.py` and `app/connectors/ghost.py` to use dynamic settings getters.
+- **Command**: `.venv\Scripts\python -m pytest tests/unit/test_config.py`
+  - **Result**: Passed 2 tests, verifying that credentials modified on disk after service start are picked up immediately.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 29 passed in 2.79s.

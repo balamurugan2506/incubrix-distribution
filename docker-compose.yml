@@ -8,22 +8,37 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - APP_ENV=production
-      - SIMULATION_MODE=true
-      - MOCK_SERVER_URL=http://incubrix-mock:8001
-      - DISCOURSE_BASE_URL=http://incubrix-mock:8001/discourse
-      - LEMMY_BASE_URL=http://incubrix-mock:8001/lemmy
-      - DEVTO_BASE_URL=http://incubrix-mock:8001/devto
-      - GHOST_BASE_URL=http://incubrix-mock:8001/ghost
-      - WEBHOOK_TEST_URL=http://incubrix-mock:8001/webhook
-      - STORAGE_BACKEND=local
-      - DATABASE_URL=sqlite+aiosqlite:///./incubrix.db
-      - INCUBRIX_WEBHOOK_SECRET=incubrix_dev_secret_key_change_in_prod_32bytes
+      APP_ENV: production
+      SIMULATION_MODE: "false"
+      SHARED_CREDENTIALS_FILE: /app/outputs/shared_credentials.json
+      MOCK_SERVER_URL: http://incubrix-mock:8001
+      DISCOURSE_BASE_URL: http://incubrix-mock:8001/discourse
+      LEMMY_BASE_URL: http://lemmy:8536
+      DEVTO_BASE_URL: http://incubrix-mock:8001/devto
+      GHOST_BASE_URL: http://ghost:2368
+      WEBHOOK_TEST_URL: http://incubrix-mock:8001/webhook
+      STORAGE_BACKEND: local
+      STORAGE_LOCAL_DIR: /app/outputs/storage
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minioadmin}
+      DATABASE_URL: sqlite+aiosqlite:////app/data/incubrix.db
+      SYNC_DATABASE_URL: sqlite:////app/data/incubrix.db
+      INCUBRIX_WEBHOOK_SECRET: ${INCUBRIX_WEBHOOK_SECRET:-incubrix_dev_secret_key_change_in_prod_32bytes}
     volumes:
       - ./outputs:/app/outputs
-      - ./incubrix.db:/app/incubrix.db
+      - db-data:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
     depends_on:
-      - incubrix-mock
+      incubrix-mock:
+        condition: service_started
+      minio:
+        condition: service_started
     networks:
       - incubrix-net
 
@@ -33,25 +48,150 @@ services:
       dockerfile: Dockerfile
     container_name: incubrix-mock
     restart: unless-stopped
-    command: ["uvicorn", "mock_platforms.server:mock_app", "--host", "0.0.0.0", "--port", "8001"]
+    command:
+      - uvicorn
+      - mock_platforms.server:mock_app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8001"
     ports:
       - "8001:8001"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8001/health || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
     networks:
       - incubrix-net
 
   minio:
-    image: minio/minio:RELEASE.2024-05-10T01-41-38Z
+    image: cgr.dev/chainguard/minio:latest
     container_name: incubrix-minio
     restart: unless-stopped
     ports:
       - "9000:9000"
       - "9001:9001"
     environment:
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
-    command: server /data --console-address ":9001"
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    command:
+      - server
+      - /data
+      - --console-address
+      - ":9001"
     volumes:
       - minio-data:/data
+    networks:
+      - incubrix-net
+
+  # Real Local Lemmy Stack
+  lemmy-postgres:
+    image: postgres:15-alpine
+    container_name: incubrix-lemmy-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lemmy
+      POSTGRES_PASSWORD: ${LEMMY_DB_PASSWORD:-lemmypassword}
+      POSTGRES_DB: lemmy
+    volumes:
+      - lemmy-postgres-data:/var/lib/postgresql/data
+    networks:
+      - incubrix-net
+
+  lemmy-pictrs:
+    image: asonix/pict-rs:0.5.0
+    container_name: incubrix-lemmy-pictrs
+    restart: unless-stopped
+    environment:
+      PICTRS__STORE__TYPE: filesystem
+      PICTRS__STORE__PATH: /mnt
+    volumes:
+      - lemmy-pictrs-data:/mnt
+    networks:
+      - incubrix-net
+
+  lemmy:
+    image: dessalines/lemmy:0.19.5
+    container_name: incubrix-lemmy
+    restart: unless-stopped
+    ports:
+      - "8536:8536"
+    volumes:
+      - ./lemmy/lemmy.hjson:/config/config.hjson:ro
+    depends_on:
+      - lemmy-postgres
+      - lemmy-pictrs
+    networks:
+      - incubrix-net
+
+  lemmy-ui:
+    image: dessalines/lemmy-ui:0.19.5
+    container_name: incubrix-lemmy-ui
+    restart: unless-stopped
+    ports:
+      - "1234:1234"
+    environment:
+      LEMMY_UI_LEMMY_INTERNAL_HOST: lemmy:8536
+      LEMMY_UI_LEMMY_EXTERNAL_HOST: localhost:8536
+      LEMMY_UI_HTTPS: "false"
+    depends_on:
+      - lemmy
+    networks:
+      - incubrix-net
+
+  # Real Local Ghost Stack
+  ghost-mysql:
+    image: mysql:8.0
+    container_name: incubrix-ghost-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${GHOST_MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ${GHOST_MYSQL_PASSWORD:-ghostpassword}
+    volumes:
+      - ghost-mysql-data:/var/lib/mysql
+    networks:
+      - incubrix-net
+
+  ghost:
+    image: ghost:5-alpine
+    container_name: incubrix-ghost
+    restart: unless-stopped
+    ports:
+      - "2368:2368"
+    environment:
+      database__client: mysql
+      database__connection__host: ghost-mysql
+      database__connection__user: ghost
+      database__connection__password: ${GHOST_MYSQL_PASSWORD:-ghostpassword}
+      database__connection__database: ghost
+      url: http://localhost:2368
+    depends_on:
+      - ghost-mysql
+    networks:
+      - incubrix-net
+
+  # Automated Seeder
+  incubrix-seed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: incubrix-seed
+    restart: "no"
+    command: ["python", "-m", "scripts.seed_local_instances"]
+    volumes:
+      - ./outputs:/app/outputs
+    environment:
+      SHARED_CREDENTIALS_FILE: /app/outputs/shared_credentials.json
+      LEMMY_BASE_URL: http://lemmy:8536
+      GHOST_BASE_URL: http://ghost:2368
+    depends_on:
+      - lemmy
+      - ghost
+      - incubrix-mock
     networks:
       - incubrix-net
 
@@ -61,3 +201,7 @@ networks:
 
 volumes:
   minio-data:
+  db-data:
+  lemmy-postgres-data:
+  lemmy-pictrs-data:
+  ghost-mysql-data:

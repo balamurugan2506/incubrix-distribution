@@ -21,10 +21,10 @@ class LemmyConnector(BaseConnector):
     key = "lemmy"
 
     def _get_base_url(self, connection: ConnectionSchema) -> str:
-        return (connection.base_url or settings.LEMMY_BASE_URL).rstrip("/")
+        return (connection.base_url or settings.get_lemmy_base_url()).rstrip("/")
 
     def _get_token(self, connection: ConnectionSchema) -> str:
-        token = connection.credentials.get("auth_token") or settings.LEMMY_AUTH_TOKEN
+        token = connection.credentials.get("auth_token") or settings.get_lemmy_token()
         if not token:
             raise ConnectorException(
                 code=ErrorCode.CONNECTION_AUTH_EXPIRED,

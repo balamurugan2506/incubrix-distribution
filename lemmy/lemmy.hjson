@@ -1,0 +1,23 @@
+{
+  setup: {
+    admin_username: "incubrix_admin"
+    admin_password: "IncubrixAdminPassword123!"
+    site_name: "IncuBrix Local Lemmy"
+  }
+  server: {
+    port: 8536
+    bind: "0.0.0.0"
+  }
+  database: {
+    host: "lemmy-postgres"
+    port: 5432
+    user: "lemmy"
+    password: "lemmypassword"
+    database: "lemmy"
+  }
+  pictrs: {
+    url: "http://lemmy-pictrs:8080"
+  }
+  hostname: "localhost:8536"
+  tls_enabled: false
+}

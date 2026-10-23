@@ -1,8 +1,8 @@
-"""Application configuration powered by Pydantic Settings."""
-
+import os
+import json
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
-from typing import Optional
+from typing import Optional, Dict, Any
 
 
 class Settings(BaseSettings):
@@ -52,6 +52,47 @@ class Settings(BaseSettings):
 
     # Manifests Directory
     MANIFESTS_DIR: str = "connectors/manifests"
+
+    # Shared Credentials File (written by seed step, dynamic re-read)
+    SHARED_CREDENTIALS_FILE: str = "./outputs/shared_credentials.json"
+
+    def get_shared_credentials(self) -> dict:
+        """Dynamically load credentials from SHARED_CREDENTIALS_FILE if present or changed."""
+        filepath = self.SHARED_CREDENTIALS_FILE
+        if not os.path.exists(filepath):
+            return getattr(self, "_cached_shared_creds", {})
+
+        try:
+            mtime = os.path.getmtime(filepath)
+            cached_mtime = getattr(self, "_cached_creds_mtime", 0.0)
+            if mtime > cached_mtime:
+                with open(filepath, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    setattr(self, "_cached_shared_creds", data)
+                    setattr(self, "_cached_creds_mtime", mtime)
+        except Exception:
+            pass
+        return getattr(self, "_cached_shared_creds", {})
+
+    def get_lemmy_token(self) -> str:
+        creds = self.get_shared_credentials()
+        return creds.get("lemmy_auth_token") or self.LEMMY_AUTH_TOKEN
+
+    def get_lemmy_base_url(self) -> str:
+        creds = self.get_shared_credentials()
+        return creds.get("lemmy_base_url") or self.LEMMY_BASE_URL
+
+    def get_lemmy_community_id(self) -> int:
+        creds = self.get_shared_credentials()
+        return creds.get("lemmy_community_id") or 1
+
+    def get_ghost_api_key(self) -> str:
+        creds = self.get_shared_credentials()
+        return creds.get("ghost_admin_api_key") or self.GHOST_ADMIN_API_KEY
+
+    def get_ghost_base_url(self) -> str:
+        creds = self.get_shared_credentials()
+        return creds.get("ghost_base_url") or self.GHOST_BASE_URL
 
 
 settings = Settings()

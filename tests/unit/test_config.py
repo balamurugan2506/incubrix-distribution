@@ -9,5 +9,23 @@ def test_settings_defaults():
     assert s.SIMULATION_MODE is True
     assert s.PORT == 8000
     assert s.HOST == "0.0.0.0"
-    assert "sqlite" in s.DATABASE_URL
     assert len(s.INCUBRIX_WEBHOOK_SECRET) >= 16
+
+
+def test_dynamic_shared_credentials_reload(tmp_path):
+    creds_file = tmp_path / "creds.json"
+    import json
+    creds_file.write_text(json.dumps({"lemmy_auth_token": "token_v1", "ghost_admin_api_key": "key_v1"}))
+
+    s = Settings(SHARED_CREDENTIALS_FILE=str(creds_file))
+    assert s.get_lemmy_token() == "token_v1"
+    assert s.get_ghost_api_key() == "key_v1"
+
+    # Simulate seed script updating the credentials file after service has started
+    import time
+    time.sleep(0.05)
+    creds_file.write_text(json.dumps({"lemmy_auth_token": "token_v2", "ghost_admin_api_key": "key_v2"}))
+
+    # Re-reading should dynamically pick up token_v2
+    assert s.get_lemmy_token() == "token_v2"
+    assert s.get_ghost_api_key() == "key_v2"

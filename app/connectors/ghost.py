@@ -23,10 +23,10 @@ class GhostConnector(BaseConnector):
     key = "ghost"
 
     def _get_base_url(self, connection: ConnectionSchema) -> str:
-        return (connection.base_url or settings.GHOST_BASE_URL).rstrip("/")
+        return (connection.base_url or settings.get_ghost_base_url()).rstrip("/")
 
     def _generate_ghost_token(self, connection: ConnectionSchema) -> str:
-        raw_key = connection.credentials.get("admin_api_key") or settings.GHOST_ADMIN_API_KEY
+        raw_key = connection.credentials.get("admin_api_key") or settings.get_ghost_api_key()
         if not raw_key:
             raise ConnectorException(
                 code=ErrorCode.CONNECTION_AUTH_EXPIRED,
