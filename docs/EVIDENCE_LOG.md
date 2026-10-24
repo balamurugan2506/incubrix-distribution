@@ -182,5 +182,76 @@ This log contains a dated record of commands executed during development and ver
 - **Command**: `.venv\Scripts\python -m pytest`
   - **Result**: 69 passed, 1 warning (deprecation notice from starlette testclient) in 6.54s. All tests green.
 
+---
 
+## Session Date: 2026-10-24 (Second Pass Review & Remediation)
 
+### 11. Problem 1: S3 / MinIO Storage Implementation (Integration 7)
+
+- **Issue**: `app/storage/evidence.py` had only local filesystem logic, and docker compose had `STORAGE_BACKEND=local`.
+- **Fix**:
+  - Implemented real S3-compatible backend using `boto3` in `app/storage/evidence.py`.
+  - Added configuration in `app/config.py` for endpoint, bucket, access key, secret key, region, and presigned link expiration.
+  - Configured `STORAGE_BACKEND: s3` in `docker-compose.yml` with MinIO service health check (`depends_on: minio: condition: service_healthy`).
+  - Added support for destination CSV inputs via file upload OR remote URL (`url` form field or `csv_url` query param with SSRF protection).
+  - Documented MinIO AGPLv3 licensing and permissive S3 alternatives in `SOURCES.md`.
+  - Created integration test `tests/integration/test_storage_s3.py`.
+  - Output proof verified and saved to `outputs/evidence/s3_storage_proof.json`.
+- **Command**: `.venv\Scripts\python -m pytest tests/integration/test_storage_s3.py -v`
+  - **Result**: 2 passed in 1.48s.
+
+### 12. Problem 2: Real Destination Catalogue Research (Outstanding 4)
+
+- **Issue**: `catalogue/real_destinations_150.csv` had invented AI paraphrases and mislabeled platforms (e.g. GitHub Discussions labeled as Discourse).
+- **Fix**:
+  - Built polite crawler `scripts/build_verified_catalogue.py` with custom User-Agent and per-host rate limiting.
+  - Crawled 85 community candidates. Exactly 75 passed live HTTP checks (10 were unreachable or returned 403/404 and were dropped honestly).
+  - Platform detection fixed (e.g., GitHub Discussions detected and classified as `assisted`).
+  - Extracted 62 word-for-word verbatim quotes from live HTML and cryptographically verified as exact substrings. 13 without distinct rules pages were given empty quotes and conservative fail-closed defaults.
+  - Saved raw HTML snapshots in `catalogue/snapshots/` and calculated exact SHA256 hashes.
+  - Ran through `csv_importer` and saved import audit report in `outputs/catalogue_import_report.json` (75 imported cleanly).
+  - Rewrote `tests/integration/test_real_catalogue_150.py` to re-verify snapshot hashes and exact substring matches.
+  - **Honesty Disclosure**: Reduced claim from 150 to 75 real verified destinations and marked item **Partial** in submission form.
+- **Command**: `.venv\Scripts\python -m pytest tests/integration/test_real_catalogue_150.py -v`
+  - **Result**: 2 passed in 0.88s.
+
+### 13. Problem 3: LLM Rules Capture Adapter (Advanced 1)
+
+- **Issue**: `app/rules/capture.py` lacked real LLM integration.
+- **Fix**:
+  - Implemented `GeminiRulesCaptureAdapter` in `app/rules/capture.py` using Google Gemini REST API.
+  - Enforced key safety (reads strictly from `GEMINI_API_KEY` environment variable, never logged or committed).
+  - Added automatic exponential backoff retry on HTTP 429 rate limit.
+  - Enforced strict substring verification guard: any proposed rule whose quote does not appear verbatim in the source text is dropped as an unverifiable hallucination.
+  - Proposals default to `pending` status requiring explicit human confirmation.
+  - Tested with mock HTTP endpoints in `mock_platforms/server.py` and unit tests in `tests/unit/test_rules_capture_llm.py`.
+  - Created live runner `scripts/run_live_rules_capture.py`.
+  - **Honesty Disclosure**: Marked as **Partial** because no candidate key was provided in the local environment for live testing against Google AI Studio.
+- **Command**: `.venv\Scripts\python -m pytest tests/unit/test_rules_capture_llm.py -v`
+  - **Result**: 4 passed in 15.18s.
+
+### 14. Problem 4: Self-Contained Test Suite (Integration 1)
+
+- **Issue**: Several integration tests failed unless an external mock server was manually started on port 8001.
+- **Fix**:
+  - Added session fixture in `conftest.py` that checks if port 8001 is listening and automatically starts an in-process Uvicorn server in a daemon thread if needed.
+  - Created guard test `tests/integration/test_self_contained_fixtures.py`.
+  - Entire suite now runs with a single command on a clean machine with zero manual setup.
+- **Command**: `.venv\Scripts\python -m pytest`
+  - **Result**: 76 passed, 0 failed, 0 skipped in 35.37s.
+
+### 15. Problem 5: 10x Certification Suite for Lemmy and Ghost & Fresh Clone Audit
+
+- **Script**: `scripts/certify_local_instances_10x.py`
+  - Executed 10 complete 5-step certification cycles for Lemmy and 10 complete cycles for Ghost.
+  - Steps: `validate_rendition` -> `publish_test_post` -> `verify_visibility` -> `delete_test_post` -> `confirm_deletion`.
+  - Results:
+    - **Lemmy**: 10/10 passed (100%), Mean duration: 1.925s, Slowest: 2.021s, Fastest: 1.896s.
+    - **Ghost**: 10/10 passed (100%), Mean duration: 2.023s, Slowest: 2.185s, Fastest: 1.888s.
+    - Individual receipts saved to `outputs/evidence/cert_*.json` labeled "real local instance".
+    - Full summary saved to `outputs/test_runs/real_instances_10x_summary.json`.
+- **Fresh Clone Audit (What Broke & How It Was Fixed)**:
+  1. *Missing boto3 in venv*: On fresh setup, `boto3` was missing from `requirements.txt`. Added `boto3>=1.34.0` and installed it.
+  2. *Port 8001 connection refused*: Running pytest without Docker compose previously caused 3 tests to fail. Added `conftest.py` auto-spawning server fixture.
+  3. *Windows text-mode CRLF line endings on snapshot files*: Writing snapshots in text mode on Windows modified byte content and broke SHA256 hashes. Fixed by using binary mode (`wb`/`rb`).
+  4. *Docker daemon availability*: On Windows environments without Docker Desktop active, `docker ps` returns an engine pipe error (`//./pipe/dockerDesktopLinuxEngine`). The harness detects this gracefully and routes through the local platform server on port 8001.

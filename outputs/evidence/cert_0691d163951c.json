@@ -1,0 +1,33 @@
+{
+  "evidence_id": "cert_0691d163951c",
+  "created_at": "2026-10-24T11:14:15.985445+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_0691d163951c",
+  "payload": {
+    "certification_id": "cert_0691d163951c",
+    "destination_id": "dest_recert_8a96ca86",
+    "destination_name": "Recertification Test Destination",
+    "connector_key": "devto",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "failed",
+    "passed": false,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-24T11:14:15.985445+00:00",
+    "completed_at": "2026-10-24T11:14:15.985445+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:14:15.985445+00:00",
+        "details": {
+          "ok": true
+        }
+      }
+    ],
+    "error_message": "Dev.to unexpected error (404): {\"detail\":\"Not Found\"}"
+  }
+}

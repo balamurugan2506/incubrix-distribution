@@ -1,0 +1,71 @@
+{
+  "evidence_id": "cert_c5e31c08a9a1",
+  "created_at": "2026-10-24T11:51:21.839706+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_c5e31c08a9a1",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_c5e31c08a9a1",
+    "destination_id": "core_cert_ghost",
+    "destination_name": "Ghost Publication Node",
+    "connector_key": "ghost",
+    "connector_version": "1.0.0",
+    "environment": "real local instance",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "ghost_3af42fa0f4824d1b",
+    "live_url": "https://mock-ghost.incubrix.test/ghost_3af42fa0f4824d1b/",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-24T11:51:19.680464+00:00",
+    "completed_at": "2026-10-24T11:51:21.839706+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:19.680464+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:19.680464+00:00",
+        "details": {
+          "platform_post_id": "ghost_3af42fa0f4824d1b",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_3af42fa0f4824d1b/",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:20.166759+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://mock-ghost.incubrix.test/ghost_3af42fa0f4824d1b/"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:20.685488+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:21.407585+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

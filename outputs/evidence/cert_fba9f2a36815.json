@@ -1,0 +1,71 @@
+{
+  "evidence_id": "cert_fba9f2a36815",
+  "created_at": "2026-10-24T11:51:17.770982+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_fba9f2a36815",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_fba9f2a36815",
+    "destination_id": "core_cert_lemmy",
+    "destination_name": "Lemmy Technology Community",
+    "connector_key": "lemmy",
+    "connector_version": "1.0.0",
+    "environment": "real local instance",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "16863",
+    "live_url": "http://localhost:8001/lemmy/post/16863",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-24T11:51:15.879594+00:00",
+    "completed_at": "2026-10-24T11:51:17.770982+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:15.880607+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:15.880607+00:00",
+        "details": {
+          "platform_post_id": "16863",
+          "live_url": "http://localhost:8001/lemmy/post/16863",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:16.329716+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "http://localhost:8001/lemmy/post/16863"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:16.807304+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:51:17.292162+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

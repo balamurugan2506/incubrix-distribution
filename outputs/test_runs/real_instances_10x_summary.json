@@ -1,0 +1,257 @@
+{
+  "timestamp": "2026-10-24T11:51:00.365272+00:00",
+  "iterations_target": 10,
+  "environment_label": "real local instance",
+  "platforms": {
+    "lemmy": {
+      "name": "Lemmy Technology Community",
+      "connector_key": "lemmy",
+      "target_url": "http://localhost:8001/lemmy",
+      "transport_note": "Local mock platform :8001",
+      "environment_label": "real local instance",
+      "total_runs": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "mean_time_seconds": 1.9254,
+      "slowest_time_seconds": 2.0208,
+      "fastest_time_seconds": 1.8959,
+      "runs": [
+        {
+          "iteration": 1,
+          "certification_id": "cert_c738fdf37435",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "14003",
+          "live_url": "http://localhost:8001/lemmy/post/14003",
+          "duration_seconds": 2.0208,
+          "evidence_file": "outputs\\evidence\\cert_c738fdf37435.json"
+        },
+        {
+          "iteration": 2,
+          "certification_id": "cert_ab3451908283",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "16940",
+          "live_url": "http://localhost:8001/lemmy/post/16940",
+          "duration_seconds": 1.9516,
+          "evidence_file": "outputs\\evidence\\cert_ab3451908283.json"
+        },
+        {
+          "iteration": 3,
+          "certification_id": "cert_4979a8eacb5c",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "54169",
+          "live_url": "http://localhost:8001/lemmy/post/54169",
+          "duration_seconds": 1.9179,
+          "evidence_file": "outputs\\evidence\\cert_4979a8eacb5c.json"
+        },
+        {
+          "iteration": 4,
+          "certification_id": "cert_cd47a07f003b",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "24410",
+          "live_url": "http://localhost:8001/lemmy/post/24410",
+          "duration_seconds": 1.932,
+          "evidence_file": "outputs\\evidence\\cert_cd47a07f003b.json"
+        },
+        {
+          "iteration": 5,
+          "certification_id": "cert_f12081fe3c45",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "74727",
+          "live_url": "http://localhost:8001/lemmy/post/74727",
+          "duration_seconds": 1.906,
+          "evidence_file": "outputs\\evidence\\cert_f12081fe3c45.json"
+        },
+        {
+          "iteration": 6,
+          "certification_id": "cert_4cd0426237b7",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "49541",
+          "live_url": "http://localhost:8001/lemmy/post/49541",
+          "duration_seconds": 1.9082,
+          "evidence_file": "outputs\\evidence\\cert_4cd0426237b7.json"
+        },
+        {
+          "iteration": 7,
+          "certification_id": "cert_6f4d13ff5ac7",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "27209",
+          "live_url": "http://localhost:8001/lemmy/post/27209",
+          "duration_seconds": 1.9016,
+          "evidence_file": "outputs\\evidence\\cert_6f4d13ff5ac7.json"
+        },
+        {
+          "iteration": 8,
+          "certification_id": "cert_312e4d669b4d",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "93275",
+          "live_url": "http://localhost:8001/lemmy/post/93275",
+          "duration_seconds": 1.9165,
+          "evidence_file": "outputs\\evidence\\cert_312e4d669b4d.json"
+        },
+        {
+          "iteration": 9,
+          "certification_id": "cert_fba9f2a36815",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "16863",
+          "live_url": "http://localhost:8001/lemmy/post/16863",
+          "duration_seconds": 1.9031,
+          "evidence_file": "outputs\\evidence\\cert_fba9f2a36815.json"
+        },
+        {
+          "iteration": 10,
+          "certification_id": "cert_ea4ca74fd237",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "23309",
+          "live_url": "http://localhost:8001/lemmy/post/23309",
+          "duration_seconds": 1.8959,
+          "evidence_file": "outputs\\evidence\\cert_ea4ca74fd237.json"
+        }
+      ]
+    },
+    "ghost": {
+      "name": "Ghost Publication Node",
+      "connector_key": "ghost",
+      "target_url": "http://localhost:8001/ghost",
+      "transport_note": "Local mock platform :8001",
+      "environment_label": "real local instance",
+      "total_runs": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "mean_time_seconds": 2.0226,
+      "slowest_time_seconds": 2.1846,
+      "fastest_time_seconds": 1.8877,
+      "runs": [
+        {
+          "iteration": 1,
+          "certification_id": "cert_c5e31c08a9a1",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_3af42fa0f4824d1b",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_3af42fa0f4824d1b/",
+          "duration_seconds": 2.1739,
+          "evidence_file": "outputs\\evidence\\cert_c5e31c08a9a1.json"
+        },
+        {
+          "iteration": 2,
+          "certification_id": "cert_5f1a039cd1d6",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_b459317a7ed849d2",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_b459317a7ed849d2/",
+          "duration_seconds": 2.1846,
+          "evidence_file": "outputs\\evidence\\cert_5f1a039cd1d6.json"
+        },
+        {
+          "iteration": 3,
+          "certification_id": "cert_3d3d45f9f854",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_26992607f52c4b1a",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_26992607f52c4b1a/",
+          "duration_seconds": 1.9244,
+          "evidence_file": "outputs\\evidence\\cert_3d3d45f9f854.json"
+        },
+        {
+          "iteration": 4,
+          "certification_id": "cert_10530f6a48fd",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_5c42c151b7c44c1d",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_5c42c151b7c44c1d/",
+          "duration_seconds": 1.8877,
+          "evidence_file": "outputs\\evidence\\cert_10530f6a48fd.json"
+        },
+        {
+          "iteration": 5,
+          "certification_id": "cert_2b351447a92c",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_e85a40478ae54d48",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_e85a40478ae54d48/",
+          "duration_seconds": 2.0207,
+          "evidence_file": "outputs\\evidence\\cert_2b351447a92c.json"
+        },
+        {
+          "iteration": 6,
+          "certification_id": "cert_8139b656b58d",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_d36fa4c672fb4233",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_d36fa4c672fb4233/",
+          "duration_seconds": 1.9366,
+          "evidence_file": "outputs\\evidence\\cert_8139b656b58d.json"
+        },
+        {
+          "iteration": 7,
+          "certification_id": "cert_43188c848452",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_cc49c45e725b4f15",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_cc49c45e725b4f15/",
+          "duration_seconds": 2.0813,
+          "evidence_file": "outputs\\evidence\\cert_43188c848452.json"
+        },
+        {
+          "iteration": 8,
+          "certification_id": "cert_6810d1e64c37",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_b638d3ee36c24162",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_b638d3ee36c24162/",
+          "duration_seconds": 2.0709,
+          "evidence_file": "outputs\\evidence\\cert_6810d1e64c37.json"
+        },
+        {
+          "iteration": 9,
+          "certification_id": "cert_17021c75a8bc",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_8ca978acdbc34fae",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_8ca978acdbc34fae/",
+          "duration_seconds": 2.0244,
+          "evidence_file": "outputs\\evidence\\cert_17021c75a8bc.json"
+        },
+        {
+          "iteration": 10,
+          "certification_id": "cert_b92d2fae7af4",
+          "verdict": "passed",
+          "passed": true,
+          "deletion_confirmed": true,
+          "platform_post_id": "ghost_1656845265a74958",
+          "live_url": "https://mock-ghost.incubrix.test/ghost_1656845265a74958/",
+          "duration_seconds": 1.9213,
+          "evidence_file": "outputs\\evidence\\cert_b92d2fae7af4.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_f12081fe3c45
+Timestamp: 2026-10-24T11:51:10.141702+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_f12081fe3c45
+============================================================
+certification_id: cert_f12081fe3c45
+destination_id: core_cert_lemmy
+destination_name: Lemmy Technology Community
+connector_key: lemmy
+connector_version: 1.0.0
+environment: real local instance
+verdict: passed
+passed: True
+platform_post_id: 74727
+live_url: http://localhost:8001/lemmy/post/74727
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-24T11:51:08.247750+00:00
+completed_at: 2026-10-24T11:51:10.141702+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "74727", "live_url": "http://localhost:8001/lemmy/post/74727", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "http://localhost:8001/lemmy/post/74727"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

@@ -1,0 +1,35 @@
+{
+  "evidence_id": "cert_01f87c2d4c80",
+  "created_at": "2026-10-24T11:47:23.728871+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_01f87c2d4c80",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_01f87c2d4c80",
+    "destination_id": "dest_recert_0ba0ba3e",
+    "destination_name": "Recertification Test Destination",
+    "connector_key": "devto",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "failed",
+    "passed": false,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-24T11:47:23.722523+00:00",
+    "completed_at": "2026-10-24T11:47:23.728871+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:47:23.722523+00:00",
+        "details": {
+          "ok": true
+        }
+      }
+    ],
+    "error_message": "Dev.to unexpected error (405): {\"detail\":\"Method Not Allowed\"}"
+  }
+}

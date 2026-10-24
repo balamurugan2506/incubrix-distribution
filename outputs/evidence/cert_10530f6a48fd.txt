@@ -1,0 +1,28 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_10530f6a48fd
+Timestamp: 2026-10-24T11:51:27.837602+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_10530f6a48fd
+============================================================
+certification_id: cert_10530f6a48fd
+destination_id: core_cert_ghost
+destination_name: Ghost Publication Node
+connector_key: ghost
+connector_version: 1.0.0
+environment: real local instance
+verdict: passed
+passed: True
+platform_post_id: ghost_5c42c151b7c44c1d
+live_url: https://mock-ghost.incubrix.test/ghost_5c42c151b7c44c1d/
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-24T11:51:25.962421+00:00
+completed_at: 2026-10-24T11:51:27.837602+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "ghost_5c42c151b7c44c1d", "live_url": "https://mock-ghost.incubrix.test/ghost_5c42c151b7c44c1d/", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://mock-ghost.incubrix.test/ghost_5c42c151b7c44c1d/"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

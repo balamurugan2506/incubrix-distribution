@@ -1,0 +1,71 @@
+{
+  "evidence_id": "cert_b04a6d125274",
+  "created_at": "2026-10-24T11:47:14.233904+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_b04a6d125274",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_b04a6d125274",
+    "destination_id": "dest_868a39c1",
+    "destination_name": "Mailchimp Newsletter Campaign (Drafts)",
+    "connector_key": "mailchimp",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "mc_7daa0ec6",
+    "live_url": "https://mailchimp.com/campaigns/mc_7daa0ec6",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-24T11:47:14.204189+00:00",
+    "completed_at": "2026-10-24T11:47:14.233904+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:47:14.204189+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:47:14.204189+00:00",
+        "details": {
+          "platform_post_id": "mc_7daa0ec6",
+          "live_url": "https://mailchimp.com/campaigns/mc_7daa0ec6",
+          "status": "draft"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:47:14.215998+00:00",
+        "details": {
+          "status": "draft",
+          "verified_live_url": "https://mailchimp.com/campaigns/mc_7daa0ec6"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:47:14.221973+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-24T11:47:14.225261+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

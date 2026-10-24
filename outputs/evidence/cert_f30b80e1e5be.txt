@@ -1,0 +1,28 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_f30b80e1e5be
+Timestamp: 2026-10-24T11:47:15.300254+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_f30b80e1e5be
+============================================================
+certification_id: cert_f30b80e1e5be
+destination_id: cert_devto_e154b816
+destination_name: Dev.to Certification Hub
+connector_key: devto
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: 166860
+live_url: https://dev.to/mock_user/166860
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-24T11:47:15.296718+00:00
+completed_at: 2026-10-24T11:47:15.300254+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "166860", "live_url": "https://dev.to/mock_user/166860", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://dev.to/mock_user/166860"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}
