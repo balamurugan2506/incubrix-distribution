@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - Julia Programming Language</title>
+    <meta name="description" content="The Julia programming language forum: discuss usage, development, packages, and community.">
+    <meta name="generator" content="Discourse 2026.10.0-latest - https://github.com/discourse/discourse version def5934727ee2bb41556ac40bab690acf1e62beb">
+<link rel="icon" type="image/png" href="https://global.discourse-cdn.com/julialang/optimized/3X/5/2/52e282d46eadd4022c458057bb740061d8efad72_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://global.discourse-cdn.com/julialang/optimized/3X/5/2/52e282d46eadd4022c458057bb740061d8efad72_2_180x180.png">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111111">
+
+<meta name="color-scheme" content="light dark">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://discourse.julialang.org/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="A0Jo9sts0ivO1hPNgY4c2Qm3dbOHyHsj">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://discourse.julialang.org/opensearch.xml" title="Julia Programming Language Search">
+
+    
+    <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/color_definitions_light-default_-1_53_44b40c8606d633715707f1edaed160c75650a32a.css?__ws=discourse.julialang.org" media="(prefers-color-scheme: light)" rel="stylesheet" class="light-scheme"/><link href="https://sea2.discourse-cdn.com/julialang/stylesheets/color_definitions_dark-scheme_3_53_f3047f9d9be782d8f6eee518af8ae2a4c0047bb0.css?__ws=discourse.julialang.org" media="(prefers-color-scheme: dark)" rel="stylesheet" class="dark-scheme" data-scheme-id="3"/>
+
+<link href="https://sea2.discourse-cdn.com/julialang/stylesheets/common_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/boards_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="boards"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/chat_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="chat"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/checklist_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-ai_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-ai"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-akismet_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-akismet"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-assign_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-assign"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-cakeday_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-cakeday"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-data-explorer_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-details_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-events_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-events"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-github_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-github"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-graphviz_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-graphviz"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-lazy-videos_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-local-dates_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-math_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-math"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-narrative-bot_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-policy_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-policy"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-presence_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-solved_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-templates_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-topic-voting_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-topic-voting"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-user-notes_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-user-notes"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-workflows_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="discourse-workflows"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/footnote_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="footnote"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/hosted-site_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/poll_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/spoiler-alert_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/chat_mobile_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width < 40rem)" rel="stylesheet" data-target="chat_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-ai_mobile_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width < 40rem)" rel="stylesheet" data-target="discourse-ai_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-assign_mobile_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width < 40rem)" rel="stylesheet" data-target="discourse-assign_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-events_mobile_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width < 40rem)" rel="stylesheet" data-target="discourse-events_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/chat_desktop_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width >= 40rem)" rel="stylesheet" data-target="chat_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-ai_desktop_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-ai_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/discourse-events_desktop_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-events_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/poll_desktop_5a48b3616740a78e5ca0da0b5ae8cf87d6c2b3e8.css?__ws=discourse.julialang.org" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/common_theme_46_473a488e9e6bfdbaf6ac8a0253885d0367176627.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="46" data-theme-name="discotoc"/>
+<link href="https://sea2.discourse-cdn.com/julialang/stylesheets/common_theme_40_b4aabd9e834b296f7c3bb801749a8777a5dbd611.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="40" data-theme-name="easy footer"/>
+<link href="https://sea2.discourse-cdn.com/julialang/stylesheets/common_theme_51_f2f509bd87b506143684e4002df92e97ab132d74.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="51" data-theme-name="juliamonofonts"/>
+<link href="https://sea2.discourse-cdn.com/julialang/stylesheets/common_theme_44_149b268fe2907d69f52604455df40920502a579d.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="44" data-theme-name="wikified posts"/>
+<link href="https://sea2.discourse-cdn.com/julialang/stylesheets/common_theme_53_99c5049ebbe829b66a2c2e63828b8decf4242b6c.css?__ws=discourse.julialang.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="53" data-theme-name="julia default theme"/>
+  
+  <link href="https://sea2.discourse-cdn.com/julialang/stylesheets/desktop_theme_53_d9dd8ce364c25ea3ce4602ece9a0b4deed3d4173.css?__ws=discourse.julialang.org" media="(width >= 40rem)" rel="stylesheet" data-target="desktop_theme" data-theme-id="53" data-theme-name="julia default theme"/>
+
+    
+    <meta id="data-ga-universal-analytics" data-tracking-code="UA-28835595-5" data-json="{&quot;cookieDomain&quot;:&quot;auto&quot;}" data-auto-link-domains="">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28835595-5" nonce="s6BsI45Zq6q2exiazHXiu1UFe"></script>
+  <script defer src="https://global.discourse-cdn.com/julialang/assets/js/google-universal-analytics-v4-43cb071f.js" data-discourse-entrypoint="js/google-universal-analytics-v4" nonce="s6BsI45Zq6q2exiazHXiu1UFe"></script>
+
+
+        <meta property="og:site_name" content="Julia Programming Language" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://global.discourse-cdn.com/julialang/original/3X/4/d/4d76a1d8062ed9397f2f00f22abdd69926b51785.png" />
+<meta property="og:image" content="https://global.discourse-cdn.com/julialang/original/3X/4/d/4d76a1d8062ed9397f2f00f22abdd69926b51785.png" />
+<meta property="og:url" content="https://discourse.julialang.org/guidelines" />
+<meta name="twitter:url" content="https://discourse.julialang.org/guidelines" />
+<meta property="og:title" content="Guidelines - Julia Programming Language" />
+<meta name="twitter:title" content="Guidelines - Julia Programming Language" />
+<meta property="og:description" content="The Julia programming language forum: discuss usage, development, packages, and community." />
+<meta name="twitter:description" content="The Julia programming language forum: discuss usage, development, packages, and community." />
+
+    
+    
+  </head>
+  <body class="crawler ">
+    
+    <header>
+  <a href="/">Julia Programming Language</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2025-12-02'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+      <li class='nav-item-tos'><a href='/tos' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='/privacy' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <p><a name="civilized"></a></p>
+<h2><a name="p-6-this-is-a-respectful-place-for-public-discussioncivilized-1" class="anchor" href="#p-6-this-is-a-respectful-place-for-public-discussioncivilized-1" aria-label="Heading link"></a><a href="#civilized">This is a Respectful Place for Public Discussion</a></h2>
+<p>The Julia community is committed to maintaining a welcoming, respectful, and constructive environment. We expect the <a href="http://julialang.org/community/standards/">Julia Community Standards</a> to be observed and upheld by all participants.</p>
+<p>The additional guidelines here are not hard and fast rules; they are merely aids to the human judgment of our community.</p>
+<p>Please treat this discussion forum with the same respect you would a public park.  We, too, are building a shared community resource together — a place to share skills, knowledge, and interests through ongoing conversation. Use these guidelines to keep this a friendly, well-lighted place for respectful public discourse.</p>
+<p><a name="improve"></a></p>
+<h2><a name="p-6-improve-the-discussionimprove-2" class="anchor" href="#p-6-improve-the-discussionimprove-2" aria-label="Heading link"></a><a href="#improve">Improve the Discussion</a></h2>
+<p>Help us make this a great place for discussion by always working to improve the discussion in some way, however small. If you are not sure your post adds to the conversation, think over what you want to say and try again later.</p>
+<p>The topics discussed here matter to us, and we want you to act as if they matter to you, too. Be respectful of the topics and the people discussing them, even if you disagree with some of what is being said.</p>
+<p>One way to improve the discussion is by discovering ones that are already happening. Please spend some time browsing the topics here before replying or starting your own, and you’ll have a better chance of meeting others who share your interests.</p>
+<p><a name="agreeable"></a></p>
+<h2><a name="p-6-be-agreeable-even-when-you-disagreeagreeable-3" class="anchor" href="#p-6-be-agreeable-even-when-you-disagreeagreeable-3" aria-label="Heading link"></a><a href="#agreeable">Be Agreeable, Even When You Disagree</a></h2>
+<p>You may wish to respond to something by disagreeing with it. That’s fine. But, remember to <em>criticize ideas, not people</em>. Please avoid:</p>
+<ul>
+<li>Name-calling.</li>
+<li>Ad hominem attacks.</li>
+<li>Responding to a post’s tone instead of its actual content.</li>
+<li>Knee-jerk contradiction.</li>
+</ul>
+<p>Instead, provide reasoned counter-arguments that improve the conversation.</p>
+<p><a name="participate"></a></p>
+<h2><a name="p-6-your-participation-countsparticipate-4" class="anchor" href="#p-6-your-participation-countsparticipate-4" aria-label="Heading link"></a><a href="#participate">Your Participation Counts</a></h2>
+<p>The conversations we have here set the tone for everyone. Help us influence the future of this community by choosing to engage in discussions that make this forum an interesting place to be — and avoiding those that do not.</p>
+<p>Discourse provides tools that enable the community to collectively identify the best (and worst) contributions: favorites, bookmarks, likes, flags, replies, edits, and so forth. Use these tools to improve your own experience, and everyone else’s, too.</p>
+<p>Let’s try to leave our park better than we found it.</p>
+<p><a name="flag-problems"></a></p>
+<h2><a name="p-6-if-you-see-a-problem-flag-itflag-problems-5" class="anchor" href="#p-6-if-you-see-a-problem-flag-itflag-problems-5" aria-label="Heading link"></a><a href="#flag-problems">If You See a Problem, Flag It</a></h2>
+<p>Moderators have special authority; they are responsible for this forum. But so are you. With your help, moderators can be community facilitators, not just janitors or police.</p>
+<p>When you see bad behavior, don’t reply. It encourages the bad behavior by acknowledging it, consumes your energy, and wastes everyone’s time. <em>Just flag it</em>. If enough flags accrue, action will be taken, either automatically or by moderator intervention.</p>
+<p>In order to maintain our community, moderators reserve the right to remove any content and any user account for any reason at any time. Moderators do not preview new posts in any way; the moderators and site operators take no responsibility for any content posted by the community.</p>
+<p><a name="be-civil"></a></p>
+<h2><a name="p-6-always-be-civilbe-civil-6" class="anchor" href="#p-6-always-be-civilbe-civil-6" aria-label="Heading link"></a><a href="#be-civil">Always Be Civil</a></h2>
+<p>Nothing sabotages a healthy conversation like rudeness:</p>
+<ul>
+<li>Be civil. Don’t post anything that a reasonable person would consider offensive, abusive, or hate speech.</li>
+<li>Keep it clean. Don’t post anything obscene or sexually explicit.</li>
+<li>Respect each other. Don’t harass or grief anyone, impersonate people, or expose their private information.</li>
+<li>Respect our forum. Don’t post spam or otherwise vandalize the forum.</li>
+</ul>
+<p>These are not concrete terms with precise definitions — avoid even the <em>appearance</em> of any of these things. If you’re unsure, ask yourself how you would feel if your post was featured on the front page of the New York Times.</p>
+<p>This is a public forum, and search engines index these discussions. Keep the language, links, and images safe for family and friends.</p>
+<p><a name="keep-tidy"></a></p>
+<h2><a name="p-6-keep-it-tidykeep-tidy-7" class="anchor" href="#p-6-keep-it-tidykeep-tidy-7" aria-label="Heading link"></a><a href="#keep-tidy">Keep It Tidy</a></h2>
+<p>Make the effort to put things in the right place, so that we can spend more time discussing and less cleaning up. So:</p>
+<ul>
+<li>Don’t start a topic in the wrong category.</li>
+<li>Don’t cross-post the same thing in multiple topics.</li>
+<li>Don’t post no-content replies.</li>
+<li>Don’t post generative AI outputs (but <em>direct human language translation</em> and minor editing is ok).</li>
+<li>Don’t divert a topic by changing it midstream.</li>
+<li>Don’t sign your posts — every post has your profile information attached to it.</li>
+</ul>
+<p>Rather than posting “+1” or “Agreed”, use the Like button. Rather than taking an existing topic in a radically different direction, use Reply as a Linked Topic.</p>
+<p><a name="stealing"></a></p>
+<h2><a name="p-6-post-only-your-own-stuffstealing-8" class="anchor" href="#p-6-post-only-your-own-stuffstealing-8" aria-label="Heading link"></a><a href="#stealing">Post Only Your Own Stuff</a></h2>
+<p>You may not post anything digital that belongs to someone else without permission. You may not post descriptions of, links to, or methods for stealing someone’s intellectual property (software, video, audio, images), or for breaking any other law.</p>
+<p><a name="power"></a></p>
+<h2><a name="p-6-powered-by-youpower-9" class="anchor" href="#p-6-powered-by-youpower-9" aria-label="Heading link"></a><a href="#power">Powered by You</a></h2>
+<p>This site is operated by your <a href="/about">friendly local staff</a> and <em>you</em>, the community. If you have any further questions about how things should work here, open a new topic in the <a href="/c/site-feedback">site feedback category</a> and let’s discuss! If there’s a critical or urgent issue that can’t be handled by a meta topic or flag, contact us via the <a href="/about">staff page</a>.</p>
+<p><a name="tos"></a></p>
+<h2><a name="p-6-terms-of-servicetos-10" class="anchor" href="#p-6-terms-of-servicetos-10" aria-label="Heading link"></a><a href="#tos">Terms of Service</a></h2>
+<p>Yes, legalese is boring, but we must protect ourselves – and by extension, you and your data – against unfriendly folks. We have a <a href="/tos">Terms of Service</a> describing your (and our) behavior and rights related to content, privacy, and laws. To use this service, you must agree to abide by our <a href="/tos">TOS</a>.</p>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/tos' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/privacy' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    
+    
+  </body>
+  
+</html>

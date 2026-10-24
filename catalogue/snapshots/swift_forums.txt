@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - Swift Forums</title>
+    <meta name="description" content="Swift Forums">
+    <meta name="generator" content="Discourse 2026.10.0-latest - https://github.com/discourse/discourse version ed3278ea76b63c78a6e0979c4a9bb2a9ac6f4255">
+<link rel="icon" type="image/vnd.microsoft.icon" href="https://global.discourse-cdn.com/swift/optimized/2X/6/610ef4c64700c53fad713dda8c9563c461d82e41_2_32x32.ico">
+<link rel="apple-touch-icon" type="image/png" href="https://global.discourse-cdn.com/swift/optimized/1X/0a90dde98a223f5841eeca49d89dc9f57592e8d6_2_180x180.png">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111111">
+
+<meta name="color-scheme" content="light dark">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://forums.swift.org/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="dpOjHIBKdO9qOgwIq42Vkw5P7MX4tAzP">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://forums.swift.org/opensearch.xml" title="Swift Forums Search">
+
+    
+    <link href="https://sea2.discourse-cdn.com/swift/stylesheets/color_definitions_light-default_-1_6_fcde05e4de3c3019dbae8045d07801dabe0c654e.css?__ws=forums.swift.org" media="(prefers-color-scheme: light)" rel="stylesheet" class="light-scheme"/><link href="https://sea2.discourse-cdn.com/swift/stylesheets/color_definitions_dark_1_6_d26da6bec4594173ef051391377a2db4c3784e6d.css?__ws=forums.swift.org" media="(prefers-color-scheme: dark)" rel="stylesheet" class="dark-scheme" data-scheme-id="1"/>
+
+<link href="https://sea2.discourse-cdn.com/swift/stylesheets/common_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/checklist_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-akismet_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-akismet"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-data-explorer_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-details_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-github_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-github"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-lazy-videos_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-local-dates_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-policy_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-policy"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-presence_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-reactions_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-reactions"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-solved_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-templates_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-topic-voting_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="discourse-topic-voting"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/footnote_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="footnote"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/hosted-site_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/poll_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/spoiler-alert_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-reactions_mobile_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="(width < 40rem)" rel="stylesheet" data-target="discourse-reactions_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/discourse-reactions_desktop_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-reactions_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/poll_desktop_e5600313553ad88fc08d134b851668bbf23d84c8.css?__ws=forums.swift.org" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sea2.discourse-cdn.com/swift/stylesheets/common_theme_7_86bc6c17fd49e0e695d0649d72efb5cc5fe50df2.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="7" data-theme-name="discourse mermaid"/>
+<link href="https://sea2.discourse-cdn.com/swift/stylesheets/common_theme_6_c06398bc58188b0bf769be2fad292952b8a8f629.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="6" data-theme-name="discourse-swift-forums-theme"/>
+<link href="https://sea2.discourse-cdn.com/swift/stylesheets/common_theme_5_bd32ce7ee87636ede220993c5107d95fcb7d38d7.css?__ws=forums.swift.org" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="5" data-theme-name="swift header"/>
+  
+  
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+        <meta property="og:site_name" content="Swift Forums" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://global.discourse-cdn.com/swift/original/3X/a/8/a897e24d0ae9f4c1db17724959bb441d87d6c778.png" />
+<meta property="og:image" content="https://global.discourse-cdn.com/swift/original/1X/0a90dde98a223f5841eeca49d89dc9f57592e8d6.png" />
+<meta property="og:url" content="https://forums.swift.org/guidelines" />
+<meta name="twitter:url" content="https://forums.swift.org/guidelines" />
+<meta property="og:title" content="Guidelines - Swift Forums" />
+<meta name="twitter:title" content="Guidelines - Swift Forums" />
+<meta property="og:description" content="Swift Forums" />
+<meta name="twitter:description" content="Swift Forums" />
+
+    
+    
+  </head>
+  <body class="crawler ">
+    
+    <header>
+  <a href="/">Swift Forums</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2018-01-22'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+      <li class='nav-item-tos'><a href='/tos' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='https://www.apple.com/legal/privacy/en-ww/' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <p><strong>Code of Conduct</strong><br>
+All forum activity is expected to conform to the <a href="https://swift.org/community/#code-of-conduct">Swift Code of Conduct</a>.  Violations can be anonymously flagged via the forum for review by administrators using the flag icon on a post.<br>
+<img src="https://global.discourse-cdn.com/swift/original/1X/1d2b497120934435f8e18be49666d7f50d80889d.png" alt="replybar" data-base62-sha1="4a2AtESCQRgTfF1Z4Ja9NXEHL1r" width="680" height="118"></p>
+<p><strong>Accounts</strong><br>
+Accounts can be set up using either email registration, or GitHub accounts.  For those who have previously sent messages to the various Swift mailing lists, a staged account will already be set up, and you can take control of the account, provided you still have control of that email address.</p>
+<p><strong>Logging in with Github</strong><br>
+To log in using Github credentials, use the "With GitHub" button on the login screen. Another browser window will open to complete authorizing use of your Github credentials.</p>
+<p>Note: it appears that some browser plugins (like ad blockers) may interfere with this.  If you have issues logging in with GitHub, try disabling browser plugins.</p>
+<p><strong>Taking control of a staged account:</strong><br>
+If you have a "staged" account -- because you have previously participated in the Swift mailing lists -- you can take control of the account by going through the new account process using the same email address that is listed for the staged account.  You will be required to verify that you have control of that email address.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://global.discourse-cdn.com/swift/original/1X/1b3097a2773f37bd482b137e9ac21c83ada68301.png" data-download-href="/uploads/short-url/3Sx013bVaurdpEzHqwoNKs4kRgJ.png?dl=1" title="staged_account"><img src="https://global.discourse-cdn.com/swift/optimized/1X/1b3097a2773f37bd482b137e9ac21c83ada68301_2_677x500.png" alt="staged_account" data-base62-sha1="3Sx013bVaurdpEzHqwoNKs4kRgJ" width="677" height="500" srcset="https://global.discourse-cdn.com/swift/optimized/1X/1b3097a2773f37bd482b137e9ac21c83ada68301_2_677x500.png, https://global.discourse-cdn.com/swift/optimized/1X/1b3097a2773f37bd482b137e9ac21c83ada68301_2_1015x750.png 1.5x, https://global.discourse-cdn.com/swift/optimized/1X/1b3097a2773f37bd482b137e9ac21c83ada68301_2_1354x1000.png 2x" data-small-upload="https://global.discourse-cdn.com/swift/optimized/1X/1b3097a2773f37bd482b137e9ac21c83ada68301_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">staged_account</span><span class="informations">1484×1096 81.8 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p><strong>Consolidating multiple accounts:</strong><br>
+Multiple staged accounts may have been created for you if you participated in the Swift mailing lists with multiple email addresses. If you want to consolidate 2 or more accounts into one account, please message <a class="mention-group notify" href="/groups/forum_admins">@forum_admins</a> specifying the accounts, and requesting that they be consolidated.  As this can be a time-consuming manual process, these requests will be handled as time allows.</p>
+<p><strong>User Preferences</strong><br>
+You can configure user profile and preferences, including profile picture, email preferences, and category and tag tracking via the user preferences page.  This is accessed via the gear button in your user menu:<br>
+<img src="https://global.discourse-cdn.com/swift/original/1X/c68f25731f4e91d678ee016f6332cd79e6e4e529.png" alt="userprefs" data-base62-sha1="skxeaXbBmNJFT1c1XCzOHvhF9qh" width="648" height="178"></p>
+<p><strong>Configuring category and tag tracking:</strong><br>
+You can configure what categories and tags you want Discourse to track and notify you for.  These can also be used to get email for the specified categories and tags.  This is configured in your user preferences page under "Notifications"<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://global.discourse-cdn.com/swift/original/1X/e51100fff7da601bec465bf8a81972cd63426b6f.png" data-download-href="/uploads/short-url/wGpLPo3YILDXyCueMbklwQnwMSH.png?dl=1" title="notifications"><img src="https://global.discourse-cdn.com/swift/optimized/1X/e51100fff7da601bec465bf8a81972cd63426b6f_2_690x418.png" alt="notifications" data-base62-sha1="wGpLPo3YILDXyCueMbklwQnwMSH" width="690" height="418" srcset="https://global.discourse-cdn.com/swift/optimized/1X/e51100fff7da601bec465bf8a81972cd63426b6f_2_690x418.png, https://global.discourse-cdn.com/swift/optimized/1X/e51100fff7da601bec465bf8a81972cd63426b6f_2_1035x627.png 1.5x, https://global.discourse-cdn.com/swift/optimized/1X/e51100fff7da601bec465bf8a81972cd63426b6f_2_1380x836.png 2x" data-small-upload="https://global.discourse-cdn.com/swift/optimized/1X/e51100fff7da601bec465bf8a81972cd63426b6f_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">notifications</span><span class="informations">2224×1350 203 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>You can also configure notification status for specific categories and topics from the <img src="https://global.discourse-cdn.com/swift/original/1X/7a4c7c54cc843462ceccf1b1b8e1ab2e1dd002c0.png" alt="dot_menu" data-base62-sha1="hrU7vPHUg8vNtqvbtTvlWhxMmRy" width="92" height="80"></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://global.discourse-cdn.com/swift/original/1X/a2ab6eedf78566dc41189f2a02c1742959c42634.png" data-download-href="/uploads/short-url/nd2DX5ubfPk90MPCluOo3TetssA.png?dl=1" title="notification_options"><img src="https://global.discourse-cdn.com/swift/optimized/1X/a2ab6eedf78566dc41189f2a02c1742959c42634_2_690x414.png" alt="notification_options" data-base62-sha1="nd2DX5ubfPk90MPCluOo3TetssA" width="690" height="414" srcset="https://global.discourse-cdn.com/swift/optimized/1X/a2ab6eedf78566dc41189f2a02c1742959c42634_2_690x414.png, https://global.discourse-cdn.com/swift/optimized/1X/a2ab6eedf78566dc41189f2a02c1742959c42634_2_1035x621.png 1.5x, https://global.discourse-cdn.com/swift/original/1X/a2ab6eedf78566dc41189f2a02c1742959c42634.png 2x" data-small-upload="https://global.discourse-cdn.com/swift/optimized/1X/a2ab6eedf78566dc41189f2a02c1742959c42634_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">notification_options</span><span class="informations">1118×672 65.3 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p><strong>Email</strong><br>
+You can choose to get email notifications for tracked categories tags, and can also choose to mute certain categories or topics within tracked categories.  Replies via email to forum topics will be posted in the forums.</p>
+<p><strong>Getting forum activity via email ("mailing list mode"):</strong><br>
+In order to get email from the forums, similar to a mailing list you must first set up categories or tags that you want notifications for.  You can configure Discourse to send the notifications sent to you in the manner of a mailing list from the "Emails" section of the user preferences page.  You will need to "Enable mailing list mode" and select an option from the drop-down.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://global.discourse-cdn.com/swift/original/1X/23cab549327c9433f8ba39c1b70bb616e7413d25.png" data-download-href="/uploads/short-url/56D0IRkbNajG7cWz4Czs9X1DJnD.png?dl=1" title="email_list_mode"><img src="https://global.discourse-cdn.com/swift/optimized/1X/23cab549327c9433f8ba39c1b70bb616e7413d25_2_592x500.png" alt="email_list_mode" data-base62-sha1="56D0IRkbNajG7cWz4Czs9X1DJnD" width="592" height="500" srcset="https://global.discourse-cdn.com/swift/optimized/1X/23cab549327c9433f8ba39c1b70bb616e7413d25_2_592x500.png, https://global.discourse-cdn.com/swift/optimized/1X/23cab549327c9433f8ba39c1b70bb616e7413d25_2_888x750.png 1.5x, https://global.discourse-cdn.com/swift/optimized/1X/23cab549327c9433f8ba39c1b70bb616e7413d25_2_1184x1000.png 2x" data-small-upload="https://global.discourse-cdn.com/swift/optimized/1X/23cab549327c9433f8ba39c1b70bb616e7413d25_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">email_list_mode</span><span class="informations">1252×1056 94.3 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p><strong>Creating topics via email:</strong><br>
+In order to create new topics via email, there will be an email address corresponding to each category/subcategory (similar to a mailing list email address) that can be used.  This will be listed in the "About" post for each category, as well as on <a href="http://swift.org">swift.org</a>.</p>
+<p><strong>Tagging users:</strong><br>
+Within the forums, users can be tagged as “<span class="mention">@Username</span>” and can get notifications based on that tagging.</p>
+<p><strong>Keyboard Shortcuts</strong><br>
+Discourse has a robust set of keyboard shortcuts, listed below.  You can also find this list via the <img src="https://global.discourse-cdn.com/swift/original/1X/94a2952180390cc6c51958e38345212ab7a85836.png" alt="06 AM" data-base62-sha1="lcSZOUVO6rDJedeSRCWKJ7xkAjY" width="39" height="35"> menu.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://global.discourse-cdn.com/swift/original/1X/ce61ad3317083cd9a9ed9c983d7bd380a7979b9a.png" data-download-href="/uploads/short-url/trJD3DC8CvXXh7SDZtn96Qz990e.png?dl=1" title="keyboard_shortcuts"><img src="https://global.discourse-cdn.com/swift/optimized/1X/ce61ad3317083cd9a9ed9c983d7bd380a7979b9a_2_602x500.png" alt="keyboard_shortcuts" data-base62-sha1="trJD3DC8CvXXh7SDZtn96Qz990e" width="602" height="500" srcset="https://global.discourse-cdn.com/swift/optimized/1X/ce61ad3317083cd9a9ed9c983d7bd380a7979b9a_2_602x500.png, https://global.discourse-cdn.com/swift/original/1X/ce61ad3317083cd9a9ed9c983d7bd380a7979b9a.png 1.5x, https://global.discourse-cdn.com/swift/original/1X/ce61ad3317083cd9a9ed9c983d7bd380a7979b9a.png 2x" data-small-upload="https://global.discourse-cdn.com/swift/optimized/1X/ce61ad3317083cd9a9ed9c983d7bd380a7979b9a_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">keyboard_shortcuts</span><span class="informations">705×585 70.8 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/tos' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.apple.com/legal/privacy/en-ww/' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    
+    
+  </body>
+  
+</html>

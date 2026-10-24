@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - LangChain Forum</title>
+    <meta name="description" content="">
+    <meta name="generator" content="Discourse 2026.10.0-latest.1 - https://github.com/discourse/discourse version c6e1e8fdbc40b2310dad3aa3e73c7a0777dff8bb">
+<link rel="icon" type="image/png" href="https://canada1.discourse-cdn.com/flex007/uploads/langchain/optimized/2X/0/024c16b9b9315e4853ae4a1cc064f66c509de906_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://canada1.discourse-cdn.com/flex007/uploads/langchain/optimized/2X/1/1e09f9594386a24f8f4724ec40683fec9dfacfd7_2_180x180.png">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030710">
+
+<meta name="color-scheme" content="light dark">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://forum.langchain.com/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="3ypAGoVZDr07EYeZlUzNHMKEFJy5e7i3">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://forum.langchain.com/opensearch.xml" title="LangChain Forum Search">
+
+    
+    <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/color_definitions_langchain-light_2_1_e03730a0743f5e250fecabe6c0a63d489cd6c4dd.css?__ws=forum.langchain.com" media="(prefers-color-scheme: light)" rel="stylesheet" class="light-scheme" data-scheme-id="2"/><link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/color_definitions_langchain-dark_3_1_e8aa63e4ecd052a07289783e0a471948d42ab5d9.css?__ws=forum.langchain.com" media="(prefers-color-scheme: dark)" rel="stylesheet" class="dark-scheme" data-scheme-id="3"/>
+
+<link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/common_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/boards_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="boards"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/checklist_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-ai_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-ai"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-assign_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-assign"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-cakeday_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-cakeday"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-chat-integration_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-chat-integration"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-data-explorer_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-details_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-events_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-events"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-github_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-github"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-lazy-videos_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-local-dates_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-narrative-bot_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-policy_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-policy"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-presence_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-reactions_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-reactions"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-solved_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-templates_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-topic-voting_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-topic-voting"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-workflows_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="discourse-workflows"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/footnote_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="footnote"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/hosted-site_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/poll_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/spoiler-alert_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-ai_mobile_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-ai_mobile"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-assign_mobile_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-assign_mobile"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-events_mobile_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-events_mobile"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-reactions_mobile_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-reactions_mobile"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-ai_desktop_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-ai_desktop"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-events_desktop_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-events_desktop"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/discourse-reactions_desktop_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-reactions_desktop"  />
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/poll_desktop_a225696d2ae39e9a2b2f36192303ffb6de8a8627.css?__ws=forum.langchain.com" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://yyz1.discourse-cdn.com/flex007/stylesheets/common_theme_1_4675db6d4372449ce6dbd10405276b41404427f0.css?__ws=forum.langchain.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="1" data-theme-name="default"/>
+  
+  
+
+    
+    
+        <meta property="og:site_name" content="LangChain Forum" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://canada1.discourse-cdn.com/flex007/uploads/langchain/original/2X/1/1e09f9594386a24f8f4724ec40683fec9dfacfd7.png" />
+<meta property="og:image" content="https://canada1.discourse-cdn.com/flex007/uploads/langchain/original/2X/1/1e09f9594386a24f8f4724ec40683fec9dfacfd7.png" />
+<meta property="og:url" content="https://forum.langchain.com/guidelines" />
+<meta name="twitter:url" content="https://forum.langchain.com/guidelines" />
+<meta property="og:title" content="Guidelines - LangChain Forum" />
+<meta name="twitter:title" content="Guidelines - LangChain Forum" />
+
+    
+    
+  </head>
+  <body class="crawler ">
+    
+    <header>
+  <a href="/">LangChain Forum</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2025-11-17'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+      <li class='nav-item-tos'><a href='https://www.langchain.com/terms-of-service' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='https://www.langchain.com/privacy-policy' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <blockquote>
+<p>This forum is <strong>community-run</strong> and not all posts are monitored by the LangChain team. <strong>If you are paying customer of LangSmith</strong> and need product support, you can email support <strong><a href="mailto:support@langchain.dev">here</a></strong>.</p>
+</blockquote>
+<p><strong>Welcome to the LangChain Forum</strong>  –  a space for developers to ask questions and connect with others building with LangChain products.</p>
+<p>Looking for broader conversation, events, or want to showcase your agents? Join our <strong><a href="https://www.langchain.com/join-community">LangChain Slack Community</a></strong>.</p>
+<p>Before you dive in, here’s what to know:</p>
+<ul>
+<li>Keep discussions <strong>focused on technical topics related to LangChain</strong>. Promotional content or solicitation of any kind will result in an immediate ban.</li>
+<li>Before starting a new topic, please <strong>search</strong> to see if the topic has already been discussed.</li>
+<li>If you are helping someone, <strong>do</strong> <strong>not</strong> answer by linking to an external link (unless it is the LangChain Docs), as external articles may be incorrect and are impossible for us to update.</li>
+</ul>
+<p>By participating, you agree to follow our Community Code of Conduct. Read the full guidelines <strong><a href="https://www.langchain.com/community-code">here</a></strong>.</p>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.langchain.com/terms-of-service' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.langchain.com/privacy-policy' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    
+    
+  </body>
+  
+</html>

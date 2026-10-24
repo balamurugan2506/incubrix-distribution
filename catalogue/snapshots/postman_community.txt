@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - Postman Community</title>
+    <meta name="description" content="Join in the Conversation: Postman, AI and API">
+    <meta name="generator" content="Discourse 2026.10.0-latest - https://github.com/discourse/discourse version ed3278ea76b63c78a6e0979c4a9bb2a9ac6f4255">
+<link rel="icon" type="image/png" href="https://us1.discourse-cdn.com/getpostman/optimized/2X/0/09084abd3a3310ead3e99b4f2224b15880e212df_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://us1.discourse-cdn.com/getpostman/optimized/2X/0/09084abd3a3310ead3e99b4f2224b15880e212df_2_180x180.png">
+<meta name="theme-color" media="all" content="#fff">
+
+<meta name="color-scheme" content="light">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://community.postman.com/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="5jAXAnhN7LqjU6LIxDrHmJFFBc3G6BsF">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://community.postman.com/opensearch.xml" title="Postman Community Search">
+
+    
+    <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/color_definitions_light-default_-1_2_a2a1c54eb69966c4dffb00c5b7cc5235df84cc6d.css?__ws=community.postman.com" media="all" rel="stylesheet" class="light-scheme"/>
+
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/automation_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="automation"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/checklist_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-ai_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-ai"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-akismet_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-akismet"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-chat-integration_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-chat-integration"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-data-explorer_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-details_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-follow_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-follow"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-gamification_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-gamification"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-lazy-videos_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-local-dates_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-narrative-bot_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-presence_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-reactions_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-reactions"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-solved_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-templates_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-topic-voting_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="discourse-topic-voting"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/hosted-site_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/poll_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/spoiler-alert_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-ai_mobile_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-ai_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-gamification_mobile_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-gamification_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-reactions_mobile_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-reactions_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-ai_desktop_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-ai_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-gamification_desktop_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-gamification_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/discourse-reactions_desktop_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-reactions_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/poll_desktop_24b576d8aea1777ca52da26f5beeaff0ee986feb.css?__ws=community.postman.com" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_36_fd7a3bd7375f1ac61ca343a6f992293a091edabf.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="36" data-theme-name="custom header links"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_45_0c745077d9765c2ef1cfae7bacd3d4bcbe9b1c9f.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="45" data-theme-name="custom user menu"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_26_a8e1f555d59b5335bee30551dddf3dd483336597.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="26" data-theme-name="quick profile links menu"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_39_0a893901a51370f4eedcdaf8b9d70a2127eff84f.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="39" data-theme-name="signup banner"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_28_bd65a347c42c4bf7c928b9176e34c2095e8a218c.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="28" data-theme-name="social icons on user profile"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_29_f38baabbae99f93c5b492ab89070ff05daa74bfb.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="29" data-theme-name="social share"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_38_a6571b14e0c045cbe95e41913bd8117cfc8a5faf.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="38" data-theme-name="unformatted code detector"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_27_7484378a3a86e2debbb3e9c11881629f0802139d.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="27" data-theme-name="user card directory"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_7_e643020b3edc62a5cdcc98837fc9ea2502a87e33.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="7" data-theme-name="welcome link banner"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_59_00eaa13146ecf4697ee766a3360fa8241f897f85.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="59" data-theme-name="custom privacy footer + gpc banner"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/common_theme_2_005ce57ebe5768455b7e3d3482c7aceb680e8cf2.css?__ws=community.postman.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="2" data-theme-name="default"/>
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/mobile_theme_39_e24589ad060155eac4fa0b3f7478239de3af77a8.css?__ws=community.postman.com" media="(width < 40rem)" rel="stylesheet" data-target="mobile_theme" data-theme-id="39" data-theme-name="signup banner"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/mobile_theme_28_933e70a359502c101bcc971bf593da4624ceafdc.css?__ws=community.postman.com" media="(width < 40rem)" rel="stylesheet" data-target="mobile_theme" data-theme-id="28" data-theme-name="social icons on user profile"/>
+<link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/mobile_theme_7_7eebeda87eddf139bf05360f9c75513312c407d3.css?__ws=community.postman.com" media="(width < 40rem)" rel="stylesheet" data-target="mobile_theme" data-theme-id="7" data-theme-name="welcome link banner"/>
+  <link href="https://sea2.discourse-cdn.com/getpostman/stylesheets/desktop_theme_2_dfc93daf9bee160533e0f2abb35bd608d99049da.css?__ws=community.postman.com" media="(width >= 40rem)" rel="stylesheet" data-target="desktop_theme" data-theme-id="2" data-theme-name="default"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+
+<script defer="" src="https://sea2.discourse-cdn.com/getpostman/theme-javascripts/f5b13ff862871877d1c9577e871f7ecb2f204ad0.js?__ws=community.postman.com" data-theme-id="5" nonce="cWx11e4sDDU8Iz88ocO79TLvK"></script>
+<script defer="" src="https://sea2.discourse-cdn.com/getpostman/theme-javascripts/a5a5be80c7180989bb45716e6bdb40971c2efae1.js?__ws=community.postman.com" data-theme-id="6" nonce="cWx11e4sDDU8Iz88ocO79TLvK"></script>
+
+<script defer="" src="https://sea2.discourse-cdn.com/getpostman/theme-javascripts/72e318bab2a9fe84d6e304a7abd5e0f5e6414991.js?__ws=community.postman.com" data-theme-id="8" nonce="cWx11e4sDDU8Iz88ocO79TLvK"></script>
+    <meta id="data-ga-universal-analytics" data-tracking-code="UA-43979731-4" data-json="{&quot;cookieDomain&quot;:&quot;auto&quot;}" data-auto-link-domains="">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43979731-4" nonce="cWx11e4sDDU8Iz88ocO79TLvK"></script>
+  <script defer src="https://us1.discourse-cdn.com/getpostman/assets/br/google-universal-analytics-v4-43cb071f.js" data-discourse-entrypoint="js/google-universal-analytics-v4" nonce="cWx11e4sDDU8Iz88ocO79TLvK"></script>
+
+
+        <meta property="og:site_name" content="Postman Community" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://us1.discourse-cdn.com/getpostman/original/2X/a/a387081b9dfc857c255314e3dc899c582a701341.jpeg" />
+<meta property="og:image" content="https://us1.discourse-cdn.com/getpostman/original/2X/0/09084abd3a3310ead3e99b4f2224b15880e212df.png" />
+<meta property="og:url" content="https://community.postman.com/guidelines" />
+<meta name="twitter:url" content="https://community.postman.com/guidelines" />
+<meta property="og:title" content="Guidelines - Postman Community" />
+<meta name="twitter:title" content="Guidelines - Postman Community" />
+<meta property="og:description" content="Join in the Conversation: Postman, AI and API" />
+<meta name="twitter:description" content="Join in the Conversation: Postman, AI and API" />
+
+    
+    
+  </head>
+  <body class="crawler ">
+    
+    <header>
+  <a href="/">Postman Community</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2019-12-12'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+        <li class='nav-item-faq'><a href='https://support.getpostman.com/hc/en-us'>FAQ</a></li>
+      <li class='nav-item-tos'><a href='https://www.postman.com/licenses/postman-eula' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='https://www.postman.com/licenses/privacy' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <p>The <strong>Postman Code of Conduct</strong> is now posted <a href="https://www.getpostman.com/code-of-conduct">here</a>.</p>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.postman.com/licenses/postman-eula' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.postman.com/licenses/privacy' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    <div class="custom-footer">
+  <div class="footer-content">
+    <a href="https://privacy.postman.com/policies" target="_blank" rel="noopener">
+      Privacy Policy
+    </a>
+    ·
+    <a href="#" id="transcend-do-not-sell">
+      Do Not Sell or Share My Personal Information
+    </a>
+    ·
+    <a href="#" id="transcend-cookie-preferences">
+      Cookie Preferences
+    </a>
+  </div>
+</div>
+
+
+    
+  </body>
+  
+</html>

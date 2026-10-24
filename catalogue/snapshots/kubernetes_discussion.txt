@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - Discuss Kubernetes</title>
+    <meta name="description" content="A place to discuss Kubernetes and its ecosystem">
+    <meta name="generator" content="Discourse 2026.10.0-latest.1 - https://github.com/discourse/discourse version c6e1e8fdbc40b2310dad3aa3e73c7a0777dff8bb">
+<link rel="icon" type="image/png" href="https://us1.discourse-cdn.com/flex016/uploads/kubernetes/optimized/1X/786dc982abab8f78c3762424fae045d4b084cf3d_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://us1.discourse-cdn.com/flex016/uploads/kubernetes/optimized/1X/786dc982abab8f78c3762424fae045d4b084cf3d_2_180x180.png">
+<meta name="theme-color" media="all" content="#fff">
+
+<meta name="color-scheme" content="light">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://discuss.kubernetes.io/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="QqAEUtt09MG2U9umcllpwaA6Kf62F2D2">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://discuss.kubernetes.io/opensearch.xml" title="Discuss Kubernetes Search">
+
+    
+    <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/color_definitions_light-default_-1_2_60c3b638bd1d71bf3a6084d8f96ad9225f51a005.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" class="light-scheme"/>
+
+<link href="https://sea2.discourse-cdn.com/flex016/stylesheets/common_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/boards_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="boards"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/checklist_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-adplugin_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-adplugin"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-ai_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-ai"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-assign_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-assign"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-cakeday_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-cakeday"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-data-explorer_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-details_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-events_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-events"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-github_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-github"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-lazy-videos_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-local-dates_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-narrative-bot_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-policy_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-policy"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-presence_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-reactions_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-reactions"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-solved_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-templates_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-topic-voting_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-topic-voting"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-workflows_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="discourse-workflows"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/footnote_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="footnote"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/hosted-site_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/poll_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/spoiler-alert_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-ai_mobile_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-ai_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-assign_mobile_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-assign_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-events_mobile_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-events_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-reactions_mobile_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-reactions_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-ai_desktop_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-ai_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-events_desktop_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-events_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/discourse-reactions_desktop_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-reactions_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/poll_desktop_dfa1e41baae72311c964eaba46a69428a0bcff33.css?__ws=discuss.kubernetes.io" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sea2.discourse-cdn.com/flex016/stylesheets/common_theme_5_aa0c0a487f73b980393b49529d1a116353b968f3.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="5" data-theme-name="discourse kubernetes theme"/>
+<link href="https://sea2.discourse-cdn.com/flex016/stylesheets/common_theme_2_9f681ed098e8597629f9855c04531d11d3ca6e6f.css?__ws=discuss.kubernetes.io" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="2" data-theme-name="default"/>
+  
+  
+
+    <script type="text/discourse-plugin" version="0.1" nonce="lVdAAPL6zEuimKCdUWapZqCSy">
+  api.decorateWidget("header-buttons:before", helper => {
+      const menu = [];
+      const menuItems = [
+        "Documentation|https://kubernetes.io/docs",
+        "Blog|https://kubernetes.io/blog",
+        "Partners|https://kubernetes.io/partners",
+        "Community|https://kubernetes.io/community",
+        "Case Studies|https://kubernetes.io/case-studies"
+      ];
+
+      menuItems.forEach((item) => {
+          const menuItem = item.split("|");
+          menu.push(helper.h("li.hidden-for-mobile",
+	  helper.h("a.nav-link", {
+	    href: menuItem[1],
+	    text: menuItem[0]
+	  })
+      ));
+    });
+    return helper.h("div.header-links",
+      helper.h("ul#nav-link-container", menu));
+  });
+
+  api.registerConnectorClass('below-site-header', 'kubernetes-header', {
+        setupComponent(args, component) {
+	        const router = api.container.lookup('router:main');
+            router.on('willTransition', () => {
+                component.set('displayBanner', false);
+            });
+            api.onPageChange((url, title) => {
+                if (url == "/") {
+                    $('html').addClass('banner-visible');
+	                component.set("displayBanner", true);
+                }
+                else {
+                    //$('html').removeClass('banner-visible');
+                    $('html').addClass('banner-visible');
+	                component.set("displayBanner", true);
+                }
+	        });
+        }
+    });
+
+</script>
+
+<script type="text/x-handlebars" data-template-name="/connectors/below-site-header/kubernetes-header" nonce="lVdAAPL6zEuimKCdUWapZqCSy">
+    {{#if displayBanner}}
+    <div class="banner-outer">
+        <div class="banner">
+          <div class="banner-content">
+              <h1>Community Forums</h1>
+              <p class="banner-description">
+                  This site is governed by the CNCF Code of Conduct. Checkout our quick tutorial on how to effectively subscribe to topics.
+              </p>
+          </div>
+        </div>
+    </div>
+    {{/if}}
+</script>
+
+    
+        <meta property="og:site_name" content="Discuss Kubernetes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://us1.discourse-cdn.com/flex016/uploads/kubernetes/original/1X/9d7268f40e32b387214eab6ed73fa246ee2659de.png" />
+<meta property="og:image" content="https://us1.discourse-cdn.com/flex016/uploads/kubernetes/original/1X/9d7268f40e32b387214eab6ed73fa246ee2659de.png" />
+<meta property="og:url" content="https://discuss.kubernetes.io/guidelines" />
+<meta name="twitter:url" content="https://discuss.kubernetes.io/guidelines" />
+<meta property="og:title" content="Guidelines - Discuss Kubernetes" />
+<meta name="twitter:title" content="Guidelines - Discuss Kubernetes" />
+<meta property="og:description" content="A place to discuss Kubernetes and its ecosystem" />
+<meta name="twitter:description" content="A place to discuss Kubernetes and its ecosystem" />
+
+    
+    
+  </head>
+  <body class="crawler ">
+    
+    <header>
+  <a href="/">Discuss Kubernetes</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2018-04-17'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+      <li class='nav-item-tos'><a href='https://github.com/cncf/foundation/blob/master/code-of-conduct.md' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='https://www.linuxfoundation.org/privacy/' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <p><a name="civilized"></a></p>
+<h2><a href="#civilized">This is a Civilized Place for Public Discussion</a></h2>
+<p>Please treat this discussion forum with the same respect you would a public park.  We, too, are a shared community resource — a place to share skills, knowledge and interests through ongoing conversation.</p>
+<p>These are not hard and fast rules, merely guidelines to aid the human judgment of our community and keep this a clean and well-lighted place for civilized public discourse.</p>
+<p><a name="improve"></a></p>
+<h2><a href="#improve">Improve the Discussion</a></h2>
+<p>Help us make this a great place for discussion by always working to improve the discussion in some way, however small. If you are not sure your post adds to the conversation, think over what you want to say and try again later.</p>
+<p>The topics discussed here matter to us, and we want you to act as if they matter to you, too. Be respectful of the topics and the people discussing them, even if you disagree with some of what is being said.</p>
+<p>One way to improve the discussion is by discovering ones that are already happening. Spend time browsing the topics here before replying or starting your own, and you’ll have a better chance of meeting others who share your interests.</p>
+<p><a name="agreeable"></a></p>
+<h2><a href="#agreeable">Be Agreeable, Even When You Disagree</a></h2>
+<p>You may wish to respond to something by disagreeing with it. That’s fine. But remember to <em>criticize ideas, not people</em>. Please avoid:</p>
+<ul>
+<li>Name-calling</li>
+<li>Ad hominem attacks</li>
+<li>Responding to a post’s tone instead of its actual content</li>
+<li>Knee-jerk contradiction</li>
+</ul>
+<p>Instead, provide reasoned counter-arguments that improve the conversation.</p>
+<p><a name="participate"></a></p>
+<h2><a href="#participate">Your Participation Counts</a></h2>
+<p>The conversations we have here set the tone for every new arrival. Help us influence the future of this community by choosing to engage in discussions that make this forum an interesting place to be — and avoiding those that do not.</p>
+<p>Discourse provides tools that enable the community to collectively identify the best (and worst) contributions: bookmarks, likes, flags, replies, edits, and so forth. Use these tools to improve your own experience, and everyone else’s, too.</p>
+<p>Let’s leave our community better than we found it.</p>
+<p><a name="flag-problems"></a></p>
+<h2><a href="#flag-problems">If You See a Problem, Flag It</a></h2>
+<p>Moderators have special authority; they are responsible for this forum. But so are you. With your help, moderators can be community facilitators, not just janitors or police.</p>
+<p>When you see bad behavior, don’t reply. It encourages the bad behavior by acknowledging it, consumes your energy, and wastes everyone’s time. <em>Just flag it</em>. If enough flags accrue, action will be taken, either automatically or by moderator intervention.</p>
+<p>In order to maintain our community, moderators reserve the right to remove any content and any user account for any reason at any time. Moderators do not preview new posts; the moderators and site operators take no responsibility for any content posted by the community.</p>
+<p><a name="be-civil"></a></p>
+<h2><a href="#be-civil">Always Be Civil</a></h2>
+<p>Nothing sabotages a healthy conversation like rudeness:</p>
+<ul>
+<li>Be civil. Don’t post anything that a reasonable person would consider offensive, abusive, or hate speech.</li>
+<li>Keep it clean. Don’t post anything obscene or sexually explicit.</li>
+<li>Respect each other. Don’t harass or grief anyone, impersonate people, or expose their private information.</li>
+<li>Respect our forum. Don’t post spam or otherwise vandalize the forum.</li>
+</ul>
+<p>These are not concrete terms with precise definitions — avoid even the <em>appearance</em> of any of these things. If you’re unsure, ask yourself how you would feel if your post was featured on the front page of the New York Times.</p>
+<p>This is a public forum, and search engines index these discussions. Keep the language, links, and images safe for family and friends.</p>
+<p><a name="keep-tidy"></a></p>
+<h2><a href="#keep-tidy">Keep It Tidy</a></h2>
+<p>Make the effort to put things in the right place, so that we can spend more time discussing and less cleaning up. So:</p>
+<ul>
+<li>Don’t start a topic in the wrong category.</li>
+<li>Don’t cross-post the same thing in multiple topics.</li>
+<li>Don’t post no-content replies.</li>
+<li>Don’t divert a topic by changing it midstream.</li>
+<li>Don’t sign your posts — every post has your profile information attached to it.</li>
+</ul>
+<p>Rather than posting “+1” or “Agreed”, use the Like button. Rather than taking an existing topic in a radically different direction, use Reply as a Linked Topic.</p>
+<p><a name="stealing"></a></p>
+<h2><a href="#stealing">Post Only Your Own Stuff</a></h2>
+<p>You may not post anything digital that belongs to someone else without permission. You may not post descriptions of, links to, or methods for stealing someone’s intellectual property (software, video, audio, images), or for breaking any other law.</p>
+<p><a name="power"></a></p>
+<h2><a href="#power">Powered by You</a></h2>
+<p>This site is operated by your <a href="/about">friendly local staff</a> and <em>you</em>, the community. If you have any further questions about how things should work here, open a new topic in the <a href="/c/site-feedback">site feedback category</a> and let’s discuss! If there’s a critical or urgent issue that can’t be handled by a meta topic or flag, contact us via the <a href="/about">staff page</a>.</p>
+<p><a name="tos"></a></p>
+<h2><a href="#tos">Terms of Service</a></h2>
+<p>Yes, legalese is boring, but we must protect ourselves – and by extension, you and your data – against unfriendly folks. We have a <a href="/tos">Terms of Service</a> describing your (and our) behavior and rights related to content, privacy, and laws. To use this service, you must agree to abide by our <a href="/tos">TOS</a>.</p>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://github.com/cncf/foundation/blob/master/code-of-conduct.md' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.linuxfoundation.org/privacy/' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    <footer>
+   <main class="light-text">
+      <nav>
+         <a href="https://kubernetes.io/docs/home/">Home</a>
+         <a href="https://kubernetes.io/blog/">Blog</a>
+         <a href="https://kubernetes.io/partners/">Partners</a>
+         <a href="https://kubernetes.io/community/">Community</a>
+         <a href="https://kubernetes.io/case-studies/">Case Studies</a>
+      </nav>
+      <div class="social">
+         <div><a href="https://twitter.com/kubernetesio" class="twitter"><span>Twitter</span></a>
+            <a href="https://github.com/kubernetes/kubernetes" class="github"><span>GitHub</span></a>
+            <a href="http://slack.k8s.io/" class="slack"><span>Slack</span></a>
+         </div>
+         <div><a href="http://stackoverflow.com/questions/tagged/kubernetes" class="stack-overflow"><span>Stack Overflow</span></a>
+            <a href="https://discuss.kubernetes.io" class="mailing-list"><span>Forum</span></a>
+            <a href="https://calendar.google.com/calendar/embed?src=nt2tcnbtbied3l6gi2h29slvc0%40group.calendar.google.com" class="calendar"><span>Events Calendar</span></a>
+         </div>
+         <div><a href="https://git.k8s.io/community/contributors/guide" class="button">Contribute</a></div>
+      </div>
+      <div id="miceType" class="center">© 2019 The Kubernetes Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a></div>
+      <div id="miceType" class="center">Copyright © 2019 The Linux Foundation ®. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a></div>
+      <div id="miceType" class="center">ICP license: 京ICP备17074266号-3</div>
+   </main>
+</footer>
+
+    
+  </body>
+  
+</html>

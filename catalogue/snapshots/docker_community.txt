@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - Docker Community Forums</title>
+    <meta name="description" content="Docker Community Forums">
+    <meta name="generator" content="Discourse 2026.10.0-latest - https://github.com/discourse/discourse version 8ba30fd888395fd3cbc8c596dc7e8097946d01e3">
+<link rel="icon" type="image/png" href="https://global.discourse-cdn.com/docker/optimized/3X/6/5/65d9a8c18d1ca9f553a198cc78045be7743a4be2_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://global.discourse-cdn.com/docker/optimized/3X/6/5/65d9a8c18d1ca9f553a198cc78045be7743a4be2_2_180x180.png">
+<meta name="theme-color" media="all" content="#051d2f">
+
+<meta name="color-scheme" content="light">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://forums.docker.com/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="tuw2LrCW4qUTmozyEwbOMB1rex18rbcH">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://forums.docker.com/opensearch.xml" title="Docker Community Forums Search">
+
+    
+    <link href="https://sea3.discourse-cdn.com/docker/stylesheets/color_definitions_docker-success-center_8_11_a5d76c2a5977adf67046a2eaa4a27fe1b2ec4777.css?__ws=forums.docker.com" media="all" rel="stylesheet" class="light-scheme" data-scheme-id="8"/>
+
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/chat_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="chat"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/checklist_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-ai_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-ai"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-akismet_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-akismet"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-cakeday_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-cakeday"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-data-explorer_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-details_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-github_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-github"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-lazy-videos_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-local-dates_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-policy_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-policy"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-post-voting_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-post-voting"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-presence_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-reactions_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-reactions"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-solved_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-templates_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-topic-voting_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="discourse-topic-voting"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/footnote_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="footnote"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/hosted-site_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/poll_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/spoiler-alert_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/chat_mobile_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width < 40rem)" rel="stylesheet" data-target="chat_mobile"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-ai_mobile_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-ai_mobile"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-reactions_mobile_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width < 40rem)" rel="stylesheet" data-target="discourse-reactions_mobile"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/chat_desktop_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="chat_desktop"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-ai_desktop_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-ai_desktop"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/discourse-reactions_desktop_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-reactions_desktop"  />
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/poll_desktop_21c1618b27c5fa4ab2b24132e89f78ab137e4d87.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_theme_19_f05a83bb0e02a856526cc83c25a544191401442d.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="19" data-theme-name="discotoc"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_theme_17_2fc4c92153bee789f933880da46c12f948b11ffb.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="17" data-theme-name="icon header links"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_theme_15_93f6fc0854187618711c6a434daf8573d9a44782.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="15" data-theme-name="2019 theme fixes"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_theme_18_4362e060e38e5cd251b8ff7acedbac1ed574d12d.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="18" data-theme-name="2021 code block formatting"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_theme_16_390c95e1325679e7180cb00dd6e367bab49927e0.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="16" data-theme-name="2021 fixes"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/common_theme_11_0a713f43e52cacbda44b53fd6a7755135f0f3feb.css?__ws=forums.docker.com" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="11" data-theme-name="default"/>
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/mobile_theme_16_5bc3141d739ec725752819d986a5f8ea9953adc1.css?__ws=forums.docker.com" media="(width < 40rem)" rel="stylesheet" data-target="mobile_theme" data-theme-id="16" data-theme-name="2021 fixes"/>
+  <link href="https://sea3.discourse-cdn.com/docker/stylesheets/desktop_theme_16_3ef719ab627ede6d669d15160db9277fe2023b23.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="desktop_theme" data-theme-id="16" data-theme-name="2021 fixes"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/desktop_theme_53_404617c6645a64c105d9b5131c67973a017debc1.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="desktop_theme" data-theme-id="53" data-theme-name="2023 fixes"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/desktop_theme_54_d7b0c3d8255b4ce2440a811987f4176d249eed52.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="desktop_theme" data-theme-id="54" data-theme-name="2025 theme fixes"/>
+<link href="https://sea3.discourse-cdn.com/docker/stylesheets/desktop_theme_10_d1a0a0fc2bed58dbb913a70cbb61dcc00f530d6c.css?__ws=forums.docker.com" media="(width >= 40rem)" rel="stylesheet" data-target="desktop_theme" data-theme-id="10" data-theme-name="docker www 3.0"/>
+
+    <script defer="" src="https://sea3.discourse-cdn.com/docker/theme-javascripts/751f94f44887fd127f1b3c93842829a4245852f8.js?__ws=forums.docker.com" data-theme-id="8" nonce="UZjwvBtdabzaYF0hTczYJBG8m"></script>
+    
+        <meta property="og:site_name" content="Docker Community Forums" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://global.discourse-cdn.com/docker/original/3X/6/e/6e3bc55d177b4dd18113fb08cf95eebe96a8ba78.png" />
+<meta property="og:image" content="https://global.discourse-cdn.com/docker/original/3X/6/e/6e3bc55d177b4dd18113fb08cf95eebe96a8ba78.png" />
+<meta property="og:url" content="https://forums.docker.com/guidelines" />
+<meta name="twitter:url" content="https://forums.docker.com/guidelines" />
+<meta property="og:title" content="Guidelines - Docker Community Forums" />
+<meta name="twitter:title" content="Guidelines - Docker Community Forums" />
+<meta property="og:description" content="Docker Community Forums" />
+<meta name="twitter:description" content="Docker Community Forums" />
+
+    
+    
+  </head>
+  <body class="crawler ">
+        <header class="header">
+        <div class="fan"></div>
+        <div class="container">
+            <div class="row">
+                <nav class="nav-primary">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a href="/">
+                            <img class="logo" src="https://www.docker.com/wp-content/uploads/2024/05/logo-docker-white.svg" alt="Docker Community Forums" title="Docker Community Forums">
+                          </a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="primary nav navbar-nav">
+                                <li><a href="https://docker.com/what-docker">What is Docker?</a></li>
+                                <li><a href="https://docker.com/get-docker">Product</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Docker <span class="caret"></span></a>
+                                    <ul class="dropdown-menu nav-main">
+                                        <h6 class="dropdown-header">For Desktops</h6>
+                                        <li><a href="https://dockr.ly/3zPF5rR">Mac(Intel Chip)</a></li>
+                                        <li><a href="https://dockr.ly/3tJBMyI">Mac(Apple Chip)</a></li>
+                                        <li><a href="https://dockr.ly/3OkGtXS">Windows</a></li>
+                                        <li><a href="https://dockr.ly/3OqC05F">Linux</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="https://docs.docker.com">Docs</a></li>
+                                <li><a href="https://docker.com/docker-community">Community</a></li>
+                                <li><a href="https://cloud.docker.com/">Create Docker ID</a></li>
+                            </ul>
+                            <!--<ul class="nav navbar-nav navbar-right user-nav">
+                                <li><a href="https://cloud.docker.com/">Create Docker ID</a></li>
+                                <li><a href="https://cloud.docker.com/login">Sign In</a></li>
+                            </ul>-->
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- hero banner text -->
+        <div class="container">
+            <div class="row">
+                <div class="hero-text">
+                    <div class="hero-text-centered">
+                        <h1>Docker Community Forums</h1>
+                        <p>Share and learn in the Docker community.</p>
+                        <!-- <ul>
+                            <li><a class="button transparent-btn" href="#">Primary Action</a></li>
+                            <li> <a class="button secondary-btn" href="#">Another Action</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <header>
+  <a href="/">Docker Community Forums</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2024-02-14'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+      <li class='nav-item-tos'><a href='https://www.docker.com/legal/docker-terms-service/' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='https://www.docker.com/legal/privacy/' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <p><a name="civilized"></a></p>
+<h2><a name="p-228-this-is-a-civilized-place-for-public-discussioncivilized-1" class="anchor" href="#p-228-this-is-a-civilized-place-for-public-discussioncivilized-1" aria-label="Heading link"></a><a href="#civilized">This is a Civilized Place for Public Discussion</a></h2>
+<p>Please treat this discussion forum with the same respect you would a public park. We, too, are a shared community resource — a place to share skills, knowledge and interests through ongoing conversation.</p>
+<p>These are not hard and fast rules. They are guidelines to aid the human judgment of our community and keep this a kind, friendly place for civilized public discourse.</p>
+<p><a name="improve"></a></p>
+<h2><a name="p-228-improve-the-discussionimprove-2" class="anchor" href="#p-228-improve-the-discussionimprove-2" aria-label="Heading link"></a><a href="#improve">Improve the Discussion</a></h2>
+<p>Help us make this a great place for discussion by always adding something positive to the discussion, however small. If you are not sure your post adds to the conversation, think over what you want to say and try again later.</p>
+<p>One way to improve the discussion is by discovering ones that are already happening. Spend time browsing the topics here before replying or starting your own, and you’ll have a better chance of meeting others who share your interests.</p>
+<p>The topics discussed here matter to us, and we want you to act as if they matter to you, too. Be respectful of the topics and the people discussing them, even if you disagree with some of what is being said.</p>
+<p><a name="agreeable"></a></p>
+<h2><a name="p-228-be-agreeable-even-when-you-disagreeagreeable-3" class="anchor" href="#p-228-be-agreeable-even-when-you-disagreeagreeable-3" aria-label="Heading link"></a><a href="#agreeable">Be Agreeable, Even When You Disagree</a></h2>
+<p>You may wish to respond by disagreeing. That’s fine. But remember to <em>criticize ideas, not people</em>. Please avoid:</p>
+<ul>
+<li>Name-calling</li>
+<li>Ad hominem attacks</li>
+<li>Responding to a post’s tone instead of its actual content</li>
+<li>Knee-jerk contradiction</li>
+</ul>
+<p>Instead, provide thoughtful insights that improve the conversation.</p>
+<p><a name="participate"></a></p>
+<h2><a name="p-228-your-participation-countsparticipate-4" class="anchor" href="#p-228-your-participation-countsparticipate-4" aria-label="Heading link"></a><a href="#participate">Your Participation Counts</a></h2>
+<p>The conversations we have here set the tone for every new arrival. Help us influence the future of this community by choosing to engage in discussions that make this forum an interesting place to be — and avoiding those that do not.</p>
+<p>Discourse provides tools that enable the community to collectively identify the best (and worst) contributions: bookmarks, likes, flags, replies, edits, watching, muting and so forth. Use these tools to improve your own experience, and everyone else’s, too.</p>
+<p>Let’s leave our community better than we found it.</p>
+<p><a name="flag-problems"></a></p>
+<h2><a name="p-228-if-you-see-a-problem-flag-itflag-problems-5" class="anchor" href="#p-228-if-you-see-a-problem-flag-itflag-problems-5" aria-label="Heading link"></a><a href="#flag-problems">If You See a Problem, Flag It</a></h2>
+<p>Moderators have special authority; they are responsible for this forum. But so are you. With your help, moderators can be community facilitators, not just janitors or police.</p>
+<p>When you see bad behavior, don’t reply. Replying encourages bad behavior by acknowledging it, consumes your energy, and wastes everyone’s time. <em>Just flag it</em>. If enough flags accrue, action will be taken, either automatically or by moderator intervention.</p>
+<p>In order to maintain our community, moderators reserve the right to remove any content and any user account for any reason at any time. Moderators do not preview new posts; the moderators and site operators take no responsibility for any content posted by the community.</p>
+<p><a name="be-civil"></a></p>
+<h2><a name="p-228-always-be-civilbe-civil-6" class="anchor" href="#p-228-always-be-civilbe-civil-6" aria-label="Heading link"></a><a href="#be-civil">Always Be Civil</a></h2>
+<p>Nothing sabotages a healthy conversation like rudeness:</p>
+<ul>
+<li>Be civil. Don’t post anything that a reasonable person would consider offensive, abusive, or hate speech.</li>
+<li>Keep it clean. Don’t post anything obscene or sexually explicit.</li>
+<li>Respect each other. Don’t harass or grief anyone, impersonate people, or expose their private information.</li>
+<li>Respect our forum. Don’t post spam or otherwise vandalize the forum.</li>
+</ul>
+<p>These are not concrete terms with precise definitions — avoid even the <em>appearance</em> of any of these things. If you’re unsure, ask yourself how you would feel if your post was featured on the front page of a major news site.</p>
+<p>This is a public forum, and search engines index these discussions. Keep the language, links, and images safe for family and friends.</p>
+<p><a name="keep-tidy"></a></p>
+<h2><a name="p-228-keep-it-tidykeep-tidy-7" class="anchor" href="#p-228-keep-it-tidykeep-tidy-7" aria-label="Heading link"></a><a href="#keep-tidy">Keep It Tidy</a></h2>
+<p>Make the effort to put things in the right place, so that we can spend more time discussing and less cleaning up. So:</p>
+<ul>
+<li>Don’t start a topic in the wrong category; please read the category definitions.</li>
+<li>Don’t cross-post the same thing in multiple topics.</li>
+<li>Don’t post no-content replies.</li>
+<li>Don’t divert a topic by changing it midstream.</li>
+<li>Don’t sign your posts — every post has your profile information attached to it.</li>
+<li>Don’t post AI generated content. We will remove accounts suspected of this.</li>
+</ul>
+<p>Rather than posting “+1” or “Agreed”, use the Like button. Rather than taking an existing topic in a radically different direction, use Reply as a Linked Topic.</p>
+<p><a name="stealing"></a></p>
+<h2><a name="p-228-post-only-your-own-stuffstealing-8" class="anchor" href="#p-228-post-only-your-own-stuffstealing-8" aria-label="Heading link"></a><a href="#stealing">Post Only Your Own Stuff</a></h2>
+<p>You may not post anything digital that belongs to someone else without permission. You may not post descriptions of, links to, or methods for stealing someone’s intellectual property (software, video, audio, images), or for breaking any other law.</p>
+<p><a name="power"></a></p>
+<h2><a name="p-228-powered-by-youpower-9" class="anchor" href="#p-228-powered-by-youpower-9" aria-label="Heading link"></a><a href="#power">Powered by You</a></h2>
+<p>This site is operated by your <a href="/about">friendly local staff</a> and <em>you</em>, the community. If you have any further questions about how things should work here, open a new topic in the <a href="/c/site-feedback">site feedback category</a> and let’s discuss! If there’s a critical or urgent issue that can’t be handled by a meta topic or flag, contact us via the <a href="/about">staff page</a>.</p>
+<p><a name="tos"></a></p>
+<h2><a name="p-228-terms-of-servicetos-10" class="anchor" href="#p-228-terms-of-servicetos-10" aria-label="Heading link"></a><a href="#tos">Terms of Service</a></h2>
+<p>Yes, legalese is boring, but we must protect ourselves – and by extension, you and your data – against unfriendly folks. We have a <a href="/tos">Terms of Service</a> describing your (and our) behavior and rights related to content, privacy, and laws. To use this service, you must agree to abide by our <a href="/tos">TOS</a>.</p>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.docker.com/legal/docker-terms-service/' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://www.docker.com/legal/privacy/' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="top_footer">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <ul class="footer_links">
+            <li><a href="https://www.docker.com">What is Docker</a></li>
+            <li><a href="https://www.docker.com/what-container">What is a Container</a></li>
+            <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+            <li><a href="https://www.docker.com/customers">Customers</a></li>
+            <li><a href="https://www.docker.com/partners">Partners</a></li>
+            <li><a href="https://www.docker.com/company">About Docker</a></li>
+            <li><a href="https://www.docker.com/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <ul class="footer_links">
+            <li><a href="https://www.docker.com/products">Product</a></li>
+            <li><a href="https://www.docker.com/pricing">Pricing</a></li>
+            <li><a href="https://www.docker.com/products/docker-hub/">Docker Hub</a></li>
+            <li><a href="https://www.docker.com/products/extensions/">Docker Extensions</a></li>
+            <li><a href="https://www.docker.com/products/developer-tools/">Developer Tools</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3">
+          <ul class="footer_links">
+            <li><a href="https://dockr.ly/3zPF5rR">Docker Desktop for Mac(Intel Chip) </a></li>
+            <li><a href="https://dockr.ly/3tJBMyI">Docker Desktop for Mac(Apple Chip)</a></li>
+            <li><a href="https://dockr.ly/3OkGtXS">Docker Desktop for Windows</a></li>
+            <li><a href="https://dockr.ly/3OqC05F">Docker Desktop for Linux</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <ul class="footer_links">
+            <li><a href="https://docs.docker.com/">Documentation</a></li>
+            <li><a href="https://www.docker.com/docker">Learn</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <ul class="footer_links">
+            <li><a href="https://www.docker.com/docker-community">Community</a></li>
+            <li><a href="https://www.docker.com/community/events">Events</a></li>
+            <li><a href="https://forums.docker.com/" target="_blank">Forums</a></li>
+            <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+            <li><a href="https://blog.docker.com/curated/">Blogs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <nav class="footer_sub_nav">
+          <ul class="menu">
+            <li><a href="http://status.docker.com/">Status</a></li>
+            <li><a href="https://www.docker.com/docker-security">Security</a></li>
+            <li><a href="https://www.docker.com/legal">Legal</a></li>
+            <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="bottom_footer">
+      <div class="footer-copyright"><p class="copyright">Copyright © 2024 Docker Inc. All rights reserved.</p></div>
+      <div class="footer_social_nav">
+        <ul class="nav-social">
+          <li>
+            <a href="http://twitter.com/docker"><svg class="fa d-icon d-icon-twitter svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#fab-twitter"></use>
+                Twitter
+              </svg></a>
+          </li>
+          <li>
+            <a href="http://www.youtube.com/user/dockerrun"><svg class="fa d-icon d-icon-fab-youtube svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#fab-youtube"></use>
+                Youtube
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://github.com/docker/docker"><svg class="fa d-icon d-icon-github svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#fab-github"></use>
+                Github
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/docker"><svg class="fa d-icon d-icon-fab-linkedin-in svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#fab-linkedin-in"></use>
+                Linkedin
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/docker.run"><svg class="fa d-icon d-icon-facebook svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#fab-facebook-f"></use>
+                Facebook
+              </svg></a>
+          </li>
+          <li>
+            <a href="http://www.reddit.com/r/docker"><svg class="fa d-icon d-icon-fab-reddit svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#fab-reddit"></use>
+                Reddit
+              </svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script defer="" src="https://sea3.discourse-cdn.com/docker/theme-javascripts/d09dfed1aa03fd92ea8283fd45ff352677e31205.js?__ws=forums.docker.com" data-theme-id="10" nonce="UZjwvBtdabzaYF0hTczYJBG8m"></script>
+  </body>
+  
+</html>

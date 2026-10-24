@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-24T17:00:00Z",
+  "total_candidates": 85,
+  "total_passed_research": 75,
+  "total_imported_cleanly": 75,
+  "skipped_duplicates": 0,
+  "errors": 0,
+  "exact_verified_count": 75
+}

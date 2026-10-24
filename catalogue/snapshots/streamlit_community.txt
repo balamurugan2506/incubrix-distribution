@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guidelines - Streamlit</title>
+    <meta name="description" content="A community to discuss Streamlit.">
+    <meta name="generator" content="Discourse 2026.9.0 - https://github.com/discourse/discourse version b00c14bb27d9e3e0a9d162e38bd07aff063ad878">
+<link rel="icon" type="image/png" href="https://global.discourse-cdn.com/streamlit/optimized/3X/c/d/cdc2ab6a67afee89b78677e53cb09a098f9d2d3a_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://global.discourse-cdn.com/streamlit/optimized/3X/c/3/c32405bf310275f908c5a4c43985cf7a95a2bd11_2_180x180.png">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+
+<meta name="color-scheme" content="light dark">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://discuss.streamlit.io/guidelines" />
+
+<meta name="discourse-track-view-session-id" content="7RCyBQ8CUMmwW3kYEf41ZX3mJTsh3Aks">
+  <link rel="search" type="application/opensearchdescription+xml" href="https://discuss.streamlit.io/opensearch.xml" title="Streamlit Search">
+
+    
+    <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/color_definitions_clean-streamlit-light_8_16_5e008e901b22a9cb35b8327c80ac00ca4ae8e1cd.css?__ws=discuss.streamlit.io" media="(prefers-color-scheme: light)" rel="stylesheet" class="light-scheme" data-scheme-id="8"/><link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/color_definitions_clean-streamlit-dark_9_16_7459cc954a5c5e820ad1026ecc4c69940ac931ad.css?__ws=discuss.streamlit.io" media="(prefers-color-scheme: dark)" rel="stylesheet" class="dark-scheme" data-scheme-id="9"/>
+
+<link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/common_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="common"  />
+
+
+
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/chat_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="chat"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/checklist_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="checklist"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-adplugin_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-adplugin"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-ai_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-ai"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-akismet_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-akismet"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-cakeday_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-cakeday"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-chat-integration_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-chat-integration"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-data-explorer_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-data-explorer"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-details_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-gamification_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-gamification"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-github_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-github"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-lazy-videos_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-local-dates_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-narrative-bot_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-policy_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-policy"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-presence_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-reactions_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-reactions"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-solved_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-templates_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="discourse-templates"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/footnote_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="footnote"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/hosted-site_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/poll_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/spoiler-alert_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="spoiler-alert"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/chat_mobile_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width < 40rem)" rel="stylesheet" data-target="chat_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-ai_mobile_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-ai_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-gamification_mobile_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-gamification_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-reactions_mobile_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width < 40rem)" rel="stylesheet" data-target="discourse-reactions_mobile"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/chat_desktop_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width >= 40rem)" rel="stylesheet" data-target="chat_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-ai_desktop_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-ai_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-gamification_desktop_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-gamification_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/discourse-reactions_desktop_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width >= 40rem)" rel="stylesheet" data-target="discourse-reactions_desktop"  />
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/poll_desktop_5df40da42a8b0ad380a37668c55be3de2c0e70d5.css?__ws=discuss.streamlit.io" media="(width >= 40rem)" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/common_theme_17_693e167ef978226f41a350253e5f0ecb9873b7a4.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="17" data-theme-name="streamlit custom header links"/>
+<link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/common_theme_18_c56cdd4061755f5bdd5df84bb8a9a0ed535962dd.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="18" data-theme-name="streamlit search banner"/>
+<link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/common_theme_16_90bbdde0db1f411de31d8a33d0523e9b00c0990f.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="16" data-theme-name="clean streamlit"/>
+<link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/common_theme_31_ae64bf9547ed87338a6a033cc42e9af446fd95a5.css?__ws=discuss.streamlit.io" media="all" rel="stylesheet" data-target="common_theme" data-theme-id="31" data-theme-name="discourse onetrust cookie banner"/>
+  <link href="https://sea2.discourse-cdn.com/streamlit/stylesheets/mobile_theme_18_5e5ec4c1cac0ea10a72e9e948cad7b09bb8e6feb.css?__ws=discuss.streamlit.io" media="(width < 40rem)" rel="stylesheet" data-target="mobile_theme" data-theme-id="18" data-theme-name="streamlit search banner"/>
+  
+
+    <meta name="google-site-verification" content="3NI54WNUSvrMvRRO5WxEAABgCcH61cCmm8hgB7H5dEY">
+    
+        <meta property="og:site_name" content="Streamlit" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://global.discourse-cdn.com/streamlit/original/3X/e/a/ea3b6d1555d278c9bc0cdaf48a1bfaff11ca58e7.svg" />
+<meta property="og:url" content="https://discuss.streamlit.io/guidelines" />
+<meta name="twitter:url" content="https://discuss.streamlit.io/guidelines" />
+<meta property="og:title" content="Guidelines - Streamlit" />
+<meta name="twitter:title" content="Guidelines - Streamlit" />
+<meta property="og:description" content="A community to discuss Streamlit." />
+<meta name="twitter:description" content="A community to discuss Streamlit." />
+
+    
+    
+  </head>
+  <body class="crawler ">
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="01990a45-a437-7943-94ff-a64625cb41da" nonce="4DzsVysjxEbryjwKcq5w2WUGo"></script>
+<script defer="" src="https://sea2.discourse-cdn.com/streamlit/theme-javascripts/f22662457afab6c90e97ea4d581366b1ea99ef4f.js?__ws=discuss.streamlit.io" data-theme-id="31" nonce="4DzsVysjxEbryjwKcq5w2WUGo"></script>
+<script src="https://cdn.jsdelivr.net/npm/@segment/analytics-consent-wrapper-onetrust@latest/dist/umd/analytics-onetrust.umd.js" nonce="4DzsVysjxEbryjwKcq5w2WUGo"></script>
+<script defer="" src="https://sea2.discourse-cdn.com/streamlit/theme-javascripts/97c5f2707191d770b3370e17a9d3a8b8a41e26c0.js?__ws=discuss.streamlit.io" data-theme-id="31" nonce="4DzsVysjxEbryjwKcq5w2WUGo"></script>
+    <header>
+  <a href="/">Streamlit</a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+      <div itemscope itemtype='http://schema.org/WebPage'>
+  <meta itemprop='lastReviewed' content='2025-11-17'>
+  <ul class='nav-pills' role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+      <li class="nav-item-about"><a href="/about">About</a></a></li>
+        <li class='nav-item-guidelines'><a class='active' href='/guidelines'>Guidelines</a></li>
+      <li class='nav-item-tos'><a href='/tos' class=''>Terms of Service</a></li>
+      <li class='nav-item-privacy'><a href='/privacy' class=''>Privacy</a></li>
+  </ul>
+
+
+  <div itemprop='mainContentOfPage'>
+    <p>The guidelines for using the Streamlit Forum can be found at:</p>
+<h2><a name="p-6-httpsstreamlitiocommunity-guidelines-1" class="anchor" href="#p-6-httpsstreamlitiocommunity-guidelines-1" aria-label="Heading link"></a><a href="https://streamlit.io/community-guidelines" class="inline-onebox">Community Guidelines • Streamlit</a></h2>
+  </div>
+</div>
+
+  
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/tos' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='/privacy' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    
+    
+  </body>
+  
+</html>

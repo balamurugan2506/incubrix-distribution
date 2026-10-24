@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="hu8V-TbJeXQOq2-Wict-lsZiJFaOTuZUhZsIVIwamc0mgepmCFrTmPXaR1ZlsYDbi33HnMFLeFCPfSBrf2_flg" />
+
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+<meta content="ZKmJnGwPBwvqYiXVXreD0H-CzeTgFwqVmOhN_EY9lKY" name="google-site-verification">
+<meta name="direct-upload-url" content="/rails/active_storage/direct_uploads">
+
+<meta name="current-user-id">
+
+<title>Help | BetaList</title>
+<link rel="icon" type="image/png" href="/assets/favicon-fb6ee938.png">
+<link rel="apple-touch-icon-precomposed" type="image/png" href="/assets/touch-icon-precomposed-144-e8598d79.png" sizes="72x72 144x144">
+<meta name="description" content="Find answers, read our submission guides, or get in touch with the BetaList team.">
+<meta name="twitter:account_id" content="1512944793">
+<meta name="twitter:site" content="@BetaList">
+<meta name="twitter:domain" content="BetaList.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@BetaList">
+<meta property="og:title" content="Help">
+<meta property="og:description" content="Find answers, read our submission guides, or get in touch with the BetaList team.">
+<meta property="og:image" content="https://betalist.com/assets/homepage-9b998efc.jpg">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="379376245443085">
+<meta property="fb:admins" content="1053302589">
+<meta name="apple_mobile_web_app_title" content="BetaList">
+
+  <meta itemprop="name" content="BetaList">
+<meta itemprop="description" content="Discover tomorrow&#39;s startups, today.">
+<meta itemprop="image" content="https://betalist.com/assets/touch-icon-precomposed-144-e8598d79.png">
+
+<link rel="alternate" type="application/atom+xml" title="Startups ATOM Feed" href="https://feeds.feedburner.com/BetaList" />
+
+<script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "controllers/turnstile_controller": "/assets/verify_human/turnstile_controller-1e686e39.js",
+    "application": "/assets/application-1310e83f.js",
+    "admin": "/assets/admin-f55e5c50.js",
+    "theme_manager": "/assets/theme_manager-5e445aba.js",
+    "@rails/actioncable": "/assets/actioncable.esm-e5c1e716.js",
+    "@rails/activestorage": "/assets/@rails--activestorage-d53525da.js",
+    "@rails/request.js": "/assets/@rails--request.js-ff400e4a.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-86bf8853.js",
+    "autosize": "/assets/autosize-a648b077.js",
+    "current.js": "/assets/current.js-f886b1bd.js",
+    "el-transition": "/assets/el-transition-56e152e9.js",
+    "js-cookie": "/assets/js-cookie-26dce017.js",
+    "local-time": "/assets/local-time-4f7ee01f.js",
+    "sortablejs": "/assets/sortablejs-171087e4.js",
+    "tom-select": "/assets/tom-select-bf1b6e5d.js",
+    "@hotwired/stimulus": "/assets/@hotwired--stimulus-745bd373.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-25917588.js",
+    "stimulus-use": "/assets/stimulus-use-9a297524.js",
+    "@stimulus-components/rails-nested-form": "/assets/@stimulus-components--rails-nested-form-2c10f7ab.js",
+    "@stimulus-components/dropdown": "/assets/@stimulus-components--dropdown-ec21ea1b.js",
+    "@stimulus-components/popover": "/assets/@stimulus-components--popover-b3c150aa.js",
+    "ahoy.js": "/assets/ahoy.js-13b65a99.js",
+    "Chart.bundle": "/assets/Chart.bundle-eaff0df7.js",
+    "chartjs-adapter-date-fns.bundle": "/assets/chartjs-adapter-date-fns.bundle-f3e4b617.js",
+    "chartkick": "/assets/chartkick-61a6088d.js",
+    "controllers/application": "/assets/controllers/application-15f4648f.js",
+    "controllers/auth_dialog_controller": "/assets/controllers/auth_dialog_controller-26e1d8bb.js",
+    "controllers/auth_frame_controller": "/assets/controllers/auth_frame_controller-8f37ba02.js",
+    "controllers/auto_submit_controller": "/assets/controllers/auto_submit_controller-90f0dc1a.js",
+    "controllers/autosize_controller": "/assets/controllers/autosize_controller-84c80be1.js",
+    "controllers/checkout_controller": "/assets/controllers/checkout_controller-68c93820.js",
+    "controllers/claim_poll_controller": "/assets/controllers/claim_poll_controller-acb0a738.js",
+    "controllers/click_to_enable_controller": "/assets/controllers/click_to_enable_controller-f0ba39eb.js",
+    "controllers/clipboard_controller": "/assets/controllers/clipboard_controller-b75982d1.js",
+    "controllers/collapse_controller": "/assets/controllers/collapse_controller-83b38f65.js",
+    "controllers/cooldown_controller": "/assets/controllers/cooldown_controller-824cfa3f.js",
+    "controllers/copy_source_controller": "/assets/controllers/copy_source_controller-622769db.js",
+    "controllers/copy_to_input_controller": "/assets/controllers/copy_to_input_controller-b12d2539.js",
+    "controllers/debounced_submit_controller": "/assets/controllers/debounced_submit_controller-c8ce3466.js",
+    "controllers/delayed_enable_controller": "/assets/controllers/delayed_enable_controller-71b01c47.js",
+    "controllers/disable_on_submit_controller": "/assets/controllers/disable_on_submit_controller-7e06de7f.js",
+    "controllers/dismissible_controller": "/assets/controllers/dismissible_controller-47611f83.js",
+    "controllers/drawer_controller": "/assets/controllers/drawer_controller-2ebc8a02.js",
+    "controllers/dropdown_controller": "/assets/controllers/dropdown_controller-658a89db.js",
+    "controllers/focus_parent_controller": "/assets/controllers/focus_parent_controller-9f7df9eb.js",
+    "controllers/form_controller": "/assets/controllers/form_controller-1bea1511.js",
+    "controllers": "/assets/controllers/index-5eaf757e.js",
+    "controllers/infinite_scroll_controller": "/assets/controllers/infinite_scroll_controller-17fd87c9.js",
+    "controllers/input_prefixer_controller": "/assets/controllers/input_prefixer_controller-a7c740a6.js",
+    "controllers/login_code_controller": "/assets/controllers/login_code_controller-d50d61ca.js",
+    "controllers/max_length_controller": "/assets/controllers/max_length_controller-096de387.js",
+    "controllers/media_uploads_controller": "/assets/controllers/media_uploads_controller-f083badf.js",
+    "controllers/messages_scroll_controller": "/assets/controllers/messages_scroll_controller-629631de.js",
+    "controllers/nav_dropdown_menu_controller": "/assets/controllers/nav_dropdown_menu_controller-3f901b6b.js",
+    "controllers/navigate_controller": "/assets/controllers/navigate_controller-ea1adb27.js",
+    "controllers/nested_form_controller": "/assets/controllers/nested_form_controller-b128baaa.js",
+    "controllers/passkey_login_controller": "/assets/controllers/passkey_login_controller-19f80e76.js",
+    "controllers/passkey_offer_controller": "/assets/controllers/passkey_offer_controller-f791c6ce.js",
+    "controllers/passkey_registration_controller": "/assets/controllers/passkey_registration_controller-88c775eb.js",
+    "controllers/password_toggle_controller": "/assets/controllers/password_toggle_controller-f4645892.js",
+    "controllers/popup_link_controller": "/assets/controllers/popup_link_controller-e8da3b23.js",
+    "controllers/preview_controller": "/assets/controllers/preview_controller-064843be.js",
+    "controllers/remove_controller": "/assets/controllers/remove_controller-000f8017.js",
+    "controllers/remove_duplicates_controller": "/assets/controllers/remove_duplicates_controller-bfdcbb4f.js",
+    "controllers/scrollspy_controller": "/assets/controllers/scrollspy_controller-89750c82.js",
+    "controllers/sidebar_controller": "/assets/controllers/sidebar_controller-36052c00.js",
+    "controllers/single_line_controller": "/assets/controllers/single_line_controller-f6c1cd23.js",
+    "controllers/sortable_controller": "/assets/controllers/sortable_controller-d91c1dd2.js",
+    "controllers/status_refresh_controller": "/assets/controllers/status_refresh_controller-c3662961.js",
+    "controllers/submission_controller": "/assets/controllers/submission_controller-cee18a7a.js",
+    "controllers/submit_shortcut_controller": "/assets/controllers/submit_shortcut_controller-11d9cedb.js",
+    "controllers/sync_select_controller": "/assets/controllers/sync_select_controller-a119e812.js",
+    "controllers/tabs_controller": "/assets/controllers/tabs_controller-0f7432e5.js",
+    "controllers/theme_controller": "/assets/controllers/theme_controller-9ffe5b93.js",
+    "controllers/timed_toggle_controller": "/assets/controllers/timed_toggle_controller-1e6e4c18.js",
+    "controllers/toggle_controller": "/assets/controllers/toggle_controller-11bdcdf5.js",
+    "controllers/tom_select_controller": "/assets/controllers/tom_select_controller-2877b381.js",
+    "controllers/turbo_modal_controller": "/assets/controllers/turbo_modal_controller-9d4dc11a.js",
+    "controllers/url_prefix_controller": "/assets/controllers/url_prefix_controller-e3a5e6d9.js",
+    "lib/passkeys": "/assets/lib/passkeys-2c7e6e3a.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/application-1310e83f.js">
+<link rel="modulepreload" href="/assets/admin-f55e5c50.js">
+<link rel="modulepreload" href="/assets/theme_manager-5e445aba.js">
+<link rel="modulepreload" href="/assets/actioncable.esm-e5c1e716.js">
+<link rel="modulepreload" href="/assets/@rails--activestorage-d53525da.js">
+<link rel="modulepreload" href="/assets/@rails--request.js-ff400e4a.js">
+<link rel="modulepreload" href="/assets/turbo.min-86bf8853.js">
+<link rel="modulepreload" href="/assets/autosize-a648b077.js">
+<link rel="modulepreload" href="/assets/current.js-f886b1bd.js">
+<link rel="modulepreload" href="/assets/el-transition-56e152e9.js">
+<link rel="modulepreload" href="/assets/js-cookie-26dce017.js">
+<link rel="modulepreload" href="/assets/local-time-4f7ee01f.js">
+<link rel="modulepreload" href="/assets/sortablejs-171087e4.js">
+<link rel="modulepreload" href="/assets/tom-select-bf1b6e5d.js">
+<link rel="modulepreload" href="/assets/@hotwired--stimulus-745bd373.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-25917588.js">
+<link rel="modulepreload" href="/assets/stimulus-use-9a297524.js">
+<link rel="modulepreload" href="/assets/@stimulus-components--rails-nested-form-2c10f7ab.js">
+<link rel="modulepreload" href="/assets/@stimulus-components--dropdown-ec21ea1b.js">
+<link rel="modulepreload" href="/assets/@stimulus-components--popover-b3c150aa.js">
+<link rel="modulepreload" href="/assets/ahoy.js-13b65a99.js">
+<link rel="modulepreload" href="/assets/Chart.bundle-eaff0df7.js">
+<link rel="modulepreload" href="/assets/chartjs-adapter-date-fns.bundle-f3e4b617.js">
+<link rel="modulepreload" href="/assets/chartkick-61a6088d.js">
+<link rel="modulepreload" href="/assets/controllers/application-15f4648f.js">
+<link rel="modulepreload" href="/assets/controllers/auth_dialog_controller-26e1d8bb.js">
+<link rel="modulepreload" href="/assets/controllers/auth_frame_controller-8f37ba02.js">
+<link rel="modulepreload" href="/assets/controllers/auto_submit_controller-90f0dc1a.js">
+<link rel="modulepreload" href="/assets/controllers/autosize_controller-84c80be1.js">
+<link rel="modulepreload" href="/assets/controllers/checkout_controller-68c93820.js">
+<link rel="modulepreload" href="/assets/controllers/claim_poll_controller-acb0a738.js">
+<link rel="modulepreload" href="/assets/controllers/click_to_enable_controller-f0ba39eb.js">
+<link rel="modulepreload" href="/assets/controllers/clipboard_controller-b75982d1.js">
+<link rel="modulepreload" href="/assets/controllers/collapse_controller-83b38f65.js">
+<link rel="modulepreload" href="/assets/controllers/cooldown_controller-824cfa3f.js">
+<link rel="modulepreload" href="/assets/controllers/copy_source_controller-622769db.js">
+<link rel="modulepreload" href="/assets/controllers/copy_to_input_controller-b12d2539.js">
+<link rel="modulepreload" href="/assets/controllers/debounced_submit_controller-c8ce3466.js">
+<link rel="modulepreload" href="/assets/controllers/delayed_enable_controller-71b01c47.js">
+<link rel="modulepreload" href="/assets/controllers/disable_on_submit_controller-7e06de7f.js">
+<link rel="modulepreload" href="/assets/controllers/dismissible_controller-47611f83.js">
+<link rel="modulepreload" href="/assets/controllers/drawer_controller-2ebc8a02.js">
+<link rel="modulepreload" href="/assets/controllers/dropdown_controller-658a89db.js">
+<link rel="modulepreload" href="/assets/controllers/focus_parent_controller-9f7df9eb.js">
+<link rel="modulepreload" href="/assets/controllers/form_controller-1bea1511.js">
+<link rel="modulepreload" href="/assets/controllers/index-5eaf757e.js">
+<link rel="modulepreload" href="/assets/controllers/infinite_scroll_controller-17fd87c9.js">
+<link rel="modulepreload" href="/assets/controllers/input_prefixer_controller-a7c740a6.js">
+<link rel="modulepreload" href="/assets/controllers/login_code_controller-d50d61ca.js">
+<link rel="modulepreload" href="/assets/controllers/max_length_controller-096de387.js">
+<link rel="modulepreload" href="/assets/controllers/media_uploads_controller-f083badf.js">
+<link rel="modulepreload" href="/assets/controllers/messages_scroll_controller-629631de.js">
+<link rel="modulepreload" href="/assets/controllers/nav_dropdown_menu_controller-3f901b6b.js">
+<link rel="modulepreload" href="/assets/controllers/navigate_controller-ea1adb27.js">
+<link rel="modulepreload" href="/assets/controllers/nested_form_controller-b128baaa.js">
+<link rel="modulepreload" href="/assets/controllers/passkey_login_controller-19f80e76.js">
+<link rel="modulepreload" href="/assets/controllers/passkey_offer_controller-f791c6ce.js">
+<link rel="modulepreload" href="/assets/controllers/passkey_registration_controller-88c775eb.js">
+<link rel="modulepreload" href="/assets/controllers/password_toggle_controller-f4645892.js">
+<link rel="modulepreload" href="/assets/controllers/popup_link_controller-e8da3b23.js">
+<link rel="modulepreload" href="/assets/controllers/preview_controller-064843be.js">
+<link rel="modulepreload" href="/assets/controllers/remove_controller-000f8017.js">
+<link rel="modulepreload" href="/assets/controllers/remove_duplicates_controller-bfdcbb4f.js">
+<link rel="modulepreload" href="/assets/controllers/scrollspy_controller-89750c82.js">
+<link rel="modulepreload" href="/assets/controllers/sidebar_controller-36052c00.js">
+<link rel="modulepreload" href="/assets/controllers/single_line_controller-f6c1cd23.js">
+<link rel="modulepreload" href="/assets/controllers/sortable_controller-d91c1dd2.js">
+<link rel="modulepreload" href="/assets/controllers/status_refresh_controller-c3662961.js">
+<link rel="modulepreload" href="/assets/controllers/submission_controller-cee18a7a.js">
+<link rel="modulepreload" href="/assets/controllers/submit_shortcut_controller-11d9cedb.js">
+<link rel="modulepreload" href="/assets/controllers/sync_select_controller-a119e812.js">
+<link rel="modulepreload" href="/assets/controllers/tabs_controller-0f7432e5.js">
+<link rel="modulepreload" href="/assets/controllers/theme_controller-9ffe5b93.js">
+<link rel="modulepreload" href="/assets/controllers/timed_toggle_controller-1e6e4c18.js">
+<link rel="modulepreload" href="/assets/controllers/toggle_controller-11bdcdf5.js">
+<link rel="modulepreload" href="/assets/controllers/tom_select_controller-2877b381.js">
+<link rel="modulepreload" href="/assets/controllers/turbo_modal_controller-9d4dc11a.js">
+<link rel="modulepreload" href="/assets/controllers/url_prefix_controller-e3a5e6d9.js">
+<link rel="modulepreload" href="/assets/lib/passkeys-2c7e6e3a.js">
+<script type="module">import "application"</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://betalist.com/metrics/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDTKCJPW');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager Helper function to guarantee business logic -->
+<!-- https://gist.github.com/taylorgorman/bbe349b63dd4f395523c2cdbf06b0bae -->
+<script>
+  /**
+  * @param {Object} data - The same object you would give to dataLayer.push
+  */
+  function safeDataLayerPush(data) {
+    const defaultTimeout = 2000
+    const originalCallback = data.eventCallback
+    
+    if (originalCallback) {
+      let callbackDone = false
+
+      function wrappedCallback() {
+        if (callbackDone) return
+
+        callbackDone = true
+        originalCallback()
+      }
+
+      // If Tag Manager fails or is blocked by browser,
+      // callback must still execute.
+      setTimeout(wrappedCallback, data.eventTimeout || defaultTimeout)
+
+      // Update the data's eventCallback to our new wrapper function
+      // that prevents duplicate executions.
+      data.eventCallback = wrappedCallback
+    }
+
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push(data)
+  }
+</script>
+
+
+
+
+    <link rel="stylesheet" href="/assets/tailwind-99d20d2d.css" data-turbo-track="reload" />
+    <link rel="stylesheet" href="/assets/application-cba3c858.css" media="screen, projection" />
+  </head>
+
+<body id="help-index" class="help bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors" data-signed-in="false" data-controller="auth-dialog">
+    <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDTKCJPW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    
+
+
+<header class="sticky top-0 z-50 h-16">
+  <div class="progressive-blur h-20 -z-10">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <nav class="p-4 relative z-10">
+    <div class="flex items-center justify-between px-2">
+      <a class="block" href="/">
+        <div class="flex items-center gap-3.5">
+          <div class="size-6 grid grid-cols-5">
+            <div class="col-span-3 bg-black dark:bg-white"></div>
+            <div class="col-span-full"></div>
+            <div class="col-span-full bg-black dark:bg-white"></div>
+            <div class="col-span-full"></div>
+            <div class="col-span-full bg-black dark:bg-white"></div>
+          </div>
+          <span class="text-lg font-semibold text-black dark:text-white">BetaList</span>
+        </div>
+
+        <div class="betaburger betaburger--arrow" data-behavior="betaburger">
+          <div class="betaburger__ingredients"></div>
+        </div>
+</a>
+      <div
+        class="
+          hidden sm:flex items-center gap-1 absolute left-1/2 -translate-x-1/2
+        "
+      >
+
+          <a class="relative px-3 py-1.5 text-base font-medium transition-colors duration-200 text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white" href="/">Home</a>
+          <a class="relative px-3 py-1.5 text-base font-medium transition-colors duration-200 text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white" href="/browse">Browse</a>
+          <a class="relative px-3 py-1.5 text-base font-medium transition-colors duration-200 text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white" href="/newsletter">Newsletter</a>
+          <a class="relative px-3 py-1.5 text-base font-medium transition-colors duration-200 text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white" href="/search">Search</a>
+
+        <div class="relative" data-controller="dropdown">
+  <button name="button" type="button" class="contents" data-action="dropdown#toggle click@window-&gt;dropdown#hide">
+                <div class="px-3 py-1.5 text-base font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-full transition-colors flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true"><path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 13C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 13C4.55228 13 5 12.5523 5 12C5 11.4477 4.55228 11 4 11C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+
+</button>
+  <div
+    class="hidden transition transform absolute rounded-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg p-1 flex flex-col gap-0.5 border mt-2 border-gray-200 dark:border-gray-700 min-w-40 origin-top -translate-x-1/2 left-1/2"
+    data-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+  >
+      <a class="block px-3 py-1.5 rounded-lg hover:bg-white dark:hover:bg-gray-800 whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm" data-action="dropdown#toggle" href="/help">Help</a>
+      <a class="block px-3 py-1.5 rounded-lg hover:bg-white dark:hover:bg-gray-800 whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm" data-action="dropdown#toggle" href="/advertise">Advertise</a>
+      <hr class="border-black/10 dark:border-white/10 my-1">
+      <a target="_blank" class="block px-3 py-1.5 rounded-lg hover:bg-white dark:hover:bg-gray-800 whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm" data-action="dropdown#toggle" href="https://startup.jobs">Startup Jobs</a>
+      <a target="_blank" class="block px-3 py-1.5 rounded-lg hover:bg-white dark:hover:bg-gray-800 whitespace-nowrap text-gray-700 dark:text-gray-300 text-sm" data-action="dropdown#toggle" href="https://vision.directory">Vision Pro apps</a>
+  </div>
+</div>
+      </div>
+
+      <div class="sm:hidden" data-controller="dropdown">
+        <button name="button" type="button" data-action="dropdown#toggle click@window-&gt;dropdown#hide">
+          <div
+            class="
+              size-8 flex items-center justify-center rounded-full hover:bg-gray-100
+              dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400
+            "
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true"><path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+</button>        <div
+          class="
+            hidden transition transform origin-top fixed z-50 inset-0 bg-white
+            dark:bg-gray-950 p-6 flex flex-col gap-3
+          "
+          data-dropdown-target="menu"
+          data-transition-enter-from="opacity-0 scale-95"
+          data-transition-enter-to="opacity-100 scale-100"
+          data-transition-leave-from="opacity-100 scale-100"
+          data-transition-leave-to="opacity-0 scale-95"
+        >
+
+          <a class="block py-2 text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300" data-action="dropdown#toggle" href="/">Home</a>
+          <a class="block py-2 text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300" data-action="dropdown#toggle" href="/browse">Browse</a>
+          <a class="block py-2 text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300" data-action="dropdown#toggle" href="/newsletter">Newsletter</a>
+          <a class="block py-2 text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300" data-action="dropdown#toggle" href="/search">Search</a>
+          <hr class="border-gray-200 dark:border-gray-700">
+          <a class="block py-2 text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300" data-action="dropdown#toggle" href="/help">Help</a>
+          <a class="block py-2 text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300" data-action="dropdown#toggle" href="/advertise">Advertise</a>
+          <button name="button" type="button" class="absolute top-4 right-4 rounded-full text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 p-2" data-action="dropdown#toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+</button>        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          data-controller="theme"
+          data-action="click->theme#toggle"
+          class="
+            size-9 rounded-full hover:bg-gray-100 flex items-center justify-center
+            dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400
+          "
+          title="Toggle theme"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5 hidden" aria-hidden="true" data-theme-target="lightIcon"><path d="M12 3V2M12 22V21M18.3598 5.64005L19.0698 4.93005M4.93016 19.07L5.64016 18.36M21 12H22M2 12H3M18.3598 18.36L19.0698 19.07M4.93016 4.93005L5.64016 5.64005M15.5355 8.46447C17.4882 10.4171 17.4882 13.5829 15.5355 15.5355C13.5829 17.4882 10.4171 17.4882 8.46447 15.5355C6.51185 13.5829 6.51185 10.4171 8.46447 8.46447C10.4171 6.51185 13.5829 6.51185 15.5355 8.46447Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5 hidden" aria-hidden="true" data-theme-target="darkIcon"><path d="M20.9638 12.7674C19.8361 13.5447 18.4693 13.9998 16.9961 13.9998C13.1301 13.9998 9.99609 10.8657 9.99609 6.99975C9.99609 5.52667 10.4511 4.15987 11.2283 3.03223C6.61911 3.42277 3 7.28768 3 11.9979C3 16.9674 7.0286 20.996 11.9981 20.996C16.7084 20.996 20.5734 17.3767 20.9638 12.7674Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+
+          <a class="text-base px-3.5 py-1.5 rounded-full select-none cursor-default flex items-center justify-center gap-2 transition-colors duration-200 ease-out font-medium border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-50 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-gray-900 dark:active:bg-gray-800" data-turbo-frame="new_session" data-action="auth-dialog#open" href="/login">Log in</a>
+
+          <a class="text-base px-3.5 py-1.5 rounded-full select-none cursor-default flex items-center justify-center gap-2 transition-colors duration-200 ease-out font-semibold border border-transparent bg-gray-900 text-white hover:bg-gray-700 active:bg-gray-600 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200 dark:active:bg-gray-300 hidden sm:block" href="/submit">Submit Startup</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <style>
+  body[data-is-admin] .admin\:inline,
+  body[data-is-admin].admin\:inline
+  { display:inline }
+
+  body[data-is-admin] .admin\:block,
+  body[data-is-admin].admin\:block
+  { display:block }
+
+  body[data-is-admin] .admin\:hidden,
+  body[data-is-admin].admin\:hidden
+  { display:none }
+
+  body[data-signed-in] .signed-in\:block,
+  body[data-signed-in].signed-in\:block
+  { display:block }
+
+  body[data-signed-in] .signed-in\:inline,
+  body[data-signed-in].signed-in\:inline
+  { display:inline}
+
+  body[data-signed-in] .signed-in\:hidden,
+  body[data-signed-in].signed-in\:hidden
+  { display:none }
+</style>
+
+
+    <div class="fixed bottom-4 left-4 flex flex-col gap-4 z-50">
+
+</div>
+    
+
+    
+
+<div class="bg-white dark:bg-gray-950">
+  <div class="mx-auto max-w-7xl px-6 pt-12 pb-20 sm:pt-16 sm:pb-24 lg:px-8">
+
+    <header class="max-w-[60ch]">
+      <h1 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl dark:text-white">
+        Help
+      </h1>
+      <p class="mt-6 text-lg text-pretty text-gray-600 dark:text-gray-300">
+        Find an answer below, read one of our guides, or <a class="underline underline-offset-2 decoration-gray-300 hover:text-gray-900 hover:decoration-gray-500 dark:decoration-gray-700 dark:hover:text-white dark:hover:decoration-gray-400" href="/contact">get in touch</a>.
+      </p>
+    </header>
+
+    <div class="mt-10 max-w-3xl">
+
+      <form class="block" data-controller="debounced-submit" data-turbo-frame="content" action="/help" accept-charset="UTF-8" method="get">
+        <div class="relative">
+          <input placeholder="Search help articles and FAQs" class="w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-11 text-base placeholder:text-gray-400 focus:border-gray-900 focus:ring-0 focus:outline-hidden dark:border-gray-800 dark:bg-gray-900 dark:placeholder:text-gray-600 dark:focus:border-gray-300" autocomplete="off" data-action="input-&gt;debounced-submit#submit" type="text" name="q" id="q" />
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400 dark:text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true"><path d="M11 18C14.866 18 18 14.866 18 11C18 7.13401 14.866 4 11 4C7.13401 4 4 7.13401 4 11C4 14.866 7.13401 18 11 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M20 20L16.05 16.05" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+          </div>
+        </div>
+</form>
+
+      <turbo-frame id="content" target="_top">
+
+          <section class="mt-12">
+            <h2 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Guides</h2>
+            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <a class="group flex h-full flex-col rounded-lg border border-gray-200 p-5 transition-colors hover:border-gray-300 hover:bg-gray-50 dark:border-gray-800 dark:hover:border-gray-700 dark:hover:bg-gray-900" href="/help/submitting">
+                  <h3 class="text-base font-semibold text-gray-900 dark:text-white">
+                    How to write a great submission
+                  </h3>
+                  <p class="mt-2 grow text-sm text-pretty text-gray-600 dark:text-gray-400">
+                    Field-by-field guidance for getting featured with little or no editing &mdash; covers name, pitch, description, icon, gallery, topics, and promotions.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white">
+                    Read guide
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true"><path d="M14 6L20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </span>
+</a>                <a class="group flex h-full flex-col rounded-lg border border-gray-200 p-5 transition-colors hover:border-gray-300 hover:bg-gray-50 dark:border-gray-800 dark:hover:border-gray-700 dark:hover:bg-gray-900" href="/criteria">
+                  <h3 class="text-base font-semibold text-gray-900 dark:text-white">
+                    Submission criteria
+                  </h3>
+                  <p class="mt-2 grow text-sm text-pretty text-gray-600 dark:text-gray-400">
+                    What we look for when deciding which startups to feature on BetaList &mdash; eligibility, landing page quality, and how visitors should be able to sign up.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white">
+                    Read guide
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true"><path d="M14 6L20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </span>
+</a>            </div>
+          </section>
+
+          <section class="mt-16">
+            <h2 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Frequently asked questions</h2>
+            <div class="mt-2 flex flex-col gap-12">
+                <div>
+                  <h3 class="border-b border-gray-200 pb-3 text-sm font-semibold tracking-wide uppercase text-gray-500 dark:border-gray-800 dark:text-gray-400">
+                    General
+                  </h3>
+                  <div class="flex flex-col gap-0 [&:has([open])_details:not([open])_summary]:text-gray-400 dark:[&:has([open])_details:not([open])_summary]:text-gray-600">
+    <details id="what-is-betalist" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">What is BetaList?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">BetaList is the place for early adopters to discover upcoming and recently launched internet startups, and for startup founders to share their startup with the world and get early user feedback.</div>
+    </details>
+    <details id="how-do-i-get-my-startup-included-on-the-site" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I get my startup included on the site?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Please review our <a href="/criteria" class="link">submission guidelines</a> and <a href="/submit" class="link">submit your startup</a>.</div>
+    </details>
+    <details id="how-do-i-advertise-on-betalist" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I advertise on BetaList?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">If you are a new startup and match our <a href="/criteria" class="link">submission guidelines</a> you'll probably want to submit your startup for a regular review (see above). If you don't match the guidelines or want additional exposure you can have a look at our <a href="/advertise" class="link">advertising packages</a>.</div>
+    </details>
+    <details id="how-do-i-get-access-to-the-betalist-api" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I get access to the BetaList API?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">We offer API access on a case-by-case basis. To request access, please reach out through our <a href="/contact" class="link">contact form</a> and include&#58; (1) what you plan to use the API for, (2) your intended use case, and (3) estimated request volume. We review each request individually to ensure the API is used appropriately. Once approved, you'll receive an API key and access to our <a href="https&#58;//gist.github.com/marckohlbrugge/5a29bf1ba628bb4ca960" target="_blank" class="link">API documentation</a>.</div>
+    </details>
+</div>
+
+                </div>
+                <div>
+                  <h3 class="border-b border-gray-200 pb-3 text-sm font-semibold tracking-wide uppercase text-gray-500 dark:border-gray-800 dark:text-gray-400">
+                    Submissions
+                  </h3>
+                  <div class="flex flex-col gap-0 [&:has([open])_details:not([open])_summary]:text-gray-400 dark:[&:has([open])_details:not([open])_summary]:text-gray-600">
+    <details id="how-do-i-submit-my-startup" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I submit my startup?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Go to <a href="/submit" class="link">this page</a>.</div>
+    </details>
+    <details id="how-much-does-it-cost-to-submit-a-startup" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How much does it cost to submit a startup?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">All submissions are paid. There is no free submission option. Current plans and prices are shown at the end of the <a href="/submit" class="link">submission form</a>. If your startup isn't selected, you get a full refund automatically.</div>
+    </details>
+    <details id="is-there-a-free-submission-option" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Is there a free submission option?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">No. BetaList used to offer free submissions, but all submissions now require payment. See the <a href="/submit" class="link">submission form</a> for current plans. If a startup isn't selected, the payment is refunded in full automatically.</div>
+    </details>
+    <details id="what-happens-after-i-submit-my-startup" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">What happens after I submit my startup?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Payment is charged when you choose a plan and complete checkout. Our editorial team then reviews your startup. You'll get an email with the decision. If accepted, we feature it on the timeline for your plan. If it isn't selected, you receive a full refund automatically.</div>
+    </details>
+    <details id="what-types-of-startups-does-betalist-feature" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">What types of startups does BetaList feature?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">We feature pre-launch and recently launched startups with a clear value proposition, a good design, and an innovative idea. Your startup must have its own domain—we don't accept submissions using free hosting subdomains (like vercel.app, netlify.app, herokuapp.com) or direct links to app stores. See our full <a href="/criteria" class="link">submission criteria</a> for details.</div>
+    </details>
+    <details id="i-don-t-match-the-submission-guidelines-will-you-make-an-exception" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">I don&#39;t match the submission guidelines. Will you make an exception?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">No. Our <a href="/criteria" class="link">criteria</a> reflect what works for our audience, so startups that don't meet them tend not to perform well even when featured. You're welcome to resubmit later if you've changed things to better fit the guidelines.</div>
+    </details>
+</div>
+
+                </div>
+                <div>
+                  <h3 class="border-b border-gray-200 pb-3 text-sm font-semibold tracking-wide uppercase text-gray-500 dark:border-gray-800 dark:text-gray-400">
+                    Review Process
+                  </h3>
+                  <div class="flex flex-col gap-0 [&:has([open])_details:not([open])_summary]:text-gray-400 dark:[&:has([open])_details:not([open])_summary]:text-gray-600">
+    <details id="how-can-i-see-the-status-of-my-startup-submission" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How can I see the status of my startup submission?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Visit your <a href="/dashboard" class="link">dashboard</a>. If you don't see your submission, make sure you are signed in with the same account as you used when submitting your startup.</div>
+    </details>
+    <details id="how-long-does-it-take-to-get-reviewed-and-featured" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How long does it take to get reviewed and featured?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">It depends on the plan you paid for. The expected timeline is shown when you choose a plan and in your confirmation email. Review happens before featuring; if your startup isn't selected, you get a full refund.</div>
+    </details>
+    <details id="what-s-the-difference-between-the-submission-plans" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">What&#39;s the difference between the submission plans?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Plans differ mainly by how quickly your startup is featured and whether newsletter inclusion is guaranteed. See the <a href="/submit" class="link">submission form</a> for the current options. All plans include a do-follow backlink if featured, and a full refund if not selected. All submissions must still meet our <a href="/criteria" class="link">submission guidelines</a>.</div>
+    </details>
+    <details id="can-i-upgrade-my-submission-to-a-faster-plan" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Can I upgrade my submission to a faster plan?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Yes. If you've already submitted on a lower plan and want faster featuring or newsletter inclusion, you can upgrade from your <a href="/dashboard" class="link">dashboard</a>.</div>
+    </details>
+    <details id="what-is-your-refund-policy" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">What is your refund policy?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">If your startup is not selected, you will receive a full refund automatically. Once your startup has been featured, refunds are not available.</div>
+    </details>
+    <details id="how-long-does-a-refund-take" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How long does a refund take?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Refunds are processed automatically when your submission is not selected. It can take 5–10 business days for the refund to appear on your statement, depending on your bank.</div>
+    </details>
+    <details id="why-wasn-t-my-startup-selected" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Why wasn&#39;t my startup selected?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">We receive thousands of submissions every month. We prioritize startup submissions that have a clear value proposition, have an idea we haven't seen before, and have a well-designed landing page, because these are the things that our audience is looking for. You are welcome to resubmit in the future if you've improved on these things and think you are a better fit. Unfortunately we're not able to provide specific feedback on individual submissions.</div>
+    </details>
+    <details id="can-i-resubmit-my-startup-after-it-was-rejected" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Can I resubmit my startup after it was rejected?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Yes, you are welcome to resubmit your startup in the future if you've made improvements based on our <a href="/criteria" class="link">submission guidelines</a>. Focus on improving your value proposition, design, and uniqueness before resubmitting.</div>
+    </details>
+</div>
+
+                </div>
+                <div>
+                  <h3 class="border-b border-gray-200 pb-3 text-sm font-semibold tracking-wide uppercase text-gray-500 dark:border-gray-800 dark:text-gray-400">
+                    Featured Startups
+                  </h3>
+                  <div class="flex flex-col gap-0 [&:has([open])_details:not([open])_summary]:text-gray-400 dark:[&:has([open])_details:not([open])_summary]:text-gray-600">
+    <details id="how-do-i-get-into-the-trending-startups-section" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I get into the Trending Startups section?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">The Trending Startups section on the homepage showcases the most popular, recently featured startups. We take a few metrics in mind, including how many tweets a startup post has received. We're not disclosing the exact algorithm, but the more engagement your startup post receives, the higher its chances of getting trending.</div>
+    </details>
+    <details id="will-my-startup-be-included-in-the-newsletter" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Will my startup be included in the newsletter?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Whether newsletter inclusion is guaranteed depends on the plan you chose. Check your confirmation email or <a href="/dashboard" class="link">dashboard</a>. When it isn't guaranteed, the newsletter only includes the most popular featured startups. It takes at least 24 hours between a startup getting featured and being included in the newsletter so we can fairly determine popularity.</div>
+    </details>
+    <details id="does-my-listing-include-a-do-follow-backlink" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Does my listing include a do-follow backlink?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Yes. The "Visit Site" button on your featured listing is a do-follow link—it does not use <code>rel="nofollow"</code>. It routes through a 301 redirect to your website so we can track clicks and add <code>ref=betalist</code> attribution. Google passes link equity through 301 redirects, so the SEO benefit reaches your domain. Some SEO tools display the BetaList URL in reports rather than yours; that is a tool limitation, not lost link value.</div>
+    </details>
+    <details id="how-can-i-track-my-startup-s-performance-on-betalist" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How can I track my startup&#39;s performance on BetaList?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">We automatically add UTM tracking parameters to links to your website, so you can track traffic from BetaList using Google Analytics or similar tools. Check your analytics dashboard for traffic from source "betalist".</div>
+    </details>
+    <details id="how-do-i-edit-my-post" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I edit my post?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Visit your <a href="/dashboard" class="link">dashboard</a> and click the link to request changes. You can update the icon, name, pitch, description, website URL, and images. Most edits are approved automatically within minutes; the rest are reviewed by our team.</div>
+    </details>
+    <details id="can-i-change-my-listing-to-a-new-website-name-or-product" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Can I change my listing to a new website, name, or product?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Yes, as long as it is still the same startup. Rebrands and pivots are fine. The one rule for moving to a new domain is that your old URL must redirect to your new one; we check this when you submit the edit. If the old URL does not redirect, whether it still serves something else, is parked, or is gone, the change is not approved. Reusing a listing for a different startup is not allowed; submit it separately instead. If you lost control of your old domain, <a href="/contact" class="link">contact us</a> before editing.</div>
+    </details>
+    <details id="how-do-i-get-featured-again" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I get featured again?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">We generally only feature each startup once, with one exception&#58; if you were previously featured as pre-launch startup you're eligble to get featured again when you launch.</div>
+    </details>
+    <details id="do-you-share-my-contact-information-with-third-parties" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Do you share my contact information with third parties?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">No, we never share, sell, or publicize your contact information. We don't include email addresses in your public listing. If you receive sales or promotional emails after being featured, it's likely because service providers scrape startup directories (including BetaList) for leads and find publicly available contact information on your own website or social media profiles. Unfortunately, this is common practice in the industry and there's nothing we can do to prevent third parties from finding information you've made public elsewhere.</div>
+    </details>
+</div>
+
+                </div>
+                <div>
+                  <h3 class="border-b border-gray-200 pb-3 text-sm font-semibold tracking-wide uppercase text-gray-500 dark:border-gray-800 dark:text-gray-400">
+                    Accounts
+                  </h3>
+                  <div class="flex flex-col gap-0 [&:has([open])_details:not([open])_summary]:text-gray-400 dark:[&:has([open])_details:not([open])_summary]:text-gray-600">
+    <details id="how-do-i-create-an-account" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I create an account?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">Visit <a href="/" class="link">the homepage</a> and click the sign up button at the top right.</div>
+    </details>
+    <details id="where-can-i-download-invoices-or-receipts" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">Where can I download invoices or receipts?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">You can view, customize, and download all your invoices from the <a href="/billing" class="link">billing page</a>. There you can add company details, VAT ID, and custom notes before downloading your PDF receipts.</div>
+    </details>
+    <details id="how-do-i-delete-my-account" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I delete my account?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">For security reasons, you must first <a href="/login" class="link">sign in</a> to verify your identity. Once signed in, visit your <a href="/me/settings" class="link">settings page</a> where you can request to delete your account. We cannot help with account deletion via email without you being signed in, as we need to verify you are who you say you are.</div>
+    </details>
+    <details id="how-do-i-delete-my-startup-submission" class="group py-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+      <summary class="flex items-center list-none cursor-pointer transition-color duration-200 [&::-webkit-details-marker]:hidden">
+        <h3 class="text-lg sm:text-xl font-bold select-none">How do I delete my startup submission?</h3>
+        <div class="ml-auto shrink-0 pl-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 hidden group-open:block" aria-hidden="true"><path d="M4 15L12 7L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 block text-gray-500 dark:text-gray-600 group-open:hidden" aria-hidden="true"><path d="M20 9L12 17L4 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+      </summary>
+      <div class="text-gray-700 dark:text-gray-300 text-sm sm:text-base mt-4">For security reasons, you must first <a href="/login" class="link">sign in</a> to verify your identity. Once signed in, visit your <a href="/dashboard" class="link">dashboard</a> where you can request to delete your submission. We cannot delete submissions via email without you being signed in, as we need to verify you are the owner of the submission.</div>
+    </details>
+</div>
+
+                </div>
+            </div>
+          </section>
+
+</turbo-frame>
+      <aside class="mt-16 flex flex-wrap items-center justify-between gap-4 rounded-lg bg-gray-50 p-6 dark:bg-gray-900 dark:inset-ring dark:inset-ring-white/5">
+        <div>
+          <h2 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Still need help?</h2>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Send us a message and we'll get back to you.</p>
+        </div>
+        <a class="text-base px-3.5 py-1.5 rounded-full select-none cursor-default flex items-center justify-center gap-2 transition-colors duration-200 ease-out font-semibold border border-transparent bg-gray-900 text-white hover:bg-gray-700 active:bg-gray-600 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200 dark:active:bg-gray-300" href="/contact">Contact support</a>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+
+    
+
+    <turbo-frame id="modal"></turbo-frame>
+    <dialog data-auth-dialog-target="dialog"
+  data-action="click->auth-dialog#closeOnBackdrop close->auth-dialog#reset turbo:before-cache@document->auth-dialog#close"
+  aria-label="Log in or sign up"
+  class="m-auto w-[min(28rem,calc(100vw-2rem))] max-h-[calc(100dvh-2rem)] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-2xl p-0 backdrop:bg-gray-500/75 dark:backdrop:bg-black/80 backdrop:backdrop-blur-sm">
+  <button type="button" data-action="auth-dialog#close" aria-label="Close" class="absolute top-4 right-4 z-10 flex items-center justify-center size-8 rounded-full text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-800 cursor-pointer transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+  </button>
+
+  <div class="px-6 sm:px-10 pt-12 pb-10">
+    <turbo-frame data-auth-dialog-target="frame" data-controller="auth-frame" data-action="turbo:frame-missing-&gt;auth-frame#leave" id="new_session">
+      <div class="flex h-80 items-center justify-center text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="size-6 animate-spin" aria-hidden="true"><path d="M19 4V8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.98828 20V16H8.98828" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 12C20 16.4183 16.4183 20 12 20C9.36378 20 6.96969 18.7249 5.5 16.7578" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 12C4 7.58172 7.58172 4 12 4C14.6045 4 16.9726 5.24457 18.4465 7.17142" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+</turbo-frame>  </div>
+</dialog>
+
+</body></html>
