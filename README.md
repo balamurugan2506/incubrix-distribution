@@ -277,7 +277,8 @@ Run all tests via:
 pytest -v
 ```
 
-All 76 tests pass deterministically without real platform credentials:
+All 81 tests pass deterministically without real platform credentials:
+- `tests/unit/test_database.py` (Database initialization, safe directory creation, in-memory SQLite, and URL configuration)
 - `tests/unit/test_config.py` (Configuration defaults)
 - `tests/unit/test_manifests.py` (YAML manifests validation for all connectors)
 - `tests/unit/test_connector_contract.py` (Exact HTTP method signatures & return shapes)

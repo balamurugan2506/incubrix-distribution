@@ -25,12 +25,19 @@ The demo runs as a single, self-contained container configured in `Dockerfile.de
 4. Render automatically detects `render.yaml` and sets up the web service.
 
 ### Step 2: Configure Environment Variables
-Render automatically populates settings from `render.yaml`:
 - `PORT`: `8000`
 - `SIMULATION_MODE`: `true`
 - `APP_ENV`: `production`
 - `DEMO_API_TOKEN`: Automatically generated secret string (copy this for your assessment submission form!)
 - `DEMO_RATE_LIMIT_PER_MINUTE`: `120`
+- `DATABASE_URL`: `sqlite+aiosqlite:////tmp/incubrix.db`
+- `SYNC_DATABASE_URL`: `sqlite:////tmp/incubrix.db`
+
+> [!NOTE]
+> **Database Location & Persistence**:
+> Render's Free tier provides ephemeral container storage. Using `/tmp/incubrix.db` ensures the unprivileged non-root `incubrix` container user (UID 1000) has full write permission to create and manage the SQLite database without `unable to open database file` errors.
+> Database contents reset on service restart or redeployment.
+> If durable persistence is required on a paid Render plan, attach a Render Persistent Disk (e.g. mount path `/app/data`) and configure `DATABASE_URL: sqlite+aiosqlite:////app/data/incubrix.db`.
 
 ### Step 3: Deploy & Verify
 Click **Apply**. Deployment will complete in 2–3 minutes.

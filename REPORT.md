@@ -41,8 +41,8 @@ All metrics and timings below are measured from reproducible commands executed i
 
 ### 2.1 Test Suite Execution
 - **Command**: `.venv\Scripts\python -m pytest`
-- **Result**: **76 passed, 0 failed** in 45.09s.
-- **Coverage**: All unit, integration, certification, recommender evaluation, metrics normalization, fake-clock recertification, and zero-duplicate retry tests pass deterministically without external API keys.
+- **Result**: **81 passed, 0 failed** in 47.76s.
+- **Coverage**: All unit, integration, certification, recommender evaluation, metrics normalization, fake-clock recertification, zero-duplicate retry, and database initialization/directory creation tests pass deterministically without external API keys.
 
 ### 2.2 CSV Catalogue Import Benchmark (1,000 Rows)
 - **Command**: `.venv\Scripts\python -m pytest tests/integration/test_csv_benchmark_1000.py`

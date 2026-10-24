@@ -19,3 +19,15 @@ services:
         generateValue: true
       - key: DEMO_RATE_LIMIT_PER_MINUTE
         value: "120"
+      # Database Configuration:
+      # Render Free tier provides ephemeral container storage without persistent disks.
+      # Setting DATABASE_URL to /tmp/incubrix.db ensures the unprivileged non-root 'incubrix'
+      # user has full write permissions to create and manage the SQLite database and WAL logs.
+      # NOTE: Database contents are ephemeral and will reset upon restart or redeployment.
+      # To enable durable persistence on a paid Render plan:
+      # 1. Attach a Persistent Disk (e.g. name: incubrix-data, mountPath: /app/data, sizeGB: 1)
+      # 2. Update DATABASE_URL to: "sqlite+aiosqlite:////app/data/incubrix.db"
+      - key: DATABASE_URL
+        value: "sqlite+aiosqlite:////tmp/incubrix.db"
+      - key: SYNC_DATABASE_URL
+        value: "sqlite:////tmp/incubrix.db"

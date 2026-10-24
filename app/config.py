@@ -1,7 +1,7 @@
 import os
 import json
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, model_validator
 from typing import Optional, Dict, Any
 
 
@@ -21,7 +21,18 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = "sqlite+aiosqlite:///./incubrix.db"
-    SYNC_DATABASE_URL: str = "sqlite:///./incubrix.db"
+    SYNC_DATABASE_URL: Optional[str] = None
+
+    @model_validator(mode="after")
+    def sync_database_urls(self):
+        if not self.SYNC_DATABASE_URL:
+            if "sqlite+aiosqlite" in self.DATABASE_URL:
+                self.SYNC_DATABASE_URL = self.DATABASE_URL.replace("sqlite+aiosqlite", "sqlite")
+            elif "postgresql+asyncpg" in self.DATABASE_URL:
+                self.SYNC_DATABASE_URL = self.DATABASE_URL.replace("postgresql+asyncpg", "postgresql")
+            else:
+                self.SYNC_DATABASE_URL = self.DATABASE_URL
+        return self
 
     # Security & HMAC
     INCUBRIX_WEBHOOK_SECRET: str = "incubrix_dev_secret_key_change_in_prod_32bytes"

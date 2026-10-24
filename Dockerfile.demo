@@ -9,7 +9,8 @@ ENV PYTHONUNBUFFERED=1 \
     SIMULATION_MODE=true \
     APP_ENV=production \
     PORT=8000 \
-    HOST=0.0.0.0
+    HOST=0.0.0.0 \
+    DATABASE_URL=sqlite+aiosqlite:////tmp/incubrix.db
 
 WORKDIR /app
 
@@ -31,7 +32,7 @@ COPY --chown=incubrix:incubrix . .
 
 # Ensure storage and evidence directories exist and are writable
 RUN mkdir -p /app/outputs/evidence /app/outputs/storage /app/data && \
-    chown -R incubrix:incubrix /app/outputs /app/data
+    chown -R incubrix:incubrix /app /app/outputs /app/data
 
 # Switch to non-root user
 USER incubrix
