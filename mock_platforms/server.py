@@ -1,10 +1,12 @@
 """Mock Platform Server simulating external publishing targets."""
 
 import asyncio
+import json
 from fastapi import FastAPI, Request, Response, HTTPException, status
 from fastapi.responses import JSONResponse
 from typing import Dict, Any
 import uuid
+
 
 mock_app = FastAPI(title="IncuBrix Mock Platform Server", version="1.0.0")
 
@@ -625,5 +627,72 @@ async def s3_delete_object(bucket: str, key: str):
     if b and key in b:
         del b[key]
     return Response(status_code=204)
+
+
+# ---------------- MOCK LLM ENDPOINTS (RULES CAPTURE) ----------------
+_gemini_429_counter = 0
+
+
+@mock_app.post("/mock_gemini/v1beta/models/{model_name:path}")
+async def mock_gemini_generate(request: Request, model_name: str):
+    global _gemini_429_counter
+    # Check rate limit trigger
+    if request.headers.get("x-simulate-rate-limit"):
+        if _gemini_429_counter < 1:
+            _gemini_429_counter += 1
+            return JSONResponse(
+                status_code=429,
+                content={"error": {"code": 429, "message": "Resource exhausted (rate limit)"}},
+                headers={"Retry-After": "1"}
+            )
+        _gemini_429_counter = 0
+
+    body = await request.json()
+
+    # Support hallucinated quote simulation
+    if request.headers.get("x-simulate-hallucination"):
+        llm_rules = {
+            "frequency_cap": 3,
+            "self_promo_allowed": False,
+            "link_policy": "restricted",
+            "disclosure_required": True,
+            "automation_allowed": False,
+            "quotes": {
+                "frequency_cap": "completely hallucinated phrase never written on the source website",
+                "self_promo_allowed": "another fake non-existent quote"
+            }
+        }
+    else:
+        llm_rules = {
+            "frequency_cap": 3,
+            "self_promo_allowed": False,
+            "link_policy": "restricted",
+            "disclosure_required": True,
+            "automation_allowed": False,
+            "quotes": {
+                "frequency_cap": "limit of 3 posts per day",
+                "self_promo_allowed": "no self-promotion allowed",
+                "link_policy": "links only in comments",
+                "disclosure_required": "must disclose ai generated content",
+                "automation_allowed": "automated bots are prohibited"
+            }
+        }
+
+    response_payload = {
+        "candidates": [{
+            "content": {
+                "parts": [{
+                    "text": json.dumps(llm_rules)
+                }]
+            }
+        }],
+        "usageMetadata": {
+            "promptTokenCount": 350,
+            "candidatesTokenCount": 110,
+            "totalTokenCount": 460
+        }
+    }
+    return JSONResponse(status_code=200, content=response_payload)
+
 
 

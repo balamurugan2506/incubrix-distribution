@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     CALLBACK_SIGNATURE_HEADER: str = "X-IncuBrix-Signature"
     DEMO_API_TOKEN: Optional[str] = None
     DEMO_RATE_LIMIT_PER_MINUTE: int = 120
+    RULES_EXTRACTOR: str = "keyword"
+
 
     # Platform Mock URLs
     MOCK_SERVER_URL: str = "http://localhost:8001"

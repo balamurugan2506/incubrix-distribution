@@ -1,0 +1,8 @@
+{
+  "status": "Partial",
+  "reason": "GEMINI_API_KEY was not set in the environment during assessment run.",
+  "implementation": "GeminiRulesCaptureAdapter implemented in app/rules/capture.py",
+  "unit_tests": "tests/unit/test_rules_capture_llm.py (4 passed)",
+  "live_run_executed": false,
+  "candidate_action_required": "Set $env:GEMINI_API_KEY and rerun python scripts/run_live_rules_capture.py before final submission."
+}
