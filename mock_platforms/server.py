@@ -14,6 +14,7 @@ _lemmy_posts: Dict[str, Any] = {}
 _devto_articles: Dict[str, Any] = {}
 _ghost_posts: Dict[str, Any] = {}
 _webhook_records: Dict[str, Any] = {}
+_s3_buckets: Dict[str, Dict[str, bytes]] = {"incubrix-evidence": {}}
 
 
 @mock_app.get("/health")
@@ -30,12 +31,25 @@ async def mock_reset():
     _devto_articles.clear()
     _ghost_posts.clear()
     _webhook_records.clear()
+    _s3_buckets.clear()
+    _s3_buckets["incubrix-evidence"] = {}
     return {"status": "reset"}
+
 
 
 @mock_app.get("/robots.txt")
 async def mock_robots():
     return Response(content="User-agent: *\nAllow: /\n", media_type="text/plain")
+
+
+@mock_app.get("/mock_csv")
+async def mock_csv():
+    csv_content = (
+        "name,url,platform_key,connector_key,surface,category,audience_tags,est_audience,rules_url,frequency_cap\n"
+        "URL Imported Community,http://localhost:8001/discourse/c/url_imp,discourse,discourse,main,technology,\"tech,ai\",1000,http://localhost:8001/discourse/rules,5\n"
+    )
+    return Response(content=csv_content, media_type="text/csv")
+
 
 
 @mock_app.get("/discourse/c/{path:path}")
@@ -562,4 +576,54 @@ async def mailchimp_get_report(campaign_id: str, request: Request):
         "clicks": {"unique_subscriber_clicks": 5},
         "shares": {"facebook_shares": 1}
     })
+
+
+# ---------------- S3 / MINIO MOCK ENDPOINTS ----------------
+@mock_app.head("/{bucket}")
+async def s3_head_bucket(bucket: str):
+    if bucket in _s3_buckets:
+        return Response(status_code=200)
+    return Response(status_code=404)
+
+
+@mock_app.put("/{bucket}")
+async def s3_create_bucket(bucket: str):
+    _s3_buckets.setdefault(bucket, {})
+    return Response(status_code=200)
+
+
+@mock_app.put("/{bucket}/{key:path}")
+async def s3_put_object(bucket: str, key: str, request: Request):
+    data = await request.body()
+    _s3_buckets.setdefault(bucket, {})[key] = data
+    etag = f'"{uuid.uuid4().hex}"'
+    return Response(status_code=200, headers={"ETag": etag})
+
+
+@mock_app.get("/{bucket}/{key:path}")
+async def s3_get_object(bucket: str, key: str):
+    b = _s3_buckets.get(bucket)
+    if b is None or key not in b:
+        return Response(status_code=404, content="NoSuchKey")
+    content = b[key]
+    media_type = "application/json" if key.endswith(".json") else "text/plain"
+    return Response(content=content, media_type=media_type)
+
+
+@mock_app.head("/{bucket}/{key:path}")
+async def s3_head_object(bucket: str, key: str):
+    b = _s3_buckets.get(bucket)
+    if b is None or key not in b:
+        return Response(status_code=404)
+    content = b[key]
+    return Response(status_code=200, headers={"Content-Length": str(len(content))})
+
+
+@mock_app.delete("/{bucket}/{key:path}")
+async def s3_delete_object(bucket: str, key: str):
+    b = _s3_buckets.get(bucket)
+    if b and key in b:
+        del b[key]
+    return Response(status_code=204)
+
 

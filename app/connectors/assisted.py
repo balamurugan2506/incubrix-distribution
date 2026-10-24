@@ -13,6 +13,9 @@ from app.schemas.connector import (
     AssistPackResult
 )
 from app.rules.errors import ConnectorException, ErrorCode
+from app.storage.evidence import evidence_storage
+import uuid
+
 
 
 class AssistedConnector(BaseConnector):
@@ -110,9 +113,24 @@ class AssistedConnector(BaseConnector):
             "6. After submission, update IncuBrix job with the live post URL"
         ]
 
+        pack_id = f"assist_{uuid.uuid4().hex[:12]}"
+        pack_data = {
+            "pack_id": pack_id,
+            "destination_name": destination.name,
+            "destination_url": destination.url,
+            "submission_url": submission_url,
+            "caption": caption,
+            "files": rendition.media_urls,
+            "checklist": checklist
+        }
+        stored = evidence_storage.save_assist_pack(pack_id, pack_data)
+
         return AssistPackResult(
             files=rendition.media_urls,
             caption=caption,
             deep_link=submission_url,
-            checklist=checklist
+            checklist=checklist,
+            download_url=stored["download_url"],
+            pack_id=pack_id
         )
+

@@ -21,15 +21,17 @@ This document tracks all external dependencies, libraries, APIs, and components 
 | **pytest** | `>=8.2.0` | MIT | Automated testing framework | ✅ Yes |
 | **pytest-asyncio** | `>=0.23.0` | Apache-2.0 | Async test runners for FastAPI and HTTPX | ✅ Yes |
 | **pytest-mock** | `>=3.14.0` | MIT | Mocking utilities for unit tests | ✅ Yes |
+| **boto3** | `>=1.34.0` | Apache-2.0 | AWS S3 / MinIO storage client library | ✅ Yes |
 
 ## Infrastructure & Runtime Components
 
-| Component | Image / Version | License | Purpose |
+| Component | Image / Version | License | Purpose & Licensing Notes |
 |---|---|---|---|
 | **Python** | 3.12-slim | PSF License | Base Docker container runtime |
 | **SQLite** | 3.x (Built-in) | Public Domain | Zero-configuration relational database |
-| **Local Disk Storage** | Built-in | N/A | Shipped default storage backend (No AGPL contamination) |
-| **MinIO** | `cgr.dev/chainguard/minio:latest` | AGPLv3 (External container only) | Optional S3-compatible service in docker compose; application service interacts only via HTTP client and falls back to local storage |
+| **Local Disk Storage** | Built-in | N/A | Shipped default storage backend (Permissive, zero AGPL contamination) |
+| **MinIO (Default Compose)** | `cgr.dev/chainguard/minio:latest` | GNU AGPL-3.0 | S3-compatible object storage service in `docker-compose.yml`. **License Notice**: The server image is licensed under AGPLv3. The IncuBrix application communicates exclusively over standard HTTP/REST S3 protocol via the Apache-2.0 `boto3` client, maintaining a strict network separation boundary. For embedded distributions or environments strictly prohibiting AGPLv3 images, drop-in Apache-2.0 alternatives are supported: **SeaweedFS** (`chrislusf/seaweedfs:latest`, Apache-2.0), legacy **MinIO Apache-2.0** (`minio/minio:RELEASE.2021-04-22T15-44-28Z`, Apache-2.0), or **LocalStack** (Apache-2.0). |
+
 
 ## External Platform API Specs Consulted & Verified
 

@@ -83,3 +83,6 @@ class CSVImportSummary(BaseModel):
     skipped_duplicates: int
     errors_count: int
     rows: List[CSVImportRowResult] = Field(default_factory=list)
+    report_download_url: Optional[str] = None
+    report_id: Optional[str] = None
+

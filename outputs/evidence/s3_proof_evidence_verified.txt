@@ -1,0 +1,11 @@
+INCUBRIX EVIDENCE AUDIT REPORT: s3_proof_evidence_verified
+Timestamp: 2026-10-24T11:31:27.822885+00:00
+Backend: s3
+S3 URI: s3://incubrix-evidence/evidence/s3_proof_evidence_verified.json
+Download URL: /api/v1/evidence/s3_proof_evidence_verified
+============================================================
+benchmark: s3_minio_integration
+system: IncuBrix Distribution Engine
+storage_mode: s3_boto3
+verified_by: pytest_integration_suite
+sample_metrics: {'write_latency_ms': 4.2, 'readback_latency_ms': 3.1, 'status': 'PASS'}

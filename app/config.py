@@ -51,6 +51,9 @@ class Settings(BaseSettings):
     MINIO_ACCESS_KEY: str = "minioadmin"
     MINIO_SECRET_KEY: str = "minioadmin"
     MINIO_BUCKET: str = "incubrix-evidence"
+    MINIO_REGION: str = "us-east-1"
+    MINIO_SECURE: bool = False
+    S3_PRESIGNED_EXPIRY_SECONDS: int = 3600
 
     # Manifests Directory
     MANIFESTS_DIR: str = "connectors/manifests"

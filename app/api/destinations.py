@@ -3,11 +3,14 @@
 import uuid
 import asyncio
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, Query
+from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, Form, Query
+from urllib.parse import urlparse
+import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
 
 from app.database import get_db
+from app.config import settings
 from app.models.destination import DestinationModel
 from app.schemas.destination import (
     DestinationCreate,
@@ -15,11 +18,14 @@ from app.schemas.destination import (
     DestinationResponse,
     CSVImportSummary
 )
-from app.catalogue.csv_importer import normalise_url, import_destinations_from_csv
+from app.catalogue.csv_importer import normalise_url, import_destinations_from_csv, is_ssrf_risk
+from app.storage.evidence import evidence_storage
 from app.api.jobs import JobSubmitResponse
 from app.jobs.manager import job_manager
 
 router = APIRouter(prefix="/api/v1/destinations", tags=["Destination Catalogue"])
+
+
 
 
 @router.get("", response_model=List[DestinationResponse])
@@ -135,26 +141,98 @@ async def delete_destination(
 
 @router.post("/import-csv", response_model=CSVImportSummary)
 async def import_csv(
-    file: UploadFile = File(...),
+    file: Optional[UploadFile] = File(None),
+    url: Optional[str] = Form(None),
+    csv_url: Optional[str] = Query(None),
     check_reachability: bool = Query(True),
     db: AsyncSession = Depends(get_db)
 ):
-    content_bytes = await file.read()
-    csv_text = content_bytes.decode("utf-8-sig", errors="replace")
+    target_url = url or csv_url
+    if file is not None and file.filename:
+        content_bytes = await file.read()
+        csv_text = content_bytes.decode("utf-8-sig", errors="replace")
+    elif target_url:
+        parsed = urlparse(target_url)
+        if is_ssrf_risk(parsed.netloc, allow_local=settings.APP_ENV != "production"):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"SSRF risk: Access to host '{parsed.netloc}' is restricted."
+            )
+        try:
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                resp = await client.get(target_url)
+                if resp.status_code != 200:
+                    raise HTTPException(
+                        status_code=status.HTTP_400_BAD_REQUEST,
+                        detail=f"Failed to fetch CSV from URL '{target_url}': HTTP {resp.status_code}"
+                    )
+                csv_text = resp.text
+        except HTTPException:
+            raise
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Failed to connect to CSV URL '{target_url}': {exc}"
+            )
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Either a CSV file upload or a 'url' parameter must be provided."
+        )
+
     summary = await import_destinations_from_csv(csv_text, db, perform_reachability=check_reachability)
+
+    # Save import audit report to S3/local storage
+    report_id = f"import_{uuid.uuid4().hex[:12]}"
+    report_meta = evidence_storage.save_import_report(report_id, summary.model_dump())
+    summary.report_id = report_id
+    summary.report_download_url = report_meta["download_url"]
+
     return summary
 
 
 @router.post("/import-csv-job", response_model=JobSubmitResponse, status_code=status.HTTP_202_ACCEPTED)
 async def submit_csv_import_job(
-    file: UploadFile = File(...),
+    file: Optional[UploadFile] = File(None),
+    url: Optional[str] = Form(None),
+    csv_url: Optional[str] = Query(None),
     check_reachability: bool = Query(True),
     callback_url: Optional[str] = Query(None),
     db: AsyncSession = Depends(get_db)
 ):
     """Submits CSV catalogue import as an asynchronous background job returning 202 Accepted and job_id."""
-    content_bytes = await file.read()
-    csv_text = content_bytes.decode("utf-8-sig", errors="replace")
+    target_url = url or csv_url
+    if file is not None and file.filename:
+        content_bytes = await file.read()
+        csv_text = content_bytes.decode("utf-8-sig", errors="replace")
+    elif target_url:
+        parsed = urlparse(target_url)
+        if is_ssrf_risk(parsed.netloc, allow_local=settings.APP_ENV != "production"):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"SSRF risk: Access to host '{parsed.netloc}' is restricted."
+            )
+        try:
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                resp = await client.get(target_url)
+                if resp.status_code != 200:
+                    raise HTTPException(
+                        status_code=status.HTTP_400_BAD_REQUEST,
+                        detail=f"Failed to fetch CSV from URL '{target_url}': HTTP {resp.status_code}"
+                    )
+                csv_text = resp.text
+        except HTTPException:
+            raise
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Failed to connect to CSV URL '{target_url}': {exc}"
+            )
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Either a CSV file upload or a 'url' parameter must be provided."
+        )
 
     job = await job_manager.create_job(
         destination_id=None,
@@ -176,3 +254,4 @@ async def submit_csv_import_job(
         progress=0,
         status_url=f"/api/v1/jobs/{job.job_id}"
     )
+

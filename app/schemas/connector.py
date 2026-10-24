@@ -123,3 +123,6 @@ class AssistPackResult(BaseModel):
     caption: str
     deep_link: str
     checklist: List[str] = Field(default_factory=list)
+    download_url: Optional[str] = None
+    pack_id: Optional[str] = None
+
