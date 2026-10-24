@@ -1,0 +1,35 @@
+{
+  "evidence_id": "cert_af493a59b634",
+  "created_at": "2026-10-24T12:26:23.177523+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_af493a59b634",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_af493a59b634",
+    "destination_id": "demote_a09a66c4",
+    "destination_name": "Flaky Forum",
+    "connector_key": "discourse",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "failed",
+    "passed": false,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-24T12:26:23.175806+00:00",
+    "completed_at": "2026-10-24T12:26:23.177523+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:26:23.175806+00:00",
+        "details": {
+          "ok": true
+        }
+      }
+    ],
+    "error_message": "Discourse unavailable (503): {\"error\":\"Platform temporarily unavailable.\"}"
+  }
+}

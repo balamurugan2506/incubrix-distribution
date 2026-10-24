@@ -46,9 +46,12 @@
       "verified_tests": "tests/unit/test_idempotency.py"
     },
     "module_6_destination_catalogue": {
-      "status": "Completed",
+      "status": "Completed (Partial - 75 Real Destinations)",
+      "catalogue_count": 75,
+      "catalogue_file": "catalogue/real_destinations_150.csv",
+      "catalogue_only_enforced": true,
       "features": ["CRUD endpoints", "URL normalisation", "duplicate detection on (url, platform)", "CSV importer", "safe reachability checks"],
-      "verified_tests": "tests/integration/test_destinations_api.py"
+      "verified_tests": "tests/integration/test_destinations_api.py, tests/integration/test_real_catalogue_150.py"
     },
     "module_7_publication_certification_harness": {
       "status": "Completed",
@@ -84,12 +87,17 @@
         "scripts/batch_runner.py",
         "scripts/export_openapi.py"
       ]
+    },
+    "live_ai_rules_capture": {
+      "status": "Partial",
+      "reason": "GEMINI_API_KEY required for live execution; verified offline and via mock adapter unit tests",
+      "verified_tests": "tests/unit/test_rules_capture_llm.py"
     }
   },
   "test_metrics": {
-    "total_automated_tests": 28,
-    "passed": 28,
+    "total_automated_tests": 76,
+    "passed": 76,
     "failed": 0,
-    "execution_time_seconds": 3.25
+    "execution_time_seconds": 45.09
   }
 }

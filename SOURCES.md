@@ -44,12 +44,14 @@ This document tracks all external dependencies, libraries, APIs, and components 
 7. **Hashnode API**: Official Hashnode GraphQL API (`publishPost`, `deletePost`, `post` queries). Verified personal access token authentication.
 8. **Slack Web API**: Official Slack Web API (`chat.postMessage`, `chat.delete`, `conversations.history`). Verified Bot Token (`xoxb-`) auth and Block Kit payload.
 9. **Mailchimp API**: Official Mailchimp Marketing API v3 (`/3.0/campaigns`, `/3.0/campaigns/{id}/content`, `/3.0/reports/{id}`). Verified draft-only restriction (`status: "save"`).
+10. **Google Gemini API**: Official Google Gemini REST API (`/v1beta/models/gemini-1.5-flash:generateContent`). Used for AI rules extraction with anti-hallucination substring guards. Terms: [Google AI Studio Terms of Service](https://ai.google.dev/terms). Free tier allows quality improvements; commercial paid tier guarantees prompts/outputs are not used for training.
 
 ## Datasets & Curated Catalogues
 
 1. **Real Destinations Catalogue (`catalogue/real_destinations_150.csv`)**:
-   - 150 real public developer, AI, SaaS, and video communities across Discourse, Lemmy, Dev.to, Hashnode, newsletters, and assisted forums.
-   - Rules quotes copied verbatim from public community guideline pages (Hugging Face, OpenAI, PyTorch, Rust, ArXiv, Reddit, Indie Hackers, etc.).
-   - All rows flagged `catalogue_only=True` to guarantee zero unsolicited automated posting.
+   - 75 real public developer, AI, SaaS, and video communities verified live over HTTP (out of 85 candidate URLs crawled; 10 dropped due to 403/404).
+   - 62 community entries carry exact word-for-word quotes cryptographically verified as exact substrings against saved HTML snapshots in `catalogue/snapshots/` with SHA-256 hashes.
+   - 13 communities without distinct rules pages have empty quotes and fail-closed default rules.
+   - All rows flagged `catalogue_only=True` and `rules_status="unconfirmed"` to guarantee zero unsolicited automated posting.
 2. **Precision@10 Recommender Evaluation Set (`tests/evaluation/test_recommender_eval.py`)**:
    - 10 distinct technical content queries and 30 destinations with hand-labelled binary relevance ground truth based on vertical pillar alignment and rule safety gating.

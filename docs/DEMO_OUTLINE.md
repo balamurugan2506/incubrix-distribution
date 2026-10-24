@@ -45,7 +45,7 @@
   - CSV Import (`/import-csv`) with URL normalisation, duplicate rejection on `(normalised_url, platform_key)`, and reachability checks.
 - **5:15 - 6:00**: Background Jobs Engine (`/api/v1/jobs`):
   - Submit publication job returning `HTTP 202 Accepted` with `job_id`.
-  - Poll `/api/v1/jobs/{job_id}` showing progress progressing 0% -> 20% -> 50% -> 80% -> 100%.
+  - Poll `/api/v1/jobs/{job_id}` showing progress progressing from 0 to 100 percent.
   - Explain optional HMAC-SHA256 signed callback notification.
 
 ---

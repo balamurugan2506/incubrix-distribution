@@ -84,7 +84,7 @@ services:
     volumes:
       - minio-data:/data
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:9000/minio/health/live || exit 1"]
+      test: ["CMD", "mc", "ready", "local"]
       interval: 10s
       timeout: 3s
       retries: 5
@@ -107,7 +107,7 @@ services:
       - incubrix-net
 
   lemmy-pictrs:
-    image: asonix/pict-rs:0.5.0
+    image: asonix/pictrs:0.5
     container_name: incubrix-lemmy-pictrs
     restart: unless-stopped
     environment:

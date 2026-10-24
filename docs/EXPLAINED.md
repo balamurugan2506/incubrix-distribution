@@ -59,6 +59,29 @@
   * 2. Create `app/connectors/{key}.py` implementing `BaseConnector` (`validate`, `publish`, `reconcile`, `get_status`, `delete`, `fetch_metrics`).
   * 3. Register the class in `app/connectors/registry.py`. The harness, rules engine, and API routes support it automatically.
 
+### Concept 7: S3 / MinIO Evidence Storage & Presigned Links
+* **Analogy**: A bank safe-deposit vault with time-limited visitor passes.
+  * All certification receipts, assist packs, and import reports are stored in S3-compatible object storage via `boto3` (`app/storage/evidence.py`).
+  * If S3/MinIO is active (`STORAGE_BACKEND=s3`), objects are pushed to the bucket and the API issues secure, time-limited presigned download URLs (e.g., expiring in 3600 seconds).
+  * If MinIO is offline or during standalone local testing, it falls back seamlessly to the local filesystem mirror (`outputs/evidence/`) without throwing exceptions.
+  * Destination catalogue CSVs are accepted as direct multipart file uploads OR via remote HTTP/HTTPS URLs with SSRF protection (private/loopback ranges blocked).
+
+### Concept 8: Live-Verified Community Research & Cryptographic Substring Proof
+* **Analogy**: A legal researcher citing statute pages with court-stamped exhibits.
+  * Rather than relying on LLM-generated summaries or guesses, IncuBrix uses 75 real communities verified live over HTTP via `scripts/build_verified_catalogue.py`.
+  * For every community with explicit guidelines, exact word-for-word quotes are captured.
+  * Raw HTML snapshots are stored in `catalogue/snapshots/` alongside SHA-256 cryptographic hashes.
+  * The integration test `tests/integration/test_real_catalogue_150.py` independently recalculates the SHA-256 of each snapshot and verifies that every rules quote is an exact, unedited substring of the page.
+  * Communities without dedicated rules pages are given empty quotes and fail-closed default rules. Every entry is flagged `catalogue_only=True` and `rules_status="unconfirmed"` until a person confirms them.
+
+### Concept 9: Real LLM Rules Extractor with Substring Guard & Human-in-the-Loop
+* **Analogy**: A paralegal drafting brief recommendations that require senior partner sign-off.
+  * `GeminiRulesCaptureAdapter` in `app/rules/capture.py` connects to Google Gemini via official REST endpoints.
+  * The API key is read strictly from the `GEMINI_API_KEY` environment variable (never logged, displayed, or committed).
+  * It includes built-in exponential backoff retry for HTTP 429 rate limit responses.
+  * **Strict Anti-Hallucination Guard**: Every rule proposed by the LLM MUST contain a verbatim quote that exists as an exact substring of the community's page text. If the quote does not match the page text verbatim, the proposed rule is immediately dropped as an unverifiable hallucination.
+  * Extracted proposals remain in `pending` state and cannot govern publication until confirmed by a human through `POST /api/v1/rules/confirm`. Loosening a rule requires explicit confirmation acknowledgement.
+
 ---
 
 ## 2. Fifteen Quiz Questions for the Candidate
@@ -82,7 +105,7 @@
 **Answer**: Instead of matching isolated single words like "product", it evaluates multi-marker signals combining calls to action ("check out our", "sign up", "try our beta"), transactional discount wording ("50% discount", "pricing plan", "coupon code"), and commercial affiliate markers. In ambiguous contexts, it requires multiple corroborating markers before flagging a post as self-promotional.
 
 ### Q7: Why are long-running tasks like CSV import and full certification executed as asynchronous jobs?
-**Answer**: Per the Integration Standard, any operation taking longer than 2 seconds must return `202 Accepted` with a `job_id`. Long-running tasks run asynchronously in the background via `JobManager`, allowing clients to poll progress (`0-100%`) or receive an HMAC-SHA256 signed callback upon completion.
+**Answer**: Per the Integration Standard, any operation taking longer than 2 seconds must return `202 Accepted` with a `job_id`. Long-running tasks run asynchronously in the background via `JobManager`, allowing clients to poll progress (`0 to 100 percent`) or receive an HMAC-SHA256 signed callback upon completion.
 
 ### Q8: What does the recertification scheduler do if a destination was certified 32 days ago?
 **Answer**: The system enforces a strict 30-day recertification hard cap. Any destination older than 30 days is re-tested. If the test fails, the scheduler immediately demotes the destination (`status = 'demoted'`), disables it (`enabled = False`), and creates a high-severity alert in the `alerts` table (`GET /api/v1/alerts`).

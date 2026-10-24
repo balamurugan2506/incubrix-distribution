@@ -10,3 +10,6 @@ htmlcov/
 *.db
 .env
 outputs/shared_credentials.json
+outputs/storage/
+Problem Statements/Assessment4_*.xlsx
+Problem Statements/extracted_brief.txt

@@ -41,8 +41,8 @@ All metrics and timings below are measured from reproducible commands executed i
 
 ### 2.1 Test Suite Execution
 - **Command**: `.venv\Scripts\python -m pytest`
-- **Result**: **67 passed, 0 failed** in 7.28s.
-- **Coverage**: All unit, integration, certification, recommender evaluation, metrics normalization, and fake-clock recertification tests pass deterministically without external API keys.
+- **Result**: **76 passed, 0 failed** in 45.09s.
+- **Coverage**: All unit, integration, certification, recommender evaluation, metrics normalization, fake-clock recertification, and zero-duplicate retry tests pass deterministically without external API keys.
 
 ### 2.2 CSV Catalogue Import Benchmark (1,000 Rows)
 - **Command**: `.venv\Scripts\python -m pytest tests/integration/test_csv_benchmark_1000.py`
@@ -65,7 +65,7 @@ All metrics and timings below are measured from reproducible commands executed i
 
 ### 2.5 Secret Leak Prevention Audit
 - **Command**: `python scripts/secret_scan.py`
-- **Result**: **0 secrets found** across repository files, git commits, and docker logs. Authorization headers and API keys are completely redacted from logs.
+- **Result**: **0 secrets found** across 681 repository files, git commits, and docker logs. Authorization headers and API keys are completely redacted from logs.
 - **Evidence Artifact**: `outputs/test_runs/secret_scan_report.json`.
 
 ---
@@ -94,10 +94,10 @@ To maintain strict honesty:
    - When Docker is not running on the local host machine, tests cleanly fallback to the high-fidelity mock server (`mock_platforms/server.py`). Live tests skip gracefully when containers are offline.
 2. **Mailchimp Sends Drafts Only**:
    - In adherence to Non-Negotiable Rule 2 (never post to real communities), the Mailchimp connector creates campaigns in `status="save"` (drafts). Live campaign dispatch is intentionally disabled.
-3. **LLM-Based Rules Capture Requires External Key**:
-   - The community rules capture engine (`app/rules/capture.py`) defaults to an offline keyword extractor with verbatim quote verification. An optional LLM adapter is provided but requires an external API key.
-4. **Catalogue-Only Safety Protection**:
-   - The 150 real verified destinations in `catalogue/real_destinations_150.csv` are flagged `catalogue_only=True`. The system intentionally refuses certification or posting to them to prevent spamming live internet communities.
+3. **Live AI Rules Capture Marked Partial**:
+   - The community rules capture engine (`app/rules/capture.py`) defaults to an offline keyword extractor with verbatim quote verification. An optional LLM adapter (`GeminiRulesCaptureAdapter`) is fully implemented and tested with mock HTTP tests (`tests/unit/test_rules_capture_llm.py`), but requires an external `GEMINI_API_KEY` for live network execution. Status is honestly recorded as **Partial** in `outputs/evidence/llm_rules_capture_status.json`.
+4. **Catalogue-Only Safety Protection (75 Real Verified Destinations)**:
+   - The 75 real verified destinations in `catalogue/real_destinations_150.csv` are flagged `catalogue_only=True` (Partial Level 4 - actual count 75 rows). The system intentionally refuses certification or posting to them to prevent spamming live internet communities.
 
 ---
 

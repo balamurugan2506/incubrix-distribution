@@ -9,13 +9,20 @@ Enables standalone live demonstration with zero external dependencies.
 import os
 import sys
 import time
-import subprocess
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import uvicorn
 from multiprocessing import Process
 
 
 def run_mock_server():
     """Runs simulated platform mock server."""
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
     uvicorn.run(
         "mock_platforms.server:mock_app",
         host="127.0.0.1",

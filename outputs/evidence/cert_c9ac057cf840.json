@@ -1,0 +1,71 @@
+{
+  "evidence_id": "cert_c9ac057cf840",
+  "created_at": "2026-10-24T12:19:31.559881+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_c9ac057cf840",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_c9ac057cf840",
+    "destination_id": "cert_wh_3f1e5807",
+    "destination_name": "Signed Webhook Partner",
+    "connector_key": "signed_webhook",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "wh_72f1c619",
+    "live_url": "https://partner.incubrix.test/posts/wh_72f1c619",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-24T12:19:31.553276+00:00",
+    "completed_at": "2026-10-24T12:19:31.559881+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:19:31.553276+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:19:31.553276+00:00",
+        "details": {
+          "platform_post_id": "wh_72f1c619",
+          "live_url": "https://partner.incubrix.test/posts/wh_72f1c619",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:19:31.557077+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://partner.incubrix.test/posts/wh_72f1c619"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:19:31.557077+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:19:31.559881+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

@@ -117,11 +117,11 @@ A production-grade backend service implementing the **IncuBrix Engineering Asses
    - **Precision@10 Fit Recommender**: Safety-gated ranking achieving 0.94 Precision@10 (+54% over simple baseline).
    - **Normalised Metrics**: Views, likes, comments, shares, clicks across Dev.to, Discourse, Mailchimp, Ghost.
    - **Recertification Scheduler**: Enforces 30-day hard limit with fake-clock testing, demotions, and `/api/v1/alerts`.
-   - **150 Real Verified Destinations**: `catalogue/real_destinations_150.csv` with verbatim rules quotes and `catalogue_only=True` protection.
+   - **Verified Destinations Catalogue (Partial - 75 Real Destinations)**: `catalogue/real_destinations_150.csv` containing 75 communities verified live over HTTP with verbatim exact substring rules quotes, saved HTML snapshots, and `catalogue_only=True` protection.
 
 7. **Background Jobs Engine**:
    - `POST /api/v1/jobs` returns HTTP 202 Accepted and `job_id`.
-   - `GET /api/v1/jobs/{job_id}` tracks progress from 0–100%.
+   - `GET /api/v1/jobs/{job_id}` tracks progress from 0 to 100 percent.
    - Optional client callback with HMAC-SHA256 signature verification.
 
 8. **CLI Batch Runner**:
@@ -277,7 +277,7 @@ Run all tests via:
 pytest -v
 ```
 
-All 67 tests pass deterministically without real platform credentials:
+All 76 tests pass deterministically without real platform credentials:
 - `tests/unit/test_config.py` (Configuration defaults)
 - `tests/unit/test_manifests.py` (YAML manifests validation for all connectors)
 - `tests/unit/test_connector_contract.py` (Exact HTTP method signatures & return shapes)

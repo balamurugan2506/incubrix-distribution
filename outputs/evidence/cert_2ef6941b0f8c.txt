@@ -1,0 +1,23 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_2ef6941b0f8c
+Timestamp: 2026-10-24T12:26:27.813021+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_2ef6941b0f8c
+============================================================
+certification_id: cert_2ef6941b0f8c
+destination_id: dest_395a5be6f7a2
+destination_name: Hugging Face Forums
+connector_key: discourse
+connector_version: 1.0.0
+environment: mock
+verdict: failed (demote)
+passed: False
+platform_post_id: None
+live_url: None
+deletion_confirmed: False
+evidence_file: None
+started_at: 2026-10-24T12:26:27.813021+00:00
+completed_at: 2026-10-24T12:26:27.813021+00:00
+error_message: Destination 'Hugging Face Forums' is marked catalogue_only and cannot be certified.
+
+STEPS EXECUTION TRAIL:

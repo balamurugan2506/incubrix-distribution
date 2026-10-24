@@ -101,9 +101,9 @@ def main():
                 }
             },
             "connection": {
-                "base_url": f"{DEMO_URL}/devto",
                 "credentials": {"api_key": "demo_devto_key"}
-            }
+            },
+            "idempotency_key": idemp_key
         },
         headers=pub_headers
     )
@@ -136,9 +136,9 @@ def main():
                 }
             },
             "connection": {
-                "base_url": f"{DEMO_URL}/devto",
                 "credentials": {"api_key": "demo_devto_key"}
-            }
+            },
+            "idempotency_key": idemp_key
         },
         headers=pub_headers
     )
@@ -165,64 +165,45 @@ def main():
         "platform_specific": {}
     }
 
+    retry_body = {
+        "rendition": retry_payload,
+        "destination": {
+            "id": "demo_dest_devto",
+            "name": "Live Demo Dev.to Community",
+            "url": f"{DEMO_URL}/devto",
+            "platform_key": "devto",
+            "connector_key": "devto",
+            "surface": "main",
+            "rules": {
+                "frequency_cap": 100,
+                "frequency_period_hours": 24,
+                "self_promo_allowed": True,
+                "link_policy": "allowed",
+                "disclosure_required": False,
+                "automation_allowed": True
+            }
+        },
+        "connection": {
+            "credentials": {"api_key": "demo_devto_key"},
+            "metadata": {"simulate": "timeout-after-create"}
+        },
+        "idempotency_key": retry_idemp_key
+    }
+
     # First attempt: Simulates timeout after creation
     first_attempt = client.post(
         "/connector/v1/devto/publish",
-        json={
-            "rendition": retry_payload,
-            "destination": {
-                "id": "demo_dest_devto",
-                "name": "Live Demo Dev.to Community",
-                "url": f"{DEMO_URL}/devto",
-                "platform_key": "devto",
-                "connector_key": "devto",
-                "surface": "main",
-                "rules": {
-                    "frequency_cap": 100,
-                    "frequency_period_hours": 24,
-                    "self_promo_allowed": True,
-                    "link_policy": "allowed",
-                    "disclosure_required": False,
-                    "automation_allowed": True
-                }
-            },
-            "connection": {
-                "base_url": f"{DEMO_URL}/devto",
-                "credentials": {"api_key": "demo_devto_key"}
-            }
-        },
+        json=retry_body,
         headers=retry_headers
     )
 
-    # Second attempt: Retry with same key without timeout simulation
+    # Second attempt: Retry with same key and identical payload (reconciles post without duplicate)
     retry_headers_clean = dict(HEADERS)
     retry_headers_clean["Idempotency-Key"] = retry_idemp_key
 
     second_attempt = client.post(
         "/connector/v1/devto/publish",
-        json={
-            "rendition": retry_payload,
-            "destination": {
-                "id": "demo_dest_devto",
-                "name": "Live Demo Dev.to Community",
-                "url": f"{DEMO_URL}/devto",
-                "platform_key": "devto",
-                "connector_key": "devto",
-                "surface": "main",
-                "rules": {
-                    "frequency_cap": 100,
-                    "frequency_period_hours": 24,
-                    "self_promo_allowed": True,
-                    "link_policy": "allowed",
-                    "disclosure_required": False,
-                    "automation_allowed": True
-                }
-            },
-            "connection": {
-                "base_url": f"{DEMO_URL}/devto",
-                "credentials": {"api_key": "demo_devto_key"}
-            }
-        },
+        json=retry_body,
         headers=retry_headers_clean
     )
     reconciled_post_id = second_attempt.json().get("platform_post_id") or second_attempt.json().get("result", {}).get("platform_post_id")

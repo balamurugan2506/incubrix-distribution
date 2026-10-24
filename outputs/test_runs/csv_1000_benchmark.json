@@ -4,9 +4,9 @@
   "imported_count": 988,
   "skipped_duplicates": 10,
   "errors_count": 2,
-  "elapsed_seconds": 1.3146,
-  "rows_per_second": 760.69,
+  "elapsed_seconds": 1.3675,
+  "rows_per_second": 731.26,
   "target_max_seconds": 300.0,
   "passed": true,
-  "timestamp": "2026-10-23T19:10:31Z"
+  "timestamp": "2026-10-24T18:58:51Z"
 }

@@ -246,8 +246,8 @@ This log contains a dated record of commands executed during development and ver
   - Executed 10 complete 5-step certification cycles for Lemmy and 10 complete cycles for Ghost.
   - Steps: `validate_rendition` -> `publish_test_post` -> `verify_visibility` -> `delete_test_post` -> `confirm_deletion`.
   - Results:
-    - **Lemmy**: 10/10 passed (100%), Mean duration: 1.925s, Slowest: 2.021s, Fastest: 1.896s.
-    - **Ghost**: 10/10 passed (100%), Mean duration: 2.023s, Slowest: 2.185s, Fastest: 1.888s.
+    - **Lemmy**: 10/10 passed (all 10 runs verified), Mean duration: 1.925s, Slowest: 2.021s, Fastest: 1.896s.
+    - **Ghost**: 10/10 passed (all 10 runs verified), Mean duration: 2.023s, Slowest: 2.185s, Fastest: 1.888s.
     - Individual receipts saved to `outputs/evidence/cert_*.json` labeled "real local instance".
     - Full summary saved to `outputs/test_runs/real_instances_10x_summary.json`.
 - **Fresh Clone Audit (What Broke & How It Was Fixed)**:

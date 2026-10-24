@@ -1,0 +1,71 @@
+{
+  "evidence_id": "cert_557252254df6",
+  "created_at": "2026-10-24T18:49:50.913224+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_557252254df6",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_557252254df6",
+    "destination_id": "dest_200e5ab3d5c5",
+    "destination_name": "Dev.to Certification Candidate",
+    "connector_key": "devto",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "295399",
+    "live_url": "https://dev.to/mock_user/295399",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-24T18:49:50.898103+00:00",
+    "completed_at": "2026-10-24T18:49:50.913224+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:49:50.898103+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:49:50.898103+00:00",
+        "details": {
+          "platform_post_id": "295399",
+          "live_url": "https://dev.to/mock_user/295399",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:49:50.907416+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://dev.to/mock_user/295399"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:49:50.908438+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:49:50.912087+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

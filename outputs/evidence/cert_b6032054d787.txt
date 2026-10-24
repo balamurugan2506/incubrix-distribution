@@ -1,0 +1,28 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_b6032054d787
+Timestamp: 2026-10-24T12:42:22.985908+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_b6032054d787
+============================================================
+certification_id: cert_b6032054d787
+destination_id: dest_818495e3
+destination_name: Slack Announcements Channel
+connector_key: slack
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: 201545596.000100
+live_url: https://slack.com/archives/C_DEV/p201545596000100
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-24T12:42:22.982014+00:00
+completed_at: 2026-10-24T12:42:22.985908+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "201545596.000100", "live_url": "https://slack.com/archives/C_DEV/p201545596000100", "status": "published"}
+  [PASSED] verify_visibility: {"status": "published", "verified_live_url": "https://slack.com/archives/channel/p201545596000100"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

@@ -1,0 +1,28 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_bffe36b8889d
+Timestamp: 2026-10-24T18:22:42.044112+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_bffe36b8889d
+============================================================
+certification_id: cert_bffe36b8889d
+destination_id: dest_02185d5f
+destination_name: Mailchimp Newsletter Campaign (Drafts)
+connector_key: mailchimp
+connector_version: 1.0.0
+environment: mock
+verdict: passed
+passed: True
+platform_post_id: mc_4a55bbaf
+live_url: https://mailchimp.com/campaigns/mc_4a55bbaf
+deletion_confirmed: True
+evidence_file: None
+started_at: 2026-10-24T18:22:42.031249+00:00
+completed_at: 2026-10-24T18:22:42.044112+00:00
+error_message: None
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
+  [PASSED] publish_test_post: {"platform_post_id": "mc_4a55bbaf", "live_url": "https://mailchimp.com/campaigns/mc_4a55bbaf", "status": "draft"}
+  [PASSED] verify_visibility: {"status": "draft", "verified_live_url": "https://mailchimp.com/campaigns/mc_4a55bbaf"}
+  [PASSED] delete_test_post: {"deleted": true}
+  [PASSED] confirm_deletion: {"post_status_after": "not_found", "deletion_verified": true}

@@ -1,0 +1,71 @@
+{
+  "evidence_id": "cert_a9a45d129d37",
+  "created_at": "2026-10-24T18:58:49.218148+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_a9a45d129d37",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_a9a45d129d37",
+    "destination_id": "dest_4d5c8c4e",
+    "destination_name": "Hashnode Dev Engineering Blog",
+    "connector_key": "hashnode",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "passed",
+    "passed": true,
+    "platform_post_id": "hn_2282e244",
+    "live_url": "https://hashnode.com/post/hn_2282e244",
+    "deletion_confirmed": true,
+    "evidence_file": null,
+    "started_at": "2026-10-24T18:58:49.214200+00:00",
+    "completed_at": "2026-10-24T18:58:49.218148+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:58:49.214200+00:00",
+        "details": {
+          "ok": true
+        }
+      },
+      {
+        "step": "publish_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:58:49.214200+00:00",
+        "details": {
+          "platform_post_id": "hn_2282e244",
+          "live_url": "https://hashnode.com/post/hn_2282e244",
+          "status": "published"
+        }
+      },
+      {
+        "step": "verify_visibility",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:58:49.215473+00:00",
+        "details": {
+          "status": "published",
+          "verified_live_url": "https://hashnode.com/post/hn_2282e244"
+        }
+      },
+      {
+        "step": "delete_test_post",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:58:49.216014+00:00",
+        "details": {
+          "deleted": true
+        }
+      },
+      {
+        "step": "confirm_deletion",
+        "status": "passed",
+        "timestamp": "2026-10-24T18:58:49.217061+00:00",
+        "details": {
+          "post_status_after": "not_found",
+          "deletion_verified": true
+        }
+      }
+    ],
+    "error_message": null
+  }
+}

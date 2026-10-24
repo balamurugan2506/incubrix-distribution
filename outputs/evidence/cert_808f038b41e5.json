@@ -1,0 +1,35 @@
+{
+  "evidence_id": "cert_808f038b41e5",
+  "created_at": "2026-10-24T12:26:23.202720+00:00",
+  "storage_backend": "local",
+  "download_url": "/api/v1/evidence/cert_808f038b41e5",
+  "presigned_download_url": null,
+  "s3_uri": null,
+  "payload": {
+    "certification_id": "cert_808f038b41e5",
+    "destination_id": "inconcl_0eed35b6",
+    "destination_name": "Expired Auth Blog",
+    "connector_key": "devto",
+    "connector_version": "1.0.0",
+    "environment": "mock",
+    "verdict": "inconclusive",
+    "passed": false,
+    "platform_post_id": null,
+    "live_url": null,
+    "deletion_confirmed": false,
+    "evidence_file": null,
+    "started_at": "2026-10-24T12:26:23.201272+00:00",
+    "completed_at": "2026-10-24T12:26:23.202720+00:00",
+    "steps": [
+      {
+        "step": "validate_rendition",
+        "status": "passed",
+        "timestamp": "2026-10-24T12:26:23.201610+00:00",
+        "details": {
+          "ok": true
+        }
+      }
+    ],
+    "error_message": "Dev.to authentication failed or expired: {\"error\":\"Unauthorized or credentials expired.\"}"
+  }
+}

@@ -1,0 +1,27 @@
+# Virtual Environment & Python bytecode
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Git repository metadata
+.git/
+
+# Environment & Sensitive Credentials
+.env
+*.env
+outputs/shared_credentials.json
+
+# Local databases & Object storage
+*.db
+*.sqlite3
+outputs/storage/
+
+# Testing & Coverage caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Assessment briefs & Workbooks (not needed in container runtime)
+Problem Statements/

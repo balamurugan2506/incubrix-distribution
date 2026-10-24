@@ -1,0 +1,24 @@
+INCUBRIX EVIDENCE AUDIT REPORT: cert_107caf551950
+Timestamp: 2026-10-24T12:19:31.440583+00:00
+Backend: local
+S3 URI: N/A
+Download URL: /api/v1/evidence/cert_107caf551950
+============================================================
+certification_id: cert_107caf551950
+destination_id: demote_7e3ed292
+destination_name: Flaky Forum
+connector_key: discourse
+connector_version: 1.0.0
+environment: mock
+verdict: failed
+passed: False
+platform_post_id: None
+live_url: None
+deletion_confirmed: False
+evidence_file: None
+started_at: 2026-10-24T12:19:31.438240+00:00
+completed_at: 2026-10-24T12:19:31.440583+00:00
+error_message: Discourse unavailable (503): {"error":"Platform temporarily unavailable."}
+
+STEPS EXECUTION TRAIL:
+  [PASSED] validate_rendition: {"ok": true}
