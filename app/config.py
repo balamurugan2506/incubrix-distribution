@@ -2,7 +2,7 @@ import os
 import json
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field, model_validator, field_validator
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Union
 
 
 class Settings(BaseSettings):
@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     RULES_EXTRACTOR: str = "keyword"
 
     # CORS Origins (Swagger UI and API access)
-    CORS_ORIGINS: list[str] = [
+    CORS_ORIGINS: Union[list[str], str] = [
         "https://incubrix-distribution-network.onrender.com",
         "http://localhost:8000",
         "http://127.0.0.1:8000",
@@ -53,15 +53,32 @@ class Settings(BaseSettings):
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod
     def parse_cors_origins(cls, v):
-        if isinstance(v, str):
+        if v is None:
+            origins = []
+        elif isinstance(v, str):
             v_stripped = v.strip()
-            if v_stripped.startswith("["):
+            if not v_stripped:
+                origins = []
+            elif v_stripped.startswith("[") and v_stripped.endswith("]"):
                 try:
-                    return json.loads(v_stripped)
+                    parsed = json.loads(v_stripped)
+                    if isinstance(parsed, list):
+                        origins = [str(origin).strip() for origin in parsed if str(origin).strip()]
+                    else:
+                        origins = [origin.strip() for origin in v_stripped.split(",") if origin.strip()]
                 except Exception:
-                    pass
-            return [origin.strip() for origin in v_stripped.split(",") if origin.strip()]
-        return v
+                    origins = [origin.strip() for origin in v_stripped.split(",") if origin.strip()]
+            else:
+                origins = [origin.strip() for origin in v_stripped.split(",") if origin.strip()]
+        elif isinstance(v, (list, tuple, set)):
+            origins = [str(origin).strip() for origin in v if str(origin).strip()]
+        else:
+            origins = []
+
+        if any(origin == "*" for origin in origins):
+            raise ValueError("Wildcard origin '*' is not allowed when allow_credentials=True.")
+
+        return origins
 
 
     # Platform Mock URLs
