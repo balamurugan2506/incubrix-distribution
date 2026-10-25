@@ -1,7 +1,7 @@
 import os
 import json
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field, model_validator
+from pydantic import Field, model_validator, field_validator
 from typing import Optional, Dict, Any
 
 
@@ -40,6 +40,28 @@ class Settings(BaseSettings):
     DEMO_API_TOKEN: Optional[str] = None
     DEMO_RATE_LIMIT_PER_MINUTE: int = 120
     RULES_EXTRACTOR: str = "keyword"
+
+    # CORS Origins (Swagger UI and API access)
+    CORS_ORIGINS: list[str] = [
+        "https://incubrix-distribution-network.onrender.com",
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, v):
+        if isinstance(v, str):
+            v_stripped = v.strip()
+            if v_stripped.startswith("["):
+                try:
+                    return json.loads(v_stripped)
+                except Exception:
+                    pass
+            return [origin.strip() for origin in v_stripped.split(",") if origin.strip()]
+        return v
 
 
     # Platform Mock URLs

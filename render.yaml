@@ -19,6 +19,8 @@ services:
         generateValue: true
       - key: DEMO_RATE_LIMIT_PER_MINUTE
         value: "120"
+      - key: CORS_ORIGINS
+        value: "https://incubrix-distribution-network.onrender.com,http://localhost:8000,http://127.0.0.1:8000"
       # Database Configuration:
       # Render Free tier provides ephemeral container storage without persistent disks.
       # Setting DATABASE_URL to /tmp/incubrix.db ensures the unprivileged non-root 'incubrix'

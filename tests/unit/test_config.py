@@ -29,3 +29,14 @@ def test_dynamic_shared_credentials_reload(tmp_path):
     # Re-reading should dynamically pick up token_v2
     assert s.get_lemmy_token() == "token_v2"
     assert s.get_ghost_api_key() == "key_v2"
+
+
+def test_settings_cors_origins():
+    s = Settings()
+    assert "https://incubrix-distribution-network.onrender.com" in s.CORS_ORIGINS
+    assert "http://localhost:8000" in s.CORS_ORIGINS
+    assert "*" not in s.CORS_ORIGINS
+
+    # Comma-separated string parsing
+    s_comma = Settings(CORS_ORIGINS="https://site1.example.com, https://site2.example.com")
+    assert s_comma.CORS_ORIGINS == ["https://site1.example.com", "https://site2.example.com"]

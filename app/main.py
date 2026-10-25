@@ -46,10 +46,20 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 from app.rules.errors import ErrorCode
 
-# Middleware
+from fastapi.middleware.cors import CORSMiddleware
+
+# Middleware (Order: Outer to Inner -> CORSMiddleware wraps DemoAuth -> Idempotency -> CorrelationId)
 app.add_middleware(CorrelationIdMiddleware)
 app.add_middleware(IdempotencyMiddleware)
 app.add_middleware(DemoAuthAndRateLimitMiddleware)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "PATCH"],
+    allow_headers=["*"],
+    expose_headers=["X-Correlation-ID", "Idempotency-Key", "X-Cache"],
+)
 
 # Exception handlers
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
